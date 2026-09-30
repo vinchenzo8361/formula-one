@@ -24,7 +24,7 @@ export default async function DriversPage() {
         </header>
 
         {standings.length === 0 ? (
-          <div className="text-center p-12 bg-panel rounded-2xl text-text-muted border border-gray-100 shadow-sm">
+          <div className="text-center p-12 bg-panel rounded-2xl text-text-muted border border-gray-200/20 shadow-sm">
             No driver standings available.
           </div>
         ) : (
@@ -33,7 +33,7 @@ export default async function DriversPage() {
               <Link 
                 href={`/drivers/${standing.Driver.driverId}`} 
                 key={standing.Driver.driverId}
-                className="bg-panel rounded-2xl p-6 shadow-sm hover:shadow-md border border-gray-100 flex flex-col gap-4 transition-all hover:-translate-y-1"
+                className="bg-panel rounded-2xl p-6 shadow-sm hover:shadow-md border border-gray-200/20 flex flex-col gap-4 transition-all hover:-translate-y-1"
               >
                 <div className="flex justify-between items-start">
                   <div className="text-4xl font-extrabold text-f1-red w-12">{standing.position}</div>

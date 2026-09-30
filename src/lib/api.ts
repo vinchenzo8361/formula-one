@@ -445,3 +445,37 @@ export async function getAllDrivers(): Promise<Driver[]> {
 
 
 
+
+/**
+ * Fetch all historical race results for a driver
+ */
+export async function getAllDriverResults(driverId: string): Promise<Race[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/drivers/${driverId}/results.json?limit=1000`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch all driver results for ${driverId}`);
+    const data = await res.json();
+    return data?.MRData?.RaceTable?.Races || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+/**
+ * Fetch historical championship standings for a driver
+ */
+export async function getAllDriverStandings(driverId: string): Promise<StandingsList[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/drivers/${driverId}/driverStandings.json?limit=100`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch all driver standings for ${driverId}`);
+    const data = await res.json();
+    return data?.MRData?.StandingsTable?.StandingsLists || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}

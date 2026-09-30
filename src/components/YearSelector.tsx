@@ -25,13 +25,13 @@ export default function YearSelector({
   };
 
   return (
-    <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-      <label htmlFor="year-select" className="font-semibold text-gray-700 whitespace-nowrap">Select Season:</label>
+    <div className="flex items-center gap-4 bg-panel p-4 rounded-2xl shadow-sm border border-gray-200/20">
+      <label htmlFor="year-select" className="font-semibold text-foreground whitespace-nowrap">Select Season:</label>
       <select
         id="year-select"
         value={selectedYear}
         onChange={handleYearChange}
-        className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-f1-red focus:border-f1-red block w-full p-2.5 min-w-[120px] cursor-pointer"
+        className="bg-background border border-gray-200/20 text-foreground text-sm rounded-xl focus:ring-f1-red focus:border-f1-red block w-full p-2.5 min-w-[120px] cursor-pointer"
       >
         {years.map((year) => (
           <option key={year} value={year}>{year}</option>

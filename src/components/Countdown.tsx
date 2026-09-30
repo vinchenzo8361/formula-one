@@ -39,17 +39,17 @@ export default function Countdown({ targetDate }: { targetDate: string }) {
         <span className="text-3xl font-bold text-f1-red">{String(timeLeft.days).padStart(2, '0')}</span>
         <span className="text-[10px] text-text-muted uppercase tracking-widest mt-1">Days</span>
       </div>
-      <span className="text-3xl font-bold text-gray-300">:</span>
+      <span className="text-3xl font-bold text-text-muted">:</span>
       <div className="flex flex-col items-center w-12">
         <span className="text-3xl font-bold text-f1-red">{String(timeLeft.hours).padStart(2, '0')}</span>
         <span className="text-[10px] text-text-muted uppercase tracking-widest mt-1">Hrs</span>
       </div>
-      <span className="text-3xl font-bold text-gray-300">:</span>
+      <span className="text-3xl font-bold text-text-muted">:</span>
       <div className="flex flex-col items-center w-12">
         <span className="text-3xl font-bold text-f1-red">{String(timeLeft.minutes).padStart(2, '0')}</span>
         <span className="text-[10px] text-text-muted uppercase tracking-widest mt-1">Min</span>
       </div>
-      <span className="text-3xl font-bold text-gray-300">:</span>
+      <span className="text-3xl font-bold text-text-muted">:</span>
       <div className="flex flex-col items-center w-12">
         <span className="text-3xl font-bold text-f1-red">{String(timeLeft.seconds).padStart(2, '0')}</span>
         <span className="text-[10px] text-text-muted uppercase tracking-widest mt-1">Sec</span>

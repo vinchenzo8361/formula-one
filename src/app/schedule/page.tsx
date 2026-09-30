@@ -14,7 +14,7 @@ export default async function SchedulePage() {
           const isCompleted = raceDate < now;
 
           return (
-            <Link key={race.round} href={`/schedule/${race.round}`} className="block bg-panel border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <Link key={race.round} href={`/schedule/${race.round}`} className="block bg-panel border border-gray-200/20 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start mb-2">
                 <div className="text-sm text-f1-red font-bold uppercase tracking-widest">Round {race.round}</div>
                 <div className={`text-xs px-2 py-1 rounded-full font-medium ${isCompleted ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'}`}>
@@ -38,7 +38,7 @@ export default async function SchedulePage() {
         })}
       </div>
       {schedule.length === 0 && (
-        <div className="text-center text-gray-500">No schedule available right now.</div>
+        <div className="text-center text-text-muted">No schedule available right now.</div>
       )}
     </div>
   );

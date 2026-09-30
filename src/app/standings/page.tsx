@@ -28,12 +28,12 @@ export default async function StandingsPage(props: { searchParams: Promise<{ yea
               <p className="text-text-muted text-lg">World Championship History</p>
             </div>
           </div>
-          <Suspense fallback={<div className="h-16 w-64 bg-gray-100 animate-pulse rounded-2xl border border-gray-100"></div>}>
+          <Suspense fallback={<div className="h-16 w-64 bg-panel animate-pulse rounded-2xl border border-gray-200/20"></div>}>
             <YearSelector currentYear={currentYear} />
           </Suspense>
         </header>
 
-        <section className="bg-panel rounded-2xl p-8 shadow-sm border border-gray-100">
+        <section className="bg-panel rounded-2xl p-8 shadow-sm border border-gray-200/20">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="text-2xl font-bold tracking-tight">{year} Championship</h2>
           </div>
@@ -46,7 +46,7 @@ export default async function StandingsPage(props: { searchParams: Promise<{ yea
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-gray-100 text-sm uppercase tracking-wider text-text-muted">
+                  <tr className="border-b border-gray-200/20 text-sm uppercase tracking-wider text-text-muted">
                     <th className="pb-4 font-semibold px-4">Pos</th>
                     <th className="pb-4 font-semibold px-4">Driver</th>
                     <th className="pb-4 font-semibold px-4">Constructor</th>
@@ -54,9 +54,9 @@ export default async function StandingsPage(props: { searchParams: Promise<{ yea
                     <th className="pb-4 font-semibold px-4 text-right">Wins</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-gray-200/20">
                   {standings.map((standing) => (
-                    <tr key={standing.Driver.driverId} className="hover:bg-gray-50 transition-colors">
+                    <tr key={standing.Driver.driverId} className="hover:bg-background transition-colors">
                       <td className="py-4 px-4 w-16">
                         <span className="font-extrabold text-f1-red text-lg">{standing.position}</span>
                       </td>
@@ -65,13 +65,13 @@ export default async function StandingsPage(props: { searchParams: Promise<{ yea
                           {standing.Driver.givenName} {standing.Driver.familyName}
                         </Link>
                       </td>
-                      <td className="py-4 px-4 text-gray-600">
+                      <td className="py-4 px-4 text-text-muted">
                         {formatConstructor(standing.Constructors[0]?.name || "N/A")}
                       </td>
                       <td className="py-4 px-4 text-right font-bold text-lg">
                         {standing.points}
                       </td>
-                      <td className="py-4 px-4 text-right text-gray-500 font-medium">
+                      <td className="py-4 px-4 text-right text-text-muted font-medium">
                         {standing.wins}
                       </td>
                     </tr>

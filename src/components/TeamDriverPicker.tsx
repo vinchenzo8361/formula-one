@@ -11,6 +11,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
 
   useEffect(() => {
     if (!selectedConstructor) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDrivers([]);
       return;
     }
@@ -34,13 +35,13 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
   }, [selectedConstructor]);
 
   return (
-    <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 mt-12">
+    <div className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20 mt-12">
       <h2 className="text-3xl font-extrabold tracking-tight mb-6">Every Driver in History</h2>
       <div className="mb-8">
         <label htmlFor="constructor-select" className="block text-sm font-bold text-text-muted uppercase tracking-widest mb-2">Select a Constructor</label>
         <select 
           id="constructor-select"
-          className="w-full md:w-1/2 p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-f1-red outline-none text-gray-900 font-medium"
+          className="w-full md:w-1/2 p-4 border border-gray-200/20 rounded-xl focus:ring-2 focus:ring-f1-red outline-none text-foreground font-medium"
           value={selectedConstructor} 
           onChange={(e) => setSelectedConstructor(e.target.value)}
         >
@@ -51,7 +52,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
         </select>
       </div>
 
-      {loading && <div className="text-text-muted font-medium py-8 text-center bg-gray-50 rounded-2xl">Loading drivers...</div>}
+      {loading && <div className="text-text-muted font-medium py-8 text-center bg-background rounded-2xl">Loading drivers...</div>}
       
       {!loading && drivers.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -59,9 +60,9 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
             <Link 
               href={`/drivers/${driver.driverId}`} 
               key={driver.driverId}
-              className="p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-f1-red hover:shadow-md transition-all flex flex-col justify-center"
+              className="p-5 bg-background rounded-2xl border border-gray-200/20 hover:border-f1-red hover:shadow-md transition-all flex flex-col justify-center"
             >
-              <div className="font-extrabold text-gray-900 text-lg leading-tight mb-1">{driver.givenName} {driver.familyName}</div>
+              <div className="font-extrabold text-foreground text-lg leading-tight mb-1">{driver.givenName} {driver.familyName}</div>
               <div className="text-sm font-bold text-text-muted uppercase tracking-widest">{driver.nationality}</div>
             </Link>
           ))}
@@ -69,7 +70,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
       )}
       
       {!loading && selectedConstructor && drivers.length === 0 && (
-        <div className="text-text-muted font-medium py-8 text-center bg-gray-50 rounded-2xl">No drivers found for this constructor.</div>
+        <div className="text-text-muted font-medium py-8 text-center bg-background rounded-2xl">No drivers found for this constructor.</div>
       )}
     </div>
   );

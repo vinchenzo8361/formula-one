@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Flag, Users, Shield, Trophy, CalendarDays } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 export default function Navbar() {
   return (
@@ -29,6 +30,11 @@ export default function Navbar() {
           <CalendarDays className="w-4 h-4 text-f1-red" />
           Schedule
         </Link>
+        <Link href="/library" className="flex items-center gap-2 hover:text-white transition-colors">
+          <svg className="w-4 h-4 text-f1-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          Library
+        </Link>
+        <ThemeToggle />
       </div>
     </nav>
   );

@@ -30,52 +30,44 @@ export default async function Home() {
   const top5Drivers = standings.slice(0, 5);
 
   return (
-    <div 
-      className="flex-1 p-8 text-foreground min-h-screen"
-      style={{
-        backgroundImage: `repeating-linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818), repeating-linear-gradient(45deg, #181818 25%, #111111 25%, #111111 75%, #181818 75%, #181818)`,
-        backgroundPosition: `0 0, 20px 20px`,
-        backgroundSize: `40px 40px`,
-        backgroundColor: `#111111`
-      }}
-    >
+    <div className="flex-1 p-8 text-foreground min-h-screen bg-gradient-to-br from-background to-panel">
       <div className="max-w-6xl mx-auto space-y-8 relative z-10">
-        <header className="mb-10 bg-panel/80 backdrop-blur p-8 rounded-3xl shadow-sm border border-gray-800 flex items-center justify-between">
+        <header className="mb-10 bg-panel/80 backdrop-blur p-8 rounded-3xl shadow-sm border border-gray-200/20 flex items-center justify-between">
           <div>
             <h1 className="text-5xl font-extrabold tracking-tight mb-2 uppercase italic text-f1-red">Race Center</h1>
-            <p className="text-gray-400 text-lg font-medium">Your ultimate destination for F1 insights.</p>
+            <p className="text-text-muted text-lg font-medium">Your ultimate destination for F1 insights.</p>
           </div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Enlarge Next Race */}
-          <section className="bg-panel rounded-3xl p-12 shadow-md flex flex-col items-center justify-center text-center col-span-1 md:col-span-3 border border-gray-800 relative overflow-hidden">
+          <section className="bg-panel rounded-3xl p-12 shadow-md flex flex-col items-center justify-center text-center col-span-1 md:col-span-3 border border-gray-200/20 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-2 bg-f1-red" />
             <Timer className="w-12 h-12 text-f1-red mb-4" />
             <h2 className="text-sm font-bold uppercase tracking-widest mb-4 text-text-muted">Next Race</h2>
-            <div className="text-6xl font-extrabold mb-6 uppercase italic tracking-tighter text-white">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
+            <div className="text-6xl font-extrabold mb-6 uppercase italic tracking-tighter text-foreground">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
             {nextRace && <Countdown targetDate={nextRaceDateStr} />}
           </section>
 
           {/* Top 5 Drivers Widget */}
-          <section className="bg-white rounded-3xl p-8 shadow-sm col-span-1 border border-gray-100">
+          <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 border border-gray-200/20">
             <div className="flex items-center gap-3 mb-6">
-              <Trophy className="w-6 h-6 text-f1-red" />
-              <h2 className="text-xl font-bold tracking-tight">Top 5 Drivers</h2>
+               <Trophy className="w-6 h-6 text-f1-red" />
+               <h2 className="text-xl font-bold tracking-tight">Top 5 Drivers</h2>
             </div>
             <div className="space-y-3">
               {top5Drivers.map((standing) => (
-                <div key={standing.Driver.driverId} className="flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-200">
+                <div key={standing.Driver.driverId} className="flex items-center justify-between p-3 rounded-2xl hover:bg-background transition-colors border border-transparent hover:border-gray-200/20">
                   <div className="flex items-center gap-4">
                     <span className="text-xl font-extrabold text-f1-red w-5 text-center">{standing.position}</span>
                     <div>
-                      <Link href={`/drivers/${standing.Driver.driverId}`} className="font-bold text-gray-900 text-lg hover:text-f1-red transition-colors block">
+                      <Link href={`/drivers/${standing.Driver.driverId}`} className="font-bold text-foreground text-lg hover:text-f1-red transition-colors block">
                         {standing.Driver.familyName}
                       </Link>
                       <div className="text-xs text-text-muted uppercase font-bold tracking-wider">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
                     </div>
                   </div>
-                  <div className="text-lg font-bold text-gray-900">{standing.points}</div>
+                  <div className="text-lg font-bold text-foreground">{standing.points}</div>
                 </div>
               ))}
               {top5Drivers.length === 0 && (
@@ -85,7 +77,7 @@ export default async function Home() {
           </section>
 
           {/* Likely to Win Predictor */}
-          <section className="bg-white rounded-3xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-100">
+          <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-200/20">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-f1-red" />
               <h2 className="text-xl font-bold tracking-tight">Likely to Win Predictor</h2>
@@ -93,17 +85,17 @@ export default async function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {top5Drivers.map((standing, idx) => {
                 const percentages = [40, 25, 15, 12, 8];
-                const colors = ['text-f1-red bg-red-50 border-red-100', 'text-blue-600 bg-blue-50 border-blue-100', 'text-orange-600 bg-orange-50 border-orange-100', 'text-green-600 bg-green-50 border-green-100', 'text-purple-600 bg-purple-50 border-purple-100'];
+                const colors = ['text-f1-red border-f1-red/20', 'text-blue-500 border-blue-500/20', 'text-orange-500 border-orange-500/20', 'text-green-500 border-green-500/20', 'text-purple-500 border-purple-500/20'];
                 return (
-                  <div key={standing.Driver.driverId} className={`p-4 rounded-2xl flex items-center gap-4 border shadow-sm transition-transform hover:-translate-y-1 ${colors[idx] || colors[0]}`}>
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-xl bg-white shadow-sm`}>
+                  <div key={standing.Driver.driverId} className={`p-4 rounded-2xl flex items-center gap-4 border shadow-sm transition-transform hover:-translate-y-1 bg-background ${colors[idx] || colors[0]}`}>
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-xl bg-panel shadow-sm border border-gray-200/20 text-foreground`}>
                       {percentages[idx] || 5}%
                     </div>
                     <div>
-                      <Link href={`/drivers/${standing.Driver.driverId}`} className="text-lg font-bold text-gray-900 hover:text-f1-red transition-colors block">
+                      <Link href={`/drivers/${standing.Driver.driverId}`} className="text-lg font-bold text-foreground hover:text-f1-red transition-colors block">
                         {standing.Driver.givenName} {standing.Driver.familyName}
                       </Link>
-                      <div className="text-xs uppercase tracking-wider font-bold opacity-75">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
+                      <div className="text-xs uppercase tracking-wider font-bold opacity-75 text-text-muted">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
                     </div>
                   </div>
                 );
