@@ -374,7 +374,7 @@ export async function getConstructorResultsByYear(constructorId: string, year: n
  */
 export async function getDriverSeasons(driverId: string): Promise<number[]> {
   try {
-    const res = await fetch(\\/drivers/\/seasons.json\, {
+    const res = await fetch(`${BASE_URL}/drivers/${driverId}/seasons.json`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error('Failed to fetch driver seasons');
@@ -392,37 +392,13 @@ export async function getDriverSeasons(driverId: string): Promise<number[]> {
  */
 export async function getConstructorSeasons(constructorId: string): Promise<number[]> {
   try {
-    const res = await fetch(\\/constructors/\/seasons.json\, {
+    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/seasons.json`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error('Failed to fetch constructor seasons');
     const data = await res.json();
     const seasons = data?.MRData?.SeasonTable?.Seasons || [];
     return seasons.map((s: { season: string }) => parseInt(s.season, 10)).sort((a: number, b: number) => b - a);
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
-
-/**
- * Fetch Constructor Results for a specific year
- */
-export interface ConstructorRaceResult {
-  season: string;
-  round: string;
-  raceName: string;
-  Results: RaceResult[];
-}
-
-export async function getConstructorResultsByYear(constructorId: string, year: number): Promise<ConstructorRaceResult[]> {
-  try {
-    const res = await fetch(\\/\/constructors/\/results.json\, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) throw new Error('Failed to fetch constructor results');
-    const data = await res.json();
-    return data?.MRData?.RaceTable?.Races || [];
   } catch (error) {
     console.error(error);
     return [];
