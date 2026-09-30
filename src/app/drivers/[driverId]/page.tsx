@@ -108,7 +108,7 @@ export default async function DriverDetailsPage({
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                       {results.map((race) => {
-                        const result = race.Results[0];
+                        const result = race.Results?.[0];
                         return (
                           <tr key={race.round} className="hover:bg-gray-50 transition-colors">
                             <td className="py-4 px-4 text-gray-500 font-bold">

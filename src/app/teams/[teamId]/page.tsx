@@ -31,7 +31,7 @@ export default async function TeamDetailsPage({
   const driverNames = new Set<string>();
 
   results.forEach(race => {
-    race.Results.forEach(result => {
+    race.Results?.forEach(result => {
       totalPoints += parseFloat(result.points) || 0;
       if (result.position === "1") wins += 1;
       driverNames.add(`${result.Driver.givenName} ${result.Driver.familyName}`);
@@ -118,7 +118,7 @@ export default async function TeamDetailsPage({
                     </thead>
                     <tbody className="divide-y divide-gray-100">
                       {results.flatMap((race) => 
-                        race.Results.map(result => (
+                        (race.Results || []).map(result => (
                           <tr key={`${race.round}-${result.Driver.driverId}`} className="hover:bg-gray-50 transition-colors">
                             <td className="py-4 px-4 text-gray-500 font-bold">
                               {race.round}
