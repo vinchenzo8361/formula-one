@@ -368,5 +368,80 @@ export async function getConstructorResultsByYear(constructorId: string, year: n
   }
 }
 
+export interface StandingsList {
+  season: string;
+  round: string;
+  ConstructorStandings?: ConstructorStanding[];
+  DriverStandings?: DriverStanding[];
+}
+
+/**
+ * Fetch all constructors
+ */
+export async function getAllConstructors(): Promise<Constructor[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/constructors.json?limit=1000`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch all constructors: ${res.statusText}`);
+    const data = await res.json();
+    return data?.MRData?.ConstructorTable?.Constructors || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+/**
+ * Fetch drivers for a specific constructor
+ */
+export async function getConstructorDrivers(constructorId: string): Promise<Driver[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/drivers.json?limit=500`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch drivers for constructor ${constructorId}: ${res.statusText}`);
+    const data = await res.json();
+    return data?.MRData?.DriverTable?.Drivers || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+/**
+ * Fetch historical constructor standings for a specific constructor
+ */
+export async function getConstructorStandingsHistory(constructorId: string): Promise<StandingsList[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/constructorStandings.json?limit=100`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch standings history for constructor ${constructorId}: ${res.statusText}`);
+    const data = await res.json();
+    return data?.MRData?.StandingsTable?.StandingsLists || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+/**
+ * Fetch all drivers
+ */
+export async function getAllDrivers(): Promise<Driver[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/drivers.json?limit=1000`, {
+      next: { revalidate: 86400 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch all drivers: ${res.statusText}`);
+    const data = await res.json();
+    return data?.MRData?.DriverTable?.Drivers || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
 
 

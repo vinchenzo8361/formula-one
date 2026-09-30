@@ -1,6 +1,7 @@
-import { getCurrentDriverStandings } from "@/lib/api";
+import { getCurrentDriverStandings, getAllConstructors } from "@/lib/api";
 import { Users } from "lucide-react";
 import Link from "next/link";
+import TeamDriverPicker from "@/components/TeamDriverPicker";
 
 function formatConstructor(name: string) {
   if (name === "RB" || name === "VCARB") return "Racing Bulls";
@@ -9,6 +10,7 @@ function formatConstructor(name: string) {
 
 export default async function DriversPage() {
   const standings = await getCurrentDriverStandings();
+  const constructors = await getAllConstructors();
 
   return (
     <div className="flex-1 p-8 text-foreground">
@@ -52,6 +54,8 @@ export default async function DriversPage() {
             ))}
           </div>
         )}
+
+        <TeamDriverPicker constructors={constructors} />
       </div>
     </div>
   );

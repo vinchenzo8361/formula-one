@@ -1,7 +1,7 @@
-import { getConstructorResultsByYear, getConstructorSeasons } from "@/lib/api";
+import { getConstructorResultsByYear, getConstructorSeasons, getConstructorStandingsHistory, getConstructorDrivers } from "@/lib/api";
 import { TEAM_DATA } from "@/lib/staticData";
 import YearSelector from "@/components/YearSelector";
-import { Shield, Flag, Trophy, Clock } from "lucide-react";
+import { Shield, Flag, Trophy, Clock, Users } from "lucide-react";
 import { Suspense } from "react";
 import Link from "next/link";
 
@@ -22,6 +22,8 @@ export default async function TeamDetailsPage({
   const year = parseInt(yearStr, 10) || currentYear;
 
   const results = await getConstructorResultsByYear(teamId, year);
+  const standingsHistory = await getConstructorStandingsHistory(teamId);
+  const allDrivers = await getConstructorDrivers(teamId);
   
   // Calculate total points and wins for the year from the results
   let totalPoints = 0;
@@ -38,7 +40,22 @@ export default async function TeamDetailsPage({
     });
   });
 
+  let allTimePoints = 0;
+  let championships = 0;
+  standingsHistory.forEach(list => {
+    list.ConstructorStandings?.forEach(standing => {
+      allTimePoints += parseFloat(standing.points) || 0;
+      if (standing.position === "1") championships += 1;
+    });
+  });
+  
+  let teamInfo: any = { name: teamId.replace('_', ' '), nationality: "Unknown", url: "#" };
+  if (standingsHistory.length > 0 && standingsHistory[0].ConstructorStandings && standingsHistory[0].ConstructorStandings.length > 0) {
+    teamInfo = standingsHistory[0].ConstructorStandings[0].Constructor;
+  }
+
   const staticData = TEAM_DATA[teamId] || TEAM_DATA[teamId.replace('_', '')] || null;
+  const blurb = staticData?.blurb || `This ${teamInfo.nationality} constructor has been a part of Formula 1 history. Read more about their legacy on their official Wikipedia page.`;
 
   return (
     <div className="flex-1 p-8 text-foreground bg-gray-50 min-h-screen">
@@ -55,7 +72,7 @@ export default async function TeamDetailsPage({
             </div>
             <div>
               <h1 className="text-5xl font-extrabold tracking-tight mb-2 capitalize italic text-gray-900">
-                {teamId.replace('_', ' ')}
+                {teamInfo.name}
               </h1>
               <p className="text-text-muted text-lg font-medium">Constructor Profile</p>
             </div>
@@ -65,6 +82,31 @@ export default async function TeamDetailsPage({
           </Suspense>
         </div>
 
+        {/* Extended Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+            <Trophy className="w-10 h-10 text-f1-red" />
+            <div>
+              <div className="text-sm font-bold text-text-muted uppercase tracking-widest">Championships</div>
+              <div className="text-3xl font-black text-gray-900">{championships}</div>
+            </div>
+          </div>
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+            <Shield className="w-10 h-10 text-f1-red" />
+            <div>
+              <div className="text-sm font-bold text-text-muted uppercase tracking-widest">All-Time Points</div>
+              <div className="text-3xl font-black text-gray-900">{allTimePoints.toLocaleString(undefined, { maximumFractionDigits: 1 })}</div>
+            </div>
+          </div>
+          <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
+            <Users className="w-10 h-10 text-f1-red" />
+            <div>
+              <div className="text-sm font-bold text-text-muted uppercase tracking-widest">Total Drivers</div>
+              <div className="text-3xl font-black text-gray-900">{allDrivers.length}</div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Main Results Content */}
@@ -72,19 +114,19 @@ export default async function TeamDetailsPage({
             {/* Final Standing Block */}
             <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col sm:flex-row items-center justify-around gap-6">
               <div className="text-center w-full sm:w-auto">
-                <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-1">Total Points</div>
+                <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-1">{year} Points</div>
                 <div className="text-5xl font-black text-f1-red">{totalPoints}</div>
               </div>
               <div className="hidden sm:block h-16 w-px bg-gray-200"></div>
               <div className="text-center w-full sm:w-auto border-t sm:border-0 border-gray-100 pt-4 sm:pt-0">
                 <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-1 flex justify-center items-center gap-2">
-                  <Trophy className="w-4 h-4" /> Wins
+                  <Trophy className="w-4 h-4" /> {year} Wins
                 </div>
                 <div className="text-5xl font-black text-gray-900">{wins}</div>
               </div>
               <div className="hidden sm:block h-16 w-px bg-gray-200"></div>
               <div className="text-center w-full sm:w-auto border-t sm:border-0 border-gray-100 pt-4 sm:pt-0">
-                <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-2">Drivers</div>
+                <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-2">{year} Drivers</div>
                 <div className="flex flex-col gap-1">
                   {Array.from(driverNames).map(name => (
                     <div key={name} className="text-sm font-bold text-gray-700 bg-gray-100 px-3 py-1 rounded-full">{name}</div>
@@ -127,7 +169,9 @@ export default async function TeamDetailsPage({
                               <div className="font-bold text-gray-900">{race.raceName}</div>
                             </td>
                             <td className="py-4 px-4 font-medium text-gray-700">
-                              {result.Driver.familyName}
+                              <Link href={`/drivers/${result.Driver.driverId}`} className="hover:text-f1-red transition-colors">
+                                {result.Driver.familyName}
+                              </Link>
                             </td>
                             <td className="py-4 px-4 text-center">
                               <span className="font-extrabold text-gray-900 text-lg">{result?.position || "-"}</span>
@@ -147,26 +191,25 @@ export default async function TeamDetailsPage({
 
           {/* Sidebar Static Data */}
           <div className="space-y-6">
-            {staticData ? (
-              <>
-                <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2 text-gray-900">
-                    <Shield className="w-5 h-5 text-f1-red" /> Team Overview
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed font-medium mb-4">{staticData.blurb}</p>
-                  <div className="p-4 bg-gray-50 rounded-2xl border border-gray-200">
-                    <div className="flex items-center gap-2 text-gray-900 font-bold mb-2">
-                      <Clock className="w-4 h-4 text-f1-red" /> Legacy
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium italic">{staticData.history}</p>
+            <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+              <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2 text-gray-900">
+                <Shield className="w-5 h-5 text-f1-red" /> Team Overview
+              </h3>
+              <p className="text-gray-700 leading-relaxed font-medium mb-4">{blurb}</p>
+              {teamInfo.url && teamInfo.url !== "#" && (
+                <a href={teamInfo.url} target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline font-bold text-sm uppercase tracking-widest block mb-4">
+                  View Wikipedia &rarr;
+                </a>
+              )}
+              {staticData?.history && (
+                <div className="p-4 bg-gray-50 rounded-2xl border border-gray-200">
+                  <div className="flex items-center gap-2 text-gray-900 font-bold mb-2">
+                    <Clock className="w-4 h-4 text-f1-red" /> Legacy
                   </div>
-                </section>
-              </>
-            ) : (
-              <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 text-center text-text-muted">
-                No extended team data available for this constructor.
-              </section>
-            )}
+                  <p className="text-sm text-gray-600 font-medium italic">{staticData.history}</p>
+                </div>
+              )}
+            </section>
           </div>
         </div>
       </div>

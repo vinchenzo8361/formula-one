@@ -1,9 +1,10 @@
 import { getRaceResults, getQualifyingResults, formatTeamName } from '@/lib/api';
 import Link from 'next/link';
 
-export default async function RaceDetailsPage({ params }: { params: { round: string } }) {
+export default async function RaceDetailsPage({ params }: { params: Promise<{ round: string }> }) {
   const season = '2024'; // Currently hardcoded to the active season
-  const round = params.round;
+  const resolvedParams = await params;
+  const round = resolvedParams.round;
 
   const [raceResults, qualifyingResults] = await Promise.all([
     getRaceResults(season, round),
@@ -60,8 +61,10 @@ export default async function RaceDetailsPage({ params }: { params: { round: str
                     <tr key={res.number} className="hover:bg-gray-50/50 transition-colors">
                       <td className="py-4 px-6 text-gray-900 font-medium">{res.position}</td>
                       <td className="py-4 px-6 text-gray-800">
-                        <span className="hidden sm:inline">{res.Driver.givenName} </span>
-                        <span className="font-semibold">{res.Driver.familyName}</span>
+                        <Link href={`/drivers/${res.Driver.driverId}`} className="hover:text-f1-red transition-colors">
+                          <span className="hidden sm:inline">{res.Driver.givenName} </span>
+                          <span className="font-semibold">{res.Driver.familyName}</span>
+                        </Link>
                       </td>
                       <td className="py-4 px-6 text-gray-500 text-sm">
                         {formatTeamName(res.Constructor.name)}
@@ -98,8 +101,10 @@ export default async function RaceDetailsPage({ params }: { params: { round: str
                     <tr key={res.number} className="hover:bg-gray-50/50 transition-colors">
                       <td className="py-4 px-6 text-gray-900 font-medium">{res.position}</td>
                       <td className="py-4 px-6 text-gray-800">
-                        <span className="hidden sm:inline">{res.Driver.givenName} </span>
-                        <span className="font-semibold">{res.Driver.familyName}</span>
+                        <Link href={`/drivers/${res.Driver.driverId}`} className="hover:text-f1-red transition-colors">
+                          <span className="hidden sm:inline">{res.Driver.givenName} </span>
+                          <span className="font-semibold">{res.Driver.familyName}</span>
+                        </Link>
                       </td>
                       <td className="py-4 px-6 text-gray-500 text-sm">
                         {formatTeamName(res.Constructor.name)}

@@ -26,7 +26,7 @@ export default async function DriverDetailsPage({
   const finalStanding = standings.find(s => s.Driver.driverId === driverId);
   
   // Extract driver info from the first result if available, or from standing
-  let driverInfo = { givenName: driverId, familyName: "" };
+  let driverInfo: any = { givenName: driverId, familyName: "", nationality: "Unknown", dateOfBirth: "Unknown", url: "#" };
   if (finalStanding) {
     driverInfo = finalStanding.Driver;
   } else if (results.length > 0 && results[0].Results && results[0].Results.length > 0) {
@@ -34,6 +34,8 @@ export default async function DriverDetailsPage({
   }
 
   const staticData = DRIVER_DATA[driverId];
+  
+  const blurb = staticData?.blurb || `Born on ${driverInfo.dateOfBirth}, this ${driverInfo.nationality} driver has made significant contributions to motorsport. Read more about their career on their official Wikipedia page.`;
 
   return (
     <div className="flex-1 p-8 text-foreground bg-gray-50 min-h-screen">
@@ -138,15 +140,20 @@ export default async function DriverDetailsPage({
 
           {/* Sidebar Static Data */}
           <div className="space-y-6">
-            {staticData ? (
-              <>
-                <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">
-                    <User className="w-5 h-5 text-f1-red" /> Biography
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed font-medium">{staticData.blurb}</p>
-                </section>
+            <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+              <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">
+                <User className="w-5 h-5 text-f1-red" /> Biography
+              </h3>
+              <p className="text-gray-700 leading-relaxed font-medium mb-4">{blurb}</p>
+              {driverInfo.url && driverInfo.url !== "#" && (
+                <a href={driverInfo.url} target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline font-bold text-sm uppercase tracking-widest">
+                  View Wikipedia &rarr;
+                </a>
+              )}
+            </section>
 
+            {staticData && (
+              <>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 text-center">
                     <div className="text-4xl font-black text-gray-900 mb-1">{staticData.dnfCount}</div>
@@ -174,9 +181,26 @@ export default async function DriverDetailsPage({
                   </section>
                 )}
               </>
-            ) : (
-              <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 text-center text-text-muted">
-                No extended biography data available for this driver.
+            )}
+
+            {standings.length > 0 && (
+              <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+                <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">
+                  <Trophy className="w-5 h-5 text-f1-red" /> {year} Top 10 Standings
+                </h3>
+                <div className="space-y-3">
+                  {standings.slice(0, 10).map((s) => (
+                    <div key={s.Driver.driverId} className={`flex items-center justify-between p-3 rounded-xl ${s.Driver.driverId === driverId ? 'bg-red-50 border border-red-100' : 'bg-gray-50'}`}>
+                      <div className="flex items-center gap-3">
+                        <div className="font-black text-gray-400 w-6 text-center">{s.position}</div>
+                        <Link href={`/drivers/${s.Driver.driverId}`} className="font-bold text-gray-900 hover:text-f1-red">
+                          {s.Driver.givenName} {s.Driver.familyName}
+                        </Link>
+                      </div>
+                      <div className="font-black text-f1-red">{s.points}</div>
+                    </div>
+                  ))}
+                </div>
               </section>
             )}
           </div>

@@ -33,27 +33,27 @@ export default async function Home() {
     <div 
       className="flex-1 p-8 text-foreground min-h-screen"
       style={{
-        backgroundImage: `repeating-linear-gradient(45deg, #f8f8f8 25%, transparent 25%, transparent 75%, #f8f8f8 75%, #f8f8f8), repeating-linear-gradient(45deg, #f8f8f8 25%, #f4f4f4 25%, #f4f4f4 75%, #f8f8f8 75%, #f8f8f8)`,
+        backgroundImage: `repeating-linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818), repeating-linear-gradient(45deg, #181818 25%, #111111 25%, #111111 75%, #181818 75%, #181818)`,
         backgroundPosition: `0 0, 20px 20px`,
         backgroundSize: `40px 40px`,
-        backgroundColor: `#f4f4f4`
+        backgroundColor: `#111111`
       }}
     >
       <div className="max-w-6xl mx-auto space-y-8 relative z-10">
-        <header className="mb-10 bg-white/90 backdrop-blur p-8 rounded-3xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <header className="mb-10 bg-panel/80 backdrop-blur p-8 rounded-3xl shadow-sm border border-gray-800 flex items-center justify-between">
           <div>
             <h1 className="text-5xl font-extrabold tracking-tight mb-2 uppercase italic text-f1-red">Race Center</h1>
-            <p className="text-gray-600 text-lg font-medium">Your ultimate destination for F1 insights.</p>
+            <p className="text-gray-400 text-lg font-medium">Your ultimate destination for F1 insights.</p>
           </div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Enlarge Next Race */}
-          <section className="bg-panel rounded-3xl p-12 shadow-md flex flex-col items-center justify-center text-center col-span-1 md:col-span-3 border border-gray-100 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+          <section className="bg-panel rounded-3xl p-12 shadow-md flex flex-col items-center justify-center text-center col-span-1 md:col-span-3 border border-gray-800 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-2 bg-f1-red" />
             <Timer className="w-12 h-12 text-f1-red mb-4" />
             <h2 className="text-sm font-bold uppercase tracking-widest mb-4 text-text-muted">Next Race</h2>
-            <div className="text-6xl font-extrabold mb-6 uppercase italic tracking-tighter text-gray-900">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
+            <div className="text-6xl font-extrabold mb-6 uppercase italic tracking-tighter text-white">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
             {nextRace && <Countdown targetDate={nextRaceDateStr} />}
           </section>
 
