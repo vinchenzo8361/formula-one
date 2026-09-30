@@ -310,24 +310,4 @@ export async function getDriverResultsByYear(driverId: string, year: number | st
   }
 }
 
-export interface DriverRaceResult {
-  season: string;
-  round: string;
-  raceName: string;
-  Results: RaceResult[];
-}
-
-export async function getDriverResultsByYear(driverId: string, year: number): Promise<DriverRaceResult[]> {
-  try {
-    const res = await fetch(\\/\/drivers/\/results.json\, {
-      next: { revalidate: 3600 },
-    });
-    if (!res.ok) throw new Error(\Failed to fetch driver results\);
-    const data = await res.json();
-    return data?.MRData?.RaceTable?.Races || [];
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
 
