@@ -212,3 +212,82 @@ export async function getTrackStatus(sessionKey: string | number): Promise<OpenF
     return null;
   }
 }
+
+export interface RaceResult {
+  number: string;
+  position: string;
+  positionText: string;
+  points: string;
+  Driver: Driver;
+  Constructor: Constructor;
+  grid: string;
+  laps: string;
+  status: string;
+  Time?: {
+    millis: string;
+    time: string;
+  };
+}
+
+export interface QualifyingResult {
+  number: string;
+  position: string;
+  Driver: Driver;
+  Constructor: Constructor;
+  Q1: string;
+  Q2?: string;
+  Q3?: string;
+}
+
+/**
+ * Format team names nicely
+ */
+export function formatTeamName(name: string): string {
+  const upper = name.toUpperCase();
+  if (upper === 'RB' || upper === 'VCARB' || upper === 'RB F1 TEAM') {
+    return 'Racing Bulls';
+  }
+  return name;
+}
+
+/**
+ * Fetch Race Results for a specific round
+ */
+export async function getRaceResults(season: string, round: string): Promise<RaceResult[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/${season}/${round}/results.json`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch race results for ${season} round ${round}`);
+    const data = await res.json();
+    const races = data?.MRData?.RaceTable?.Races;
+    if (races && races.length > 0 && races[0].Results) {
+      return races[0].Results;
+    }
+    return [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+/**
+ * Fetch Qualifying Results for a specific round
+ */
+export async function getQualifyingResults(season: string, round: string): Promise<QualifyingResult[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/${season}/${round}/qualifying.json`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch qualifying results for ${season} round ${round}`);
+    const data = await res.json();
+    const races = data?.MRData?.RaceTable?.Races;
+    if (races && races.length > 0 && races[0].QualifyingResults) {
+      return races[0].QualifyingResults;
+    }
+    return [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
