@@ -1,6 +1,7 @@
 import { Timer, Trophy, TrendingUp } from "lucide-react";
 import { getCurrentSchedule, getCurrentDriverStandings } from "@/lib/api";
 import Countdown from "@/components/Countdown";
+import Link from "next/link";
 
 function formatConstructor(name: string) {
   if (name === "RB" || name === "VCARB") return "Racing Bulls";
@@ -68,7 +69,9 @@ export default async function Home() {
                   <div className="flex items-center gap-4">
                     <span className="text-xl font-extrabold text-f1-red w-5 text-center">{standing.position}</span>
                     <div>
-                      <div className="font-bold text-gray-900 text-lg">{standing.Driver.familyName}</div>
+                      <Link href={`/drivers/${standing.Driver.driverId}`} className="font-bold text-gray-900 text-lg hover:text-f1-red transition-colors block">
+                        {standing.Driver.familyName}
+                      </Link>
                       <div className="text-xs text-text-muted uppercase font-bold tracking-wider">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
                     </div>
                   </div>
@@ -97,7 +100,9 @@ export default async function Home() {
                       {percentages[idx] || 5}%
                     </div>
                     <div>
-                      <div className="text-lg font-bold text-gray-900">{standing.Driver.givenName} {standing.Driver.familyName}</div>
+                      <Link href={`/drivers/${standing.Driver.driverId}`} className="text-lg font-bold text-gray-900 hover:text-f1-red transition-colors block">
+                        {standing.Driver.givenName} {standing.Driver.familyName}
+                      </Link>
                       <div className="text-xs uppercase tracking-wider font-bold opacity-75">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
                     </div>
                   </div>
