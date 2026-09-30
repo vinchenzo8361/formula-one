@@ -1,5 +1,6 @@
 import { Timer, Trophy, TrendingUp } from "lucide-react";
 import { getCurrentSchedule, getCurrentDriverStandings } from "@/lib/api";
+import Countdown from "@/components/Countdown";
 
 function formatConstructor(name: string) {
   if (name === "RB" || name === "VCARB") return "Racing Bulls";
@@ -22,6 +23,8 @@ export default async function Home() {
     nextRace = schedule[schedule.length - 1];
   }
 
+  const nextRaceDateStr = nextRace ? `${nextRace.date}T${nextRace.time || '00:00:00Z'}` : new Date().toISOString();
+
   const top3Drivers = standings.slice(0, 3);
 
   return (
@@ -34,24 +37,15 @@ export default async function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Next Race */}
-          <section className="bg-panel rounded-2xl p-8 shadow-sm flex flex-col items-center justify-center text-center h-64">
+          <section className="bg-panel rounded-2xl p-8 shadow-sm flex flex-col items-center justify-center text-center h-64 border border-gray-100">
             <Timer className="w-10 h-10 text-f1-red mb-4" />
             <h2 className="text-sm font-semibold uppercase tracking-wider mb-2 text-text-muted">Next Race</h2>
-            <div className="text-3xl font-extrabold mb-1">{nextRace ? nextRace.raceName : 'TBD'}</div>
-            {nextRace && (
-              <div className="text-f1-red font-medium text-lg mt-2">
-                {new Date(`${nextRace.date}T${nextRace.time || '00:00:00Z'}`).toLocaleDateString(undefined, {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </div>
-            )}
+            <div className="text-3xl font-extrabold mb-1">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
+            {nextRace && <Countdown targetDate={nextRaceDateStr} />}
           </section>
 
           {/* Top 3 Drivers Widget */}
-          <section className="bg-panel rounded-2xl p-8 shadow-sm col-span-1 md:col-span-2">
+          <section className="bg-panel rounded-2xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
               <Trophy className="w-6 h-6 text-f1-red" />
               <h2 className="text-lg font-bold tracking-tight">Top 3 Drivers</h2>
@@ -76,39 +70,30 @@ export default async function Home() {
           </section>
 
           {/* Likely to Win Predictor */}
-          <section className="bg-panel rounded-2xl p-8 shadow-sm md:col-span-3">
+          <section className="bg-panel rounded-2xl p-8 shadow-sm md:col-span-3 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-f1-red" />
               <h2 className="text-lg font-bold tracking-tight">Likely to Win - {nextRace ? nextRace.Circuit.circuitName : 'Next Season'}</h2>
             </div>
             <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1 bg-gray-50 p-6 rounded-2xl flex items-center gap-6">
-                <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center text-f1-red font-bold text-xl">
-                  45%
-                </div>
-                <div>
-                  <div className="text-lg font-bold">Charles Leclerc</div>
-                  <div className="text-sm text-text-muted">Ferrari</div>
-                </div>
-              </div>
-              <div className="flex-1 bg-gray-50 p-6 rounded-2xl flex items-center gap-6">
-                <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">
-                  30%
-                </div>
-                <div>
-                  <div className="text-lg font-bold">Max Verstappen</div>
-                  <div className="text-sm text-text-muted">Red Bull Racing</div>
-                </div>
-              </div>
-              <div className="flex-1 bg-gray-50 p-6 rounded-2xl flex items-center gap-6">
-                <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-xl">
-                  15%
-                </div>
-                <div>
-                  <div className="text-lg font-bold">Lando Norris</div>
-                  <div className="text-sm text-text-muted">McLaren</div>
-                </div>
-              </div>
+              {top3Drivers.map((standing, idx) => {
+                const percentages = [45, 30, 15];
+                const colors = ['text-f1-red bg-red-100', 'text-blue-600 bg-blue-100', 'text-orange-600 bg-orange-100'];
+                return (
+                  <div key={standing.Driver.driverId} className="flex-1 bg-gray-50 p-6 rounded-2xl flex items-center gap-6">
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl ${colors[idx] || colors[0]}`}>
+                      {percentages[idx] || 5}%
+                    </div>
+                    <div>
+                      <div className="text-lg font-bold">{standing.Driver.givenName} {standing.Driver.familyName}</div>
+                      <div className="text-sm text-text-muted">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
+                    </div>
+                  </div>
+                );
+              })}
+              {top3Drivers.length === 0 && (
+                <div className="text-center w-full text-text-muted">No predictions available.</div>
+              )}
             </div>
           </section>
         </div>

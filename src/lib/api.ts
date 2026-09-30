@@ -55,6 +55,7 @@ export interface Race {
   Circuit: Circuit;
   date: string;
   time?: string;
+  Results?: RaceResult[];
 }
 
 const BASE_URL = 'https://api.jolpi.ca/ergast/f1';
@@ -291,3 +292,42 @@ export async function getQualifyingResults(season: string, round: string): Promi
     return [];
   }
 }
+
+/**
+ * Fetch a specific driver's results for a given year
+ */
+export async function getDriverResultsByYear(driverId: string, year: number | string): Promise<Race[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/${year}/drivers/${driverId}/results.json`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch driver results for ${driverId} in ${year}`);
+    const data = await res.json();
+    return data?.MRData?.RaceTable?.Races || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export interface DriverRaceResult {
+  season: string;
+  round: string;
+  raceName: string;
+  Results: RaceResult[];
+}
+
+export async function getDriverResultsByYear(driverId: string, year: number): Promise<DriverRaceResult[]> {
+  try {
+    const res = await fetch(\\/\/drivers/\/results.json\, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error(\Failed to fetch driver results\);
+    const data = await res.json();
+    return data?.MRData?.RaceTable?.Races || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
