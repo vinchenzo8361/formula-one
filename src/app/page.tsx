@@ -25,74 +25,86 @@ export default async function Home() {
 
   const nextRaceDateStr = nextRace ? `${nextRace.date}T${nextRace.time || '00:00:00Z'}` : new Date().toISOString();
 
-  const top3Drivers = standings.slice(0, 3);
+  // Top 5 drivers instead of Top 3
+  const top5Drivers = standings.slice(0, 5);
 
   return (
-    <div className="flex-1 p-8 text-foreground">
-      <div className="max-w-6xl mx-auto space-y-8">
-        <header className="mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight mb-2">Race Center</h1>
-          <p className="text-text-muted text-lg">Your ultimate destination for F1 insights.</p>
+    <div 
+      className="flex-1 p-8 text-foreground min-h-screen"
+      style={{
+        backgroundImage: `repeating-linear-gradient(45deg, #f8f8f8 25%, transparent 25%, transparent 75%, #f8f8f8 75%, #f8f8f8), repeating-linear-gradient(45deg, #f8f8f8 25%, #f4f4f4 25%, #f4f4f4 75%, #f8f8f8 75%, #f8f8f8)`,
+        backgroundPosition: `0 0, 20px 20px`,
+        backgroundSize: `40px 40px`,
+        backgroundColor: `#f4f4f4`
+      }}
+    >
+      <div className="max-w-6xl mx-auto space-y-8 relative z-10">
+        <header className="mb-10 bg-white/90 backdrop-blur p-8 rounded-3xl shadow-sm border border-gray-100 flex items-center justify-between">
+          <div>
+            <h1 className="text-5xl font-extrabold tracking-tight mb-2 uppercase italic text-f1-red">Race Center</h1>
+            <p className="text-gray-600 text-lg font-medium">Your ultimate destination for F1 insights.</p>
+          </div>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Next Race */}
-          <section className="bg-panel rounded-2xl p-8 shadow-sm flex flex-col items-center justify-center text-center h-64 border border-gray-100">
-            <Timer className="w-10 h-10 text-f1-red mb-4" />
-            <h2 className="text-sm font-semibold uppercase tracking-wider mb-2 text-text-muted">Next Race</h2>
-            <div className="text-3xl font-extrabold mb-1">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
+          {/* Enlarge Next Race */}
+          <section className="bg-panel rounded-3xl p-12 shadow-md flex flex-col items-center justify-center text-center col-span-1 md:col-span-3 border border-gray-100 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-2 bg-f1-red" />
+            <Timer className="w-12 h-12 text-f1-red mb-4" />
+            <h2 className="text-sm font-bold uppercase tracking-widest mb-4 text-text-muted">Next Race</h2>
+            <div className="text-6xl font-extrabold mb-6 uppercase italic tracking-tighter text-gray-900">{nextRace ? nextRace.raceName : 'Season Ended'}</div>
             {nextRace && <Countdown targetDate={nextRaceDateStr} />}
           </section>
 
-          {/* Top 3 Drivers Widget */}
-          <section className="bg-panel rounded-2xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-100">
+          {/* Top 5 Drivers Widget */}
+          <section className="bg-white rounded-3xl p-8 shadow-sm col-span-1 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
               <Trophy className="w-6 h-6 text-f1-red" />
-              <h2 className="text-lg font-bold tracking-tight">Top 3 Drivers</h2>
+              <h2 className="text-xl font-bold tracking-tight">Top 5 Drivers</h2>
             </div>
-            <div className="space-y-2">
-              {top3Drivers.map((standing) => (
-                <div key={standing.Driver.driverId} className="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-colors">
+            <div className="space-y-3">
+              {top5Drivers.map((standing) => (
+                <div key={standing.Driver.driverId} className="flex items-center justify-between p-3 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-200">
                   <div className="flex items-center gap-4">
-                    <span className="text-xl font-extrabold text-f1-red w-6">{standing.position}</span>
+                    <span className="text-xl font-extrabold text-f1-red w-5 text-center">{standing.position}</span>
                     <div>
-                      <div className="font-semibold text-lg">{standing.Driver.givenName} {standing.Driver.familyName}</div>
-                      <div className="text-sm text-text-muted">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
+                      <div className="font-bold text-gray-900 text-lg">{standing.Driver.familyName}</div>
+                      <div className="text-xs text-text-muted uppercase font-bold tracking-wider">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
                     </div>
                   </div>
-                  <div className="text-xl font-bold">{standing.points} <span className="text-xs text-text-muted font-normal ml-1">PTS</span></div>
+                  <div className="text-lg font-bold text-gray-900">{standing.points}</div>
                 </div>
               ))}
-              {top3Drivers.length === 0 && (
+              {top5Drivers.length === 0 && (
                  <div className="p-4 text-center text-text-muted">No driver standings available.</div>
               )}
             </div>
           </section>
 
           {/* Likely to Win Predictor */}
-          <section className="bg-panel rounded-2xl p-8 shadow-sm md:col-span-3 border border-gray-100">
+          <section className="bg-white rounded-3xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-100">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-f1-red" />
-              <h2 className="text-lg font-bold tracking-tight">Likely to Win - {nextRace ? nextRace.Circuit.circuitName : 'Next Season'}</h2>
+              <h2 className="text-xl font-bold tracking-tight">Likely to Win Predictor</h2>
             </div>
-            <div className="flex flex-col md:flex-row gap-6">
-              {top3Drivers.map((standing, idx) => {
-                const percentages = [45, 30, 15];
-                const colors = ['text-f1-red bg-red-100', 'text-blue-600 bg-blue-100', 'text-orange-600 bg-orange-100'];
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {top5Drivers.map((standing, idx) => {
+                const percentages = [40, 25, 15, 12, 8];
+                const colors = ['text-f1-red bg-red-50 border-red-100', 'text-blue-600 bg-blue-50 border-blue-100', 'text-orange-600 bg-orange-50 border-orange-100', 'text-green-600 bg-green-50 border-green-100', 'text-purple-600 bg-purple-50 border-purple-100'];
                 return (
-                  <div key={standing.Driver.driverId} className="flex-1 bg-gray-50 p-6 rounded-2xl flex items-center gap-6">
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl ${colors[idx] || colors[0]}`}>
+                  <div key={standing.Driver.driverId} className={`p-4 rounded-2xl flex items-center gap-4 border shadow-sm transition-transform hover:-translate-y-1 ${colors[idx] || colors[0]}`}>
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-xl bg-white shadow-sm`}>
                       {percentages[idx] || 5}%
                     </div>
                     <div>
-                      <div className="text-lg font-bold">{standing.Driver.givenName} {standing.Driver.familyName}</div>
-                      <div className="text-sm text-text-muted">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
+                      <div className="text-lg font-bold text-gray-900">{standing.Driver.givenName} {standing.Driver.familyName}</div>
+                      <div className="text-xs uppercase tracking-wider font-bold opacity-75">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
                     </div>
                   </div>
                 );
               })}
-              {top3Drivers.length === 0 && (
-                <div className="text-center w-full text-text-muted">No predictions available.</div>
+              {top5Drivers.length === 0 && (
+                <div className="text-center w-full text-text-muted col-span-2">No predictions available.</div>
               )}
             </div>
           </section>

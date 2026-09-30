@@ -2,14 +2,22 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function YearSelector({ currentYear }: { currentYear: number }) {
+export default function YearSelector({ 
+  currentYear,
+  validYears 
+}: { 
+  currentYear: number,
+  validYears?: number[] 
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const selectedYear = searchParams.get("year") || currentYear.toString();
 
   const currentYearNumber = new Date().getFullYear();
-  // Array from current year down to 1950
-  const years = Array.from({ length: currentYearNumber - 1950 + 1 }, (_, i) => currentYearNumber - i);
+  let years = validYears;
+  if (!years || years.length === 0) {
+    years = Array.from({ length: currentYearNumber - 1950 + 1 }, (_, i) => currentYearNumber - i);
+  }
 
   const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const year = e.target.value;
