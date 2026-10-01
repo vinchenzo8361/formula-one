@@ -414,12 +414,23 @@ export async function getConstructorDrivers(constructorId: string): Promise<Driv
  */
 export async function getConstructorStandingsHistory(constructorId: string): Promise<StandingsList[]> {
   try {
-    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/constructorStandings.json?limit=100`, {
-      next: { revalidate: 86400 },
-    });
-    if (!res.ok) throw new Error(`Failed to fetch standings history for constructor ${constructorId}: ${res.statusText}`);
-    const data = await res.json();
-    return data?.MRData?.StandingsTable?.StandingsLists || [];
+    let allStandings: StandingsList[] = [];
+    let offset = 0;
+    const limit = 100;
+    while (true) {
+      const res = await fetch(`${BASE_URL}/constructors/${constructorId}/constructorStandings.json?limit=${limit}&offset=${offset}`, {
+        next: { revalidate: 86400 },
+      });
+      if (!res.ok) throw new Error(`Failed to fetch standings history for constructor ${constructorId}: ${res.statusText}`);
+      const data = await res.json();
+      const lists = data?.MRData?.StandingsTable?.StandingsLists || [];
+      allStandings = allStandings.concat(lists);
+      if (lists.length < limit) {
+        break;
+      }
+      offset += limit;
+    }
+    return allStandings;
   } catch (error) {
     console.error(error);
     return [];
@@ -451,12 +462,23 @@ export async function getAllDrivers(): Promise<Driver[]> {
  */
 export async function getAllDriverResults(driverId: string): Promise<Race[]> {
   try {
-    const res = await fetch(`${BASE_URL}/drivers/${driverId}/results.json?limit=1000`, {
-      next: { revalidate: 86400 },
-    });
-    if (!res.ok) throw new Error(`Failed to fetch all driver results for ${driverId}`);
-    const data = await res.json();
-    return data?.MRData?.RaceTable?.Races || [];
+    let allRaces: Race[] = [];
+    let offset = 0;
+    const limit = 100;
+    while (true) {
+      const res = await fetch(`${BASE_URL}/drivers/${driverId}/results.json?limit=${limit}&offset=${offset}`, {
+        next: { revalidate: 86400 },
+      });
+      if (!res.ok) throw new Error(`Failed to fetch all driver results for ${driverId}`);
+      const data = await res.json();
+      const races = data?.MRData?.RaceTable?.Races || [];
+      allRaces = allRaces.concat(races);
+      if (races.length < limit) {
+        break;
+      }
+      offset += limit;
+    }
+    return allRaces;
   } catch (error) {
     console.error(error);
     return [];
@@ -468,12 +490,23 @@ export async function getAllDriverResults(driverId: string): Promise<Race[]> {
  */
 export async function getAllDriverStandings(driverId: string): Promise<StandingsList[]> {
   try {
-    const res = await fetch(`${BASE_URL}/drivers/${driverId}/driverStandings.json?limit=100`, {
-      next: { revalidate: 86400 },
-    });
-    if (!res.ok) throw new Error(`Failed to fetch all driver standings for ${driverId}`);
-    const data = await res.json();
-    return data?.MRData?.StandingsTable?.StandingsLists || [];
+    let allStandings: StandingsList[] = [];
+    let offset = 0;
+    const limit = 100;
+    while (true) {
+      const res = await fetch(`${BASE_URL}/drivers/${driverId}/driverStandings.json?limit=${limit}&offset=${offset}`, {
+        next: { revalidate: 86400 },
+      });
+      if (!res.ok) throw new Error(`Failed to fetch all driver standings for ${driverId}`);
+      const data = await res.json();
+      const lists = data?.MRData?.StandingsTable?.StandingsLists || [];
+      allStandings = allStandings.concat(lists);
+      if (lists.length < limit) {
+        break;
+      }
+      offset += limit;
+    }
+    return allStandings;
   } catch (error) {
     console.error(error);
     return [];

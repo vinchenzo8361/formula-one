@@ -2,7 +2,7 @@ import { getRaceResults, getQualifyingResults, formatTeamName } from '@/lib/api'
 import Link from 'next/link';
 
 export default async function RaceDetailsPage({ params }: { params: Promise<{ round: string }> }) {
-  const season = '2024'; // Currently hardcoded to the active season
+  const season = 'current'; // Use current to get the real latest season data
   const resolvedParams = await params;
   const round = resolvedParams.round;
 

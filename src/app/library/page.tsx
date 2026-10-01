@@ -1,4 +1,5 @@
-import { BookOpen, Zap, Wind, ShieldCheck, Wrench } from "lucide-react";
+import { BookOpen, Zap, Wind, ShieldCheck, Wrench, Navigation, TrendingUp } from "lucide-react";
+import Link from 'next/link';
 
 export default function LibraryPage() {
   return (
@@ -14,6 +15,9 @@ export default function LibraryPage() {
           <p className="text-2xl text-gray-300 font-medium max-w-2xl leading-relaxed">
             A comprehensive dive into the engineering, aerodynamics, and innovations that define the pinnacle of motorsport.
           </p>
+          <div className="mt-8 flex gap-4">
+            <Link href="https://www.formula1.com/en/latest/tags.technical.31dF3uR5r3Z864a7OIKsCO.html" target="_blank" className="px-6 py-3 bg-f1-red text-white font-bold rounded-full hover:bg-f1-red/90 transition">Official F1 Tech</Link>
+          </div>
         </div>
       </div>
 
@@ -24,9 +28,10 @@ export default function LibraryPage() {
             <Zap className="w-10 h-10 text-f1-red" />
             <h2 className="text-4xl font-extrabold uppercase tracking-tight">The V6 Turbo Hybrid Power Unit</h2>
           </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Honda_RA615H_power_unit_left-front_Honda_Welcome_Plaza.jpg" alt="Honda Power Unit" className="w-full rounded-2xl shadow-lg border border-gray-200/20" />
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl leading-relaxed font-medium text-foreground">
-              Introduced in 2014, the current Formula 1 power units are the most efficient and complex internal combustion engines ever created.
+              Introduced in 2014, the current Formula 1 power units are the most efficient and complex internal combustion engines ever created. Delivering over 1,000 horsepower from a 1.6-liter displacement.
             </p>
             <div className="grid md:grid-cols-2 gap-8 my-8">
               <div className="bg-background p-6 rounded-2xl border border-gray-200/20 shadow-sm">
@@ -42,8 +47,8 @@ export default function LibraryPage() {
                 </p>
               </div>
             </div>
-            <p>
-              Combined with a 1.6-liter V6 internal combustion engine, the entire system operates at thermal efficiencies exceeding 50%—a remarkable engineering milestone compared to road cars, which typically hover around 30%.
+            <p className="text-foreground">
+              Combined with a 1.6-liter V6 internal combustion engine, the entire system operates at thermal efficiencies exceeding 50%—a remarkable engineering milestone compared to road cars, which typically hover around 30%. The energy recovery system (ERS) is governed by strict regulations on deployment per lap.
             </p>
           </div>
         </section>
@@ -54,6 +59,7 @@ export default function LibraryPage() {
             <Wind className="w-10 h-10 text-f1-red" />
             <h2 className="text-4xl font-extrabold uppercase tracking-tight">Aerodynamics & Airflow</h2>
           </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/2022_Formula_One_Car_at_the_2022_Goodwood_Festival_of_Speed_%281%29.jpg" alt="F1 Aerodynamics" className="w-full rounded-2xl shadow-lg border border-gray-200/20" />
           <div className="prose prose-lg prose-gray max-w-none">
             <p className="text-xl leading-relaxed font-medium text-foreground">
               An F1 car produces its own weight in downforce at just 100 mph. The art of aerodynamics is about sticking the car to the ground while minimizing drag.
@@ -84,12 +90,36 @@ export default function LibraryPage() {
           </div>
         </section>
 
-        {/* Section 3: Safety */}
+        {/* Section 3: Suspension and Chassis */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+            <Navigation className="w-10 h-10 text-f1-red" />
+            <h2 className="text-4xl font-extrabold uppercase tracking-tight">Suspension & Chassis</h2>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Formula_1_Car_Front_Suspension.jpg" alt="F1 Suspension" className="w-full rounded-2xl shadow-lg border border-gray-200/20" />
+          <div className="prose prose-lg prose-gray max-w-none text-foreground">
+            <p>
+              Formula 1 suspensions are not primarily built for comfort—they are built for mechanical grip and aerodynamic stability. Most teams employ either a push-rod or pull-rod configuration for both the front and rear suspensions.
+            </p>
+            <h3 className="text-2xl font-bold mt-6 mb-3">Push-Rod vs. Pull-Rod</h3>
+            <ul className="list-disc pl-5 text-text-muted space-y-2">
+              <li><strong>Push-Rod:</strong> The strut extends upwards from the wheel to the top of the chassis. When the wheel moves up over a bump, it pushes the rod inwards to compress the internal springs. Often used at the front for packaging reasons.</li>
+              <li><strong>Pull-Rod:</strong> The strut angles downwards from the wheel to the floor of the chassis. Hitting a bump pulls the rod outwards. This lowers the center of gravity and can offer aerodynamic benefits, particularly at the rear.</li>
+            </ul>
+            <h3 className="text-2xl font-bold mt-6 mb-3">Tire Management</h3>
+            <p className="text-text-muted">
+              Supplied by Pirelli, F1 tires operate in an incredibly narrow temperature window (typically 90-110°C). Suspension geometry—camber, toe, and stiffness—is constantly tweaked to ensure the tires wear evenly and reach optimal temperatures quickly.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 4: Safety */}
         <section className="space-y-8">
           <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
             <ShieldCheck className="w-10 h-10 text-f1-red" />
             <h2 className="text-4xl font-extrabold uppercase tracking-tight">Safety & Survival</h2>
           </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/FIA_F1_Halo_Concept.jpg" alt="F1 Halo" className="w-full rounded-2xl shadow-lg border border-gray-200/20" />
           <div className="prose prose-lg prose-gray max-w-none">
             <div className="bg-black text-white p-8 rounded-3xl my-6">
               <h3 className="text-2xl font-bold mb-4 text-white">The Halo</h3>
@@ -98,14 +128,14 @@ export default function LibraryPage() {
               </p>
             </div>
             
-            <h3 className="text-2xl font-bold mt-8">The Monocoque (Survival Cell)</h3>
+            <h3 className="text-2xl font-bold mt-8 text-foreground">The Monocoque (Survival Cell)</h3>
             <p className="text-text-muted">
               The heart of the car is the carbon-fiber composite monocoque. It serves as both the structural core of the chassis and an indestructible shell protecting the driver. Surrounded by deformable crash structures, it is designed to absorb massive kinetic energy during impacts.
             </p>
           </div>
         </section>
 
-        {/* Section 4: Famous Innovations */}
+        {/* Section 5: Famous Innovations */}
         <section className="space-y-8">
           <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
             <Wrench className="w-10 h-10 text-f1-red" />
@@ -113,6 +143,13 @@ export default function LibraryPage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-black uppercase text-f1-red mb-2">Fan Car (Brabham BT46B, 1978)</h3>
+              <p className="text-text-muted text-sm">
+                Gordon Murray designed a massive fan at the back of the car, claiming it was for cooling. In reality, it sucked the air from under the car, creating immense downforce. It raced once, won by a massive margin, and was promptly withdrawn.
+              </p>
+            </div>
+
             <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-black uppercase text-f1-red mb-2">Brawn GP Double Diffuser (2009)</h3>
               <p className="text-text-muted text-sm">
@@ -124,6 +161,13 @@ export default function LibraryPage() {
               <h3 className="text-xl font-black uppercase text-f1-red mb-2">McLaren F-Duct (2010)</h3>
               <p className="text-text-muted text-sm">
                 A genius aerodynamic device that allowed the driver to block a hole in the cockpit with their knee. This redirected airflow through the chassis and stalled the rear wing, reducing drag on the straights—a precursor to modern DRS.
+              </p>
+            </div>
+
+            <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-black uppercase text-f1-red mb-2">Mercedes DAS (2020)</h3>
+              <p className="text-text-muted text-sm">
+                Dual Axis Steering allowed Mercedes drivers to push and pull the steering wheel on straights to change the toe angle of the front wheels, improving straight-line speed and tire warmup. It was banned the following year.
               </p>
             </div>
 

@@ -4,6 +4,7 @@ import YearSelector from "@/components/YearSelector";
 import { User, Flag, Trophy, AlertTriangle } from "lucide-react";
 import { Suspense } from "react";
 import Link from "next/link";
+import FunFacts from "@/components/FunFacts";
 
 export default async function DriverDetailsPage({
   params,
@@ -57,14 +58,19 @@ export default async function DriverDetailsPage({
     if (res) {
       totalPoints += parseFloat(res.points || "0");
       if (res.position === "1") totalRaceWins++;
-      if (res.position === "1" || res.position === "2" || res.position === "3") totalPodiums++;
+      if (res.position === "2" || res.position === "3") totalPodiums++;
     }
   }
 
   const staticData = DRIVER_DATA[driverId];
   
-  const funFact = `Fun Fact: ${driverInfo.givenName} is from ${driverInfo.nationality} and was born on ${driverInfo.dateOfBirth}. Over their illustrious career, they have scored a massive ${totalPoints} points!`;
-  const blurb = staticData?.blurb ? `${staticData.blurb}\n\n${funFact}` : `Born on ${driverInfo.dateOfBirth}, this ${driverInfo.nationality} driver has made significant contributions to motorsport. Read more about their career on their official Wikipedia page.\n\n${funFact}`;
+  const blurb = staticData?.blurb || `Born on ${driverInfo.dateOfBirth}, this ${driverInfo.nationality} driver has made significant contributions to motorsport. Read more about their career on their official Wikipedia page.`;
+
+  const funFacts = [
+    `${driverInfo.givenName} has scored a massive ${totalPoints} points in their illustrious career!`,
+    `They represent ${driverInfo.nationality} on the global stage.`,
+    `They have ${totalRaceWins} race wins and ${totalChampionshipWins} championships.`
+  ];
 
   return (
     <div className="flex-1 p-8 text-foreground bg-background min-h-screen">
@@ -192,6 +198,8 @@ export default async function DriverDetailsPage({
                 </div>
               </div>
             </section>
+
+            <FunFacts facts={funFacts} />
 
             <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20">
               <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">

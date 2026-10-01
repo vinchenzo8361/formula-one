@@ -66,7 +66,13 @@ export default async function StandingsPage(props: { searchParams: Promise<{ yea
                         </Link>
                       </td>
                       <td className="py-4 px-4 text-text-muted">
-                        {formatConstructor(standing.Constructors[0]?.name || "N/A")}
+                        {standing.Constructors[0] ? (
+                          <Link href={`/teams/${standing.Constructors[0].constructorId}`} className="hover:text-f1-red transition-colors">
+                            {formatConstructor(standing.Constructors[0].name)}
+                          </Link>
+                        ) : (
+                          "N/A"
+                        )}
                       </td>
                       <td className="py-4 px-4 text-right font-bold text-lg">
                         {standing.points}

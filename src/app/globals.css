@@ -27,7 +27,12 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: 
+    linear-gradient(45deg, rgba(128,128,128,0.03) 25%, transparent 25%, transparent 75%, rgba(128,128,128,0.03) 75%, rgba(128,128,128,0.03)),
+    linear-gradient(45deg, rgba(128,128,128,0.03) 25%, transparent 25%, transparent 75%, rgba(128,128,128,0.03) 75%, rgba(128,128,128,0.03));
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }

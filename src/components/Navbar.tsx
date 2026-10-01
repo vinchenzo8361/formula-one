@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { Flag, Users, Shield, Trophy, CalendarDays } from 'lucide-react';
+import { Users, Shield, Trophy, CalendarDays } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 export default function Navbar() {
   return (
-    <nav className="bg-panel border-b-2 border-f1-red text-white py-4 px-6 flex items-center justify-between shadow-md">
+    <nav className="sticky top-0 z-50 bg-panel border-b-2 border-f1-red text-foreground py-4 px-6 flex items-center justify-between shadow-md">
       <div className="flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2 text-f1-red font-bold text-2xl tracking-tighter">
           <svg viewBox="0 0 100 25" className="w-20 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -14,25 +14,29 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="flex gap-8 font-semibold uppercase text-sm tracking-widest text-text-muted">
-        <Link href="/drivers" className="flex items-center gap-2 hover:text-white transition-colors">
+        <Link href="/drivers" className="flex items-center gap-2 hover:text-foreground transition-colors">
           <Users className="w-4 h-4 text-f1-red" />
           Drivers
         </Link>
-        <Link href="/teams" className="flex items-center gap-2 hover:text-white transition-colors">
+        <Link href="/teams" className="flex items-center gap-2 hover:text-foreground transition-colors">
           <Shield className="w-4 h-4 text-f1-red" />
           Teams
         </Link>
-        <Link href="/standings" className="flex items-center gap-2 hover:text-white transition-colors">
+        <Link href="/standings" className="flex items-center gap-2 hover:text-foreground transition-colors">
           <Trophy className="w-4 h-4 text-f1-red" />
           Standings
         </Link>
-        <Link href="/schedule" className="flex items-center gap-2 hover:text-white transition-colors">
+        <Link href="/schedule" className="flex items-center gap-2 hover:text-foreground transition-colors">
           <CalendarDays className="w-4 h-4 text-f1-red" />
           Schedule
         </Link>
-        <Link href="/library" className="flex items-center gap-2 hover:text-white transition-colors">
+        <Link href="/library" className="flex items-center gap-2 hover:text-foreground transition-colors">
           <svg className="w-4 h-4 text-f1-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
           Library
+        </Link>
+        <Link href="/tracks" className="flex items-center gap-2 hover:text-foreground transition-colors">
+          <svg className="w-4 h-4 text-f1-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Tracks
         </Link>
         <ThemeToggle />
       </div>

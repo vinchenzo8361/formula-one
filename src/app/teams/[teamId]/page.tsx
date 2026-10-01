@@ -56,7 +56,15 @@ export default async function TeamDetailsPage({
   }
 
   const staticData = TEAM_DATA[teamId] || TEAM_DATA[teamId.replace('_', '')] || null;
-  const blurb = staticData?.blurb || `This ${teamInfo.nationality} constructor has been a part of Formula 1 history. Read more about their legacy on their official Wikipedia page.`;
+  
+  let blurb = staticData?.blurb;
+  if (!blurb) {
+    if (teamInfo.url !== "#" && teamInfo.url) {
+      blurb = `This ${teamInfo.nationality} constructor has been a part of Formula 1 history. Read more about their legacy on their official Wikipedia page.`;
+    } else {
+      blurb = "No historical data available";
+    }
+  }
 
   return (
     <div className="flex-1 p-8 text-foreground bg-background min-h-screen">

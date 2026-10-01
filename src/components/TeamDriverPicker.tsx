@@ -41,7 +41,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
         <label htmlFor="constructor-select" className="block text-sm font-bold text-text-muted uppercase tracking-widest mb-2">Select a Constructor</label>
         <select 
           id="constructor-select"
-          className="w-full md:w-1/2 p-4 border border-gray-200/20 rounded-xl focus:ring-2 focus:ring-f1-red outline-none text-foreground font-medium"
+          className="w-full md:w-1/2 p-4 bg-background border border-gray-200/20 rounded-xl focus:ring-2 focus:ring-f1-red outline-none text-foreground font-medium"
           value={selectedConstructor} 
           onChange={(e) => setSelectedConstructor(e.target.value)}
         >
