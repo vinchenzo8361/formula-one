@@ -1,0 +1,6126 @@
+{
+  "drivers": {
+    "farina": {
+      "wins": 5,
+      "podiums": 15,
+      "points": 114,
+      "championships": 1
+    },
+    "fagioli": {
+      "wins": 1,
+      "podiums": 5,
+      "points": 28,
+      "championships": 0
+    },
+    "reg_parnell": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 9,
+      "championships": 0
+    },
+    "cabantous": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "rosier": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 18,
+      "championships": 0
+    },
+    "gerard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "harrison": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "etancelin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "hampshire": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fry": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "shawe_taylor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "claes": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fangio": {
+      "wins": 24,
+      "podiums": 11,
+      "points": 245,
+      "championships": 5
+    },
+    "kelly": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bira": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 8,
+      "championships": 0
+    },
+    "murray": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "crossley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "graffenried": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 9,
+      "championships": 0
+    },
+    "chiron": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "martin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rolt": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "peter_walker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "leslie_johnson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ascari": {
+      "wins": 13,
+      "podiums": 4,
+      "points": 107.6,
+      "championships": 2
+    },
+    "sommer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "villoresi": {
+      "wins": 0,
+      "podiums": 8,
+      "points": 46,
+      "championships": 0
+    },
+    "gonzalez": {
+      "wins": 2,
+      "podiums": 13,
+      "points": 72.1,
+      "championships": 0
+    },
+    "manzon": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 16,
+      "championships": 0
+    },
+    "trintignant": {
+      "wins": 2,
+      "podiums": 8,
+      "points": 71,
+      "championships": 0
+    },
+    "rol": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schell": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 32,
+      "championships": 0
+    },
+    "whitehead": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "pian": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "parsons": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 12,
+      "championships": 0
+    },
+    "holland": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6,
+      "championships": 0
+    },
+    "rose": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "green": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "bettenhausen": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 11,
+      "championships": 0
+    },
+    "chitwood": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "wallard": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 9,
+      "championships": 0
+    },
+    "faulkner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "george_connor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "paul_russo": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8.5,
+      "championships": 0
+    },
+    "flaherty": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 8,
+      "championships": 0
+    },
+    "fohr": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "darter": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6.5,
+      "championships": 0
+    },
+    "hellings": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mcgrath": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 9,
+      "championships": 0
+    },
+    "ruttman": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 9.5,
+      "championships": 0
+    },
+    "hartley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "davies": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "mcdowell": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "walt_brown": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "webb": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hoyt": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ader": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "holmes": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rathmann": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 29,
+      "championships": 0
+    },
+    "banks": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schindler": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "levrett": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cantrell": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "agabashian": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1.5,
+      "championships": 0
+    },
+    "jackson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hanks": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 20,
+      "championships": 0
+    },
+    "dick_rathmann": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "dinsmore": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bonetto": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 17.5,
+      "championships": 0
+    },
+    "pagani": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "branca": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "levegh": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "chaboud": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "pozzi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "serafini": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 3,
+      "championships": 0
+    },
+    "guy_mairesse": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "taruffi": {
+      "wins": 1,
+      "podiums": 4,
+      "points": 41,
+      "championships": 0
+    },
+    "biondetti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "louveau": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "comotti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sanesi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "pietsch": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "moss": {
+      "wins": 16,
+      "podiums": 8,
+      "points": 185.6,
+      "championships": 0
+    },
+    "fischer": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 10,
+      "championships": 0
+    },
+    "abecassis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hirt": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nazaruk": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "ayulo": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 2,
+      "championships": 0
+    },
+    "linden": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "ball": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "forberg": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nalon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "force": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "scarborough": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mackey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stevenson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "miller": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ward": {
+      "wins": 1,
+      "podiums": 1,
+      "points": 14,
+      "championships": 0
+    },
+    "griffith": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "vukovich": {
+      "wins": 2,
+      "podiums": 0,
+      "points": 19,
+      "championships": 0
+    },
+    "james": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "andre_pilette": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "gordini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "simon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "marimon": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 8.1,
+      "championships": 0
+    },
+    "duncan_hamilton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "parker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "john_james": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "swaters": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "landi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1.5,
+      "championships": 0
+    },
+    "richardson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "godia": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "grignard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jover": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "behra": {
+      "wins": 0,
+      "podiums": 9,
+      "points": 51.1,
+      "championships": 0
+    },
+    "wharton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "alan_brown": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "brandon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "macklin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "collins": {
+      "wins": 3,
+      "podiums": 6,
+      "points": 47,
+      "championships": 0
+    },
+    "hans_stuck": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ulmen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "terra": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cross": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "bryan": {
+      "wins": 1,
+      "podiums": 2,
+      "points": 18,
+      "championships": 0
+    },
+    "reece": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rigsby": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fonder": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "johnson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "sweikert": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 8,
+      "championships": 0
+    },
+    "bob_scott": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hawthorn": {
+      "wins": 3,
+      "podiums": 15,
+      "points": 112.6,
+      "championships": 1
+    },
+    "frere": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 11,
+      "championships": 0
+    },
+    "tornaco": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "laurent": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "legat": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "obrien": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gaze": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "charrington": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "carini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "poore": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "thompson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "salvadori": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 19,
+      "championships": 0
+    },
+    "downing": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "graham_whitehead": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mcalpine": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bianco": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "crook": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cantoni": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "aston": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "riess": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "niedermayr": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "klenk": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "klodwig": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "heeks": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brudes": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "balsa": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bechem": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "krause": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schoeller": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "helfrich": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "peters": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "flinterman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lof": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bayol": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "galvez": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "john_barber": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "menditeguy": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 9,
+      "championships": 0
+    },
+    "birger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cruz": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "daywalt": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mccoy": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mantz": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "teague": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "thomson": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 10,
+      "championships": 0
+    },
+    "freeland": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "niday": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mieres": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 13,
+      "championships": 0
+    },
+    "wacker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "georges_berger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jimmy_stewart": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fairman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "ian_stewart": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "herrmann": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 10,
+      "championships": 0
+    },
+    "nuckey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "seidel": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "barth": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "karch": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fitzau": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "adolff": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bauer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "loof": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lang": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "scherrer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "musso": {
+      "wins": 1,
+      "podiums": 6,
+      "points": 44,
+      "championships": 0
+    },
+    "mantovani": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "maglioli": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 3.3,
+      "championships": 0
+    },
+    "fitch": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "loyer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "daponte": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "crockett": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "elisian": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "armi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "connor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kladis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "duncan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "homeier": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "kling": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 17,
+      "championships": 0
+    },
+    "pollet": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "beauman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "marr": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "thorne": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gould": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "whitehouse": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "flockhart": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 5,
+      "championships": 0
+    },
+    "riseley_prichard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bucci": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "volonterio": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "iglesias": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "castellotti": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 19.5,
+      "championships": 0
+    },
+    "uria": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "perdisa": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 5,
+      "championships": 0
+    },
+    "herman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "weyant": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "templeman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "andrews": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "russo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ray_crawford": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "keller": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "boyd": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "ramos": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "sparken": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jack_brabham": {
+      "wins": 14,
+      "podiums": 17,
+      "points": 255,
+      "championships": 3
+    },
+    "lucas": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "piotti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gerini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1.5,
+      "championships": 0
+    },
+    "gendebien": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 18,
+      "championships": 0
+    },
+    "oscar_gonzalez": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brooks": {
+      "wins": 6,
+      "podiums": 4,
+      "points": 75,
+      "championships": 0
+    },
+    "veith": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "christie": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "garrett": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tolan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "turner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "scotti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "portago": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 4,
+      "championships": 0
+    },
+    "chapman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "titterington": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "halford": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "scott_Brown": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "emery": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "milhoux": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "scarlatti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "bonnier": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 39,
+      "championships": 0
+    },
+    "leston": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "trips": {
+      "wins": 2,
+      "podiums": 4,
+      "points": 56,
+      "championships": 0
+    },
+    "tomaso": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gregory": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 21,
+      "championships": 0
+    },
+    "lewis-evans": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 16,
+      "championships": 0
+    },
+    "bueb": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "edmunds": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sachs": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "magill": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cheesbourg": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "george": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "macdowel": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mackay-fraser": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "naylor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "beaufort": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "marsh": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "england": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gibson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "allison": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 11,
+      "championships": 0
+    },
+    "hill": {
+      "wins": 14,
+      "podiums": 22,
+      "points": 270,
+      "championships": 2
+    },
+    "george_amick": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6,
+      "championships": 0
+    },
+    "larson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "dempsey_wilson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "foyt": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "goldsmith": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6,
+      "championships": 0
+    },
+    "jerry_unser": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sutton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bisch": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "filippis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "phil_hill": {
+      "wins": 3,
+      "podiums": 13,
+      "points": 94,
+      "championships": 1
+    },
+    "shelby": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "burgess": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stacey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mclaren": {
+      "wins": 4,
+      "podiums": 23,
+      "points": 188.5,
+      "championships": 0
+    },
+    "goethals": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cabianca": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "la_caze": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "guelfi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "picard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bridger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "arnold": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mcwithey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "branson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "grim": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "amick": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ireland": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 47,
+      "championships": 0
+    },
+    "orey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gurney": {
+      "wins": 4,
+      "podiums": 15,
+      "points": 133,
+      "championships": 0
+    },
+    "davis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fontes": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bristow": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "henry_taylor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "ashdown": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "piper": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mike_taylor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cabral": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "blanchard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "constantine": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "said": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cade": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "larreta": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bonomi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "munaron": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "estefano": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "chimeri": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "creus": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ginther": {
+      "wins": 1,
+      "podiums": 13,
+      "points": 102,
+      "championships": 0
+    },
+    "surtees": {
+      "wins": 6,
+      "podiums": 18,
+      "points": 180,
+      "championships": 1
+    },
+    "ruby": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tingelstad": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hurtubise": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "weiler": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "clark": {
+      "wins": 25,
+      "podiums": 7,
+      "points": 255,
+      "championships": 2
+    },
+    "reventlow": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "daigh": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bianchi": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6,
+      "championships": 0
+    },
+    "mairesse": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 7,
+      "championships": 0
+    },
+    "greene": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "drogo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gamble": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "thiele": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "vic_wilson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "owen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hall": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "lovely": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "drake": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "may": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "trevor_taylor": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "lewis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "bandini": {
+      "wins": 1,
+      "podiums": 7,
+      "points": 58,
+      "championships": 0
+    },
+    "baghetti": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 14,
+      "championships": 0
+    },
+    "collomb": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bordeu": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "maggs": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 26,
+      "championships": 0
+    },
+    "parnell": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ashmore": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "natili": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "monteverdi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pirocchi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "duke": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "campbell-jones": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "starrabba": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ricardo_rodriguez": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "vaccarella": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bussinello": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lippi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "prinoth": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "boffa": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "penske": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ryan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sharp": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hansgen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "ken_miles": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "slotemaker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "siffert": {
+      "wins": 2,
+      "podiums": 4,
+      "points": 68,
+      "championships": 0
+    },
+    "schiller": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "arundell": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 12,
+      "championships": 0
+    },
+    "abate": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "settember": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "chamberlain": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "shelly": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "walter": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kuhnke": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schroeder": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mayer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lederle": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "love": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6,
+      "championships": 0
+    },
+    "johnstone": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pieterse": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "serrurier": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "harris": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hocking": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "vyver": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tingle": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "amon": {
+      "wins": 0,
+      "podiums": 11,
+      "points": 83,
+      "championships": 0
+    },
+    "scarfiotti": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 17,
+      "championships": 0
+    },
+    "mitter": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "hailwood": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 29,
+      "championships": 0
+    },
+    "anderson": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "raby": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "spence": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 27,
+      "championships": 0
+    },
+    "seiffert": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "broeker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rodriguez": {
+      "wins": 2,
+      "podiums": 5,
+      "points": 71,
+      "championships": 0
+    },
+    "vos": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "solana": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "dochnal": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "monarch": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "blokdyk": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "niemann": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "klerk": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "prophet": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "driver": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "revson": {
+      "wins": 2,
+      "podiums": 6,
+      "points": 61,
+      "championships": 0
+    },
+    "taylor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "gardner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "attwood": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 11,
+      "championships": 0
+    },
+    "bucknum": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "rindt": {
+      "wins": 6,
+      "podiums": 7,
+      "points": 107,
+      "championships": 1
+    },
+    "stewart": {
+      "wins": 27,
+      "podiums": 16,
+      "points": 359,
+      "championships": 3
+    },
+    "hawkins": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "reed": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "clapham": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "blignaut": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hulme": {
+      "wins": 8,
+      "podiums": 25,
+      "points": 248,
+      "championships": 1
+    },
+    "rhodes": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "geki": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bassi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bondurant": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "ligier": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "parkes": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 14,
+      "championships": 0
+    },
+    "irwin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "lawrence": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "charlton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "botha": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "courage": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 20,
+      "championships": 0
+    },
+    "gavin": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 9,
+      "championships": 0
+    },
+    "hobbs": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rees": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "moser": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "oliver": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 13,
+      "championships": 0
+    },
+    "ickx": {
+      "wins": 8,
+      "podiums": 17,
+      "points": 181,
+      "championships": 0
+    },
+    "hart": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hahne": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ahrens": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jo_schlesser": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fisher": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "wietzes": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pease": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "beltoise": {
+      "wins": 1,
+      "podiums": 7,
+      "points": 77,
+      "championships": 0
+    },
+    "williams": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pretorius": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rooyen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "adamich": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "redman": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "elford": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 8,
+      "championships": 0
+    },
+    "widdows": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bell": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "pescarolo": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 12,
+      "championships": 0
+    },
+    "brack": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "unser": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mario_andretti": {
+      "wins": 12,
+      "podiums": 7,
+      "points": 180,
+      "championships": 1
+    },
+    "miles": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "cordts": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "eaton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stommelen": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 14,
+      "championships": 0
+    },
+    "peterson": {
+      "wins": 10,
+      "podiums": 16,
+      "points": 206,
+      "championships": 0
+    },
+    "giunti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "regazzoni": {
+      "wins": 5,
+      "podiums": 23,
+      "points": 209,
+      "championships": 0
+    },
+    "cevert": {
+      "wins": 1,
+      "podiums": 12,
+      "points": 89,
+      "championships": 0
+    },
+    "gethin": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 11,
+      "championships": 0
+    },
+    "emerson_fittipaldi": {
+      "wins": 14,
+      "podiums": 21,
+      "points": 281,
+      "championships": 2
+    },
+    "schenken": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 7,
+      "championships": 0
+    },
+    "wisell": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 13,
+      "championships": 0
+    },
+    "hutchison": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ganley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 10,
+      "championships": 0
+    },
+    "roig": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lennep": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "barber": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "walker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mazet": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jean": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "galli": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "beuttler": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "marko": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lauda": {
+      "wins": 25,
+      "podiums": 29,
+      "points": 418.5,
+      "championships": 3
+    },
+    "jarier": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 31.5,
+      "championships": 0
+    },
+    "donohue": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "Cannoc": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "craft": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "posey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "reutemann": {
+      "wins": 12,
+      "podiums": 33,
+      "points": 297,
+      "championships": 0
+    },
+    "pace": {
+      "wins": 1,
+      "podiums": 5,
+      "points": 58,
+      "championships": 0
+    },
+    "wilson_fittipaldi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "depailler": {
+      "wins": 2,
+      "podiums": 17,
+      "points": 139,
+      "championships": 0
+    },
+    "merzario": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 11,
+      "championships": 0
+    },
+    "migault": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "scheckter": {
+      "wins": 10,
+      "podiums": 23,
+      "points": 246,
+      "championships": 1
+    },
+    "bueno": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "follmer": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 5,
+      "championships": 0
+    },
+    "keizan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hunt": {
+      "wins": 10,
+      "podiums": 13,
+      "points": 179,
+      "championships": 1
+    },
+    "purley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "opel": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "watson": {
+      "wins": 5,
+      "podiums": 15,
+      "points": 169,
+      "championships": 0
+    },
+    "mass": {
+      "wins": 1,
+      "podiums": 7,
+      "points": 71,
+      "championships": 0
+    },
+    "williamson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mcrae": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "edwards": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "robarts": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stuck": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 29,
+      "championships": 0
+    },
+    "brambilla": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 15.5,
+      "championships": 0
+    },
+    "ian_scheckter": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "belso": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schuppan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pilette": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pryce": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 19,
+      "championships": 0
+    },
+    "larrousse": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kinnunen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "roos": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ashley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "laffite": {
+      "wins": 6,
+      "podiums": 27,
+      "points": 228,
+      "championships": 0
+    },
+    "quester": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "koinigg": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "wilds": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "dolhem": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tunmer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "evans": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lombardi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0.5,
+      "championships": 0
+    },
+    "brise": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "wunderink": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jones": {
+      "wins": 12,
+      "podiums": 12,
+      "points": 199,
+      "championships": 1
+    },
+    "palm": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "magee": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fushida": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jabouille": {
+      "wins": 2,
+      "podiums": 0,
+      "points": 21,
+      "championships": 0
+    },
+    "henton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nicholson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "morgan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "crawford": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ertl": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lunger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "vonlanthen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "zorzi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "leclere": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hoffmann": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nilsson": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 31,
+      "championships": 0
+    },
+    "perkins": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kessel": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "neve": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pesenti_rossi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "binder": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hayje": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "andersson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stuppacher": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ribeiro": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brown": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "takahara": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hasemi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hoshino": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "villota": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "keegan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "patrese": {
+      "wins": 6,
+      "podiums": 31,
+      "points": 281,
+      "championships": 0
+    },
+    "gilles_villeneuve": {
+      "wins": 6,
+      "podiums": 7,
+      "points": 101,
+      "championships": 0
+    },
+    "tambay": {
+      "wins": 2,
+      "podiums": 9,
+      "points": 103,
+      "championships": 0
+    },
+    "rebaque": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 13,
+      "championships": 0
+    },
+    "giacomelli": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 14,
+      "championships": 0
+    },
+    "ongais": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "takahashi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pironi": {
+      "wins": 3,
+      "podiums": 10,
+      "points": 101,
+      "championships": 0
+    },
+    "leoni": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "keke_rosberg": {
+      "wins": 5,
+      "podiums": 12,
+      "points": 159.5,
+      "championships": 1
+    },
+    "cheever": {
+      "wins": 0,
+      "podiums": 9,
+      "points": 70,
+      "championships": 0
+    },
+    "arnoux": {
+      "wins": 7,
+      "podiums": 15,
+      "points": 181,
+      "championships": 0
+    },
+    "daly": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 15,
+      "championships": 0
+    },
+    "piquet": {
+      "wins": 23,
+      "podiums": 37,
+      "points": 481.5,
+      "championships": 3
+    },
+    "rahal": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bleekemolen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "angelis": {
+      "wins": 2,
+      "podiums": 7,
+      "points": 122,
+      "championships": 0
+    },
+    "lammers": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gaillard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lees": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "zunino": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "surer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 17,
+      "championships": 0
+    },
+    "prost": {
+      "wins": 51,
+      "podiums": 55,
+      "points": 768.5,
+      "championships": 4
+    },
+    "needell": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mansell": {
+      "wins": 31,
+      "podiums": 28,
+      "points": 480,
+      "championships": 1
+    },
+    "cesaris": {
+      "wins": 0,
+      "podiums": 5,
+      "points": 59,
+      "championships": 0
+    },
+    "thackwell": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "serra": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "gabbiani": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stohr": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "londono": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "borgudd": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "salazar": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "alboreto": {
+      "wins": 5,
+      "podiums": 18,
+      "points": 186.5,
+      "championships": 0
+    },
+    "guerra": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ghinzani": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "warwick": {
+      "wins": 0,
+      "podiums": 4,
+      "points": 71,
+      "championships": 0
+    },
+    "manfred_winkelhock": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "boesel": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "baldi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "guerrero": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fabi": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 23,
+      "championships": 0
+    },
+    "paletti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "byrne": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sullivan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "cecotto": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "corrado_fabi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "boutsen": {
+      "wins": 3,
+      "podiums": 12,
+      "points": 132,
+      "championships": 0
+    },
+    "johansson": {
+      "wins": 0,
+      "podiums": 12,
+      "points": 88,
+      "championships": 0
+    },
+    "palmer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 14,
+      "championships": 0
+    },
+    "acheson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brundle": {
+      "wins": 0,
+      "podiums": 9,
+      "points": 98,
+      "championships": 0
+    },
+    "hesnault": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "alliot": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 7,
+      "championships": 0
+    },
+    "bellof": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "senna": {
+      "wins": 41,
+      "podiums": 39,
+      "points": 610,
+      "championships": 3
+    },
+    "gartner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rothengatter": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "berger": {
+      "wins": 10,
+      "podiums": 38,
+      "points": 385,
+      "championships": 0
+    },
+    "streiff": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 11,
+      "championships": 0
+    },
+    "martini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 18,
+      "championships": 0
+    },
+    "danner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "capelli": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 31,
+      "championships": 0
+    },
+    "dumfries": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "nannini": {
+      "wins": 1,
+      "podiums": 8,
+      "points": 65,
+      "championships": 0
+    },
+    "berg": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "caffi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "satoru_nakajima": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 16,
+      "championships": 0
+    },
+    "fabre": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "campos": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tarquini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "forini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "larini": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 7,
+      "championships": 0
+    },
+    "dalmas": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "moreno": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 15,
+      "championships": 0
+    },
+    "modena": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 17,
+      "championships": 0
+    },
+    "sala": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "gugelmin": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 10,
+      "championships": 0
+    },
+    "larrauri": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bailey": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "schneider": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schlesser": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "suzuki": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "herbert": {
+      "wins": 3,
+      "podiums": 4,
+      "points": 98,
+      "championships": 0
+    },
+    "grouillard": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "raphanel": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "alesi": {
+      "wins": 1,
+      "podiums": 31,
+      "points": 241,
+      "championships": 0
+    },
+    "pirro": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "bernard": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 10,
+      "championships": 0
+    },
+    "donnelly": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gachot": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "weidler": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lehto": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 10,
+      "championships": 0
+    },
+    "barilla": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "foitek": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "morbidelli": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8.5,
+      "championships": 0
+    },
+    "brabham": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hakkinen": {
+      "wins": 20,
+      "podiums": 31,
+      "points": 420,
+      "championships": 2
+    },
+    "blundell": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 32,
+      "championships": 0
+    },
+    "comas": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 7,
+      "championships": 0
+    },
+    "poele": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "michael_schumacher": {
+      "wins": 91,
+      "podiums": 64,
+      "points": 1566,
+      "championships": 7
+    },
+    "zanardi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "wendlinger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 14,
+      "championships": 0
+    },
+    "katayama": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "fittipaldi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 12,
+      "championships": 0
+    },
+    "chiesa": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "belmondo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "damon_hill": {
+      "wins": 22,
+      "podiums": 20,
+      "points": 360,
+      "championships": 1
+    },
+    "mccarthy": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "naspetti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "barrichello": {
+      "wins": 11,
+      "podiums": 57,
+      "points": 658,
+      "championships": 0
+    },
+    "barbazza": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "badoer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "andretti": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 7,
+      "championships": 0
+    },
+    "lamy": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "apicella": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "irvine": {
+      "wins": 4,
+      "podiums": 22,
+      "points": 191,
+      "championships": 0
+    },
+    "toshio_suzuki": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gounon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "panis": {
+      "wins": 1,
+      "podiums": 4,
+      "points": 76,
+      "championships": 0
+    },
+    "verstappen": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 17,
+      "championships": 0
+    },
+    "frentzen": {
+      "wins": 3,
+      "podiums": 15,
+      "points": 174,
+      "championships": 0
+    },
+    "beretta": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ratzenberger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "coulthard": {
+      "wins": 13,
+      "podiums": 49,
+      "points": 535,
+      "championships": 0
+    },
+    "montermini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "adams": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schiattarella": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "noda": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "salo": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 33,
+      "championships": 0
+    },
+    "lagorce": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "inoue": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "deletraz": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "diniz": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 10,
+      "championships": 0
+    },
+    "boullion": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "papis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lavaggi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "magnussen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "villeneuve": {
+      "wins": 11,
+      "podiums": 12,
+      "points": 235,
+      "championships": 1
+    },
+    "rosset": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "fisichella": {
+      "wins": 3,
+      "podiums": 16,
+      "points": 275,
+      "championships": 0
+    },
+    "marques": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nakano": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "trulli": {
+      "wins": 1,
+      "podiums": 10,
+      "points": 246.5,
+      "championships": 0
+    },
+    "ralf_schumacher": {
+      "wins": 6,
+      "podiums": 21,
+      "points": 329,
+      "championships": 0
+    },
+    "wurz": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 45,
+      "championships": 0
+    },
+    "fontana": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tuero": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "takagi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rosa": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 35,
+      "championships": 0
+    },
+    "zonta": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "gene": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "sarrazin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "heidfeld": {
+      "wins": 0,
+      "podiums": 13,
+      "points": 259,
+      "championships": 0
+    },
+    "button": {
+      "wins": 15,
+      "podiums": 35,
+      "points": 1235,
+      "championships": 1
+    },
+    "mazzacane": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "burti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "raikkonen": {
+      "wins": 21,
+      "podiums": 82,
+      "points": 1873,
+      "championships": 1
+    },
+    "alonso": {
+      "wins": 32,
+      "podiums": 74,
+      "points": 2393,
+      "championships": 2
+    },
+    "montoya": {
+      "wins": 7,
+      "podiums": 23,
+      "points": 307,
+      "championships": 0
+    },
+    "bernoldi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "enge": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "yoong": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "webber": {
+      "wins": 9,
+      "podiums": 33,
+      "points": 1047.5,
+      "championships": 0
+    },
+    "sato": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 44,
+      "championships": 0
+    },
+    "massa": {
+      "wins": 11,
+      "podiums": 30,
+      "points": 1167,
+      "championships": 0
+    },
+    "mcnish": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "davidson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pizzonia": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 8,
+      "championships": 0
+    },
+    "wilson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "matta": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 13,
+      "championships": 0
+    },
+    "firman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "kiesa": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "baumgartner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "klien": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 14,
+      "championships": 0
+    },
+    "pantano": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bruni": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "glock": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 51,
+      "championships": 0
+    },
+    "karthikeyan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "monteiro": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 7,
+      "championships": 0
+    },
+    "friesacher": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "albers": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "liuzzi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 26,
+      "championships": 0
+    },
+    "doornbos": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rosberg": {
+      "wins": 23,
+      "podiums": 34,
+      "points": 1594.5,
+      "championships": 1
+    },
+    "speed": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ide": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "montagny": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "yamamoto": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kubica": {
+      "wins": 1,
+      "podiums": 11,
+      "points": 274,
+      "championships": 0
+    },
+    "hamilton": {
+      "wins": 105,
+      "podiums": 97,
+      "points": 5018.5,
+      "championships": 7
+    },
+    "kovalainen": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 105,
+      "championships": 0
+    },
+    "sutil": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 124,
+      "championships": 0
+    },
+    "vettel": {
+      "wins": 53,
+      "podiums": 69,
+      "points": 3098,
+      "championships": 4
+    },
+    "markus_winkelhock": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nakajima": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 9,
+      "championships": 0
+    },
+    "bourdais": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "piquet_jr": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 19,
+      "championships": 0
+    },
+    "buemi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 29,
+      "championships": 0
+    },
+    "alguersuari": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 31,
+      "championships": 0
+    },
+    "grosjean": {
+      "wins": 0,
+      "podiums": 10,
+      "points": 391,
+      "championships": 0
+    },
+    "kobayashi": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 125,
+      "championships": 0
+    },
+    "hulkenberg": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 622,
+      "championships": 0
+    },
+    "bruno_senna": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 33,
+      "championships": 0
+    },
+    "petrov": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 64,
+      "championships": 0
+    },
+    "grassi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "chandhok": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "resta": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 121,
+      "championships": 0
+    },
+    "ambrosio": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "maldonado": {
+      "wins": 1,
+      "podiums": 0,
+      "points": 76,
+      "championships": 0
+    },
+    "perez": {
+      "wins": 6,
+      "podiums": 33,
+      "points": 1638,
+      "championships": 0
+    },
+    "ricciardo": {
+      "wins": 8,
+      "podiums": 24,
+      "points": 1329,
+      "championships": 0
+    },
+    "vergne": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 51,
+      "championships": 0
+    },
+    "pic": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gutierrez": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "bottas": {
+      "wins": 10,
+      "podiums": 57,
+      "points": 1797,
+      "championships": 0
+    },
+    "jules_bianchi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "chilton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "garde": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kevin_magnussen": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 202,
+      "championships": 0
+    },
+    "kvyat": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 202,
+      "championships": 0
+    },
+    "ericsson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 18,
+      "championships": 0
+    },
+    "lotterer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stevens": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "nasr": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 29,
+      "championships": 0
+    },
+    "sainz": {
+      "wins": 4,
+      "podiums": 25,
+      "points": 1336.5,
+      "championships": 0
+    },
+    "max_verstappen": {
+      "wins": 71,
+      "podiums": 56,
+      "points": 3444.5,
+      "championships": 4
+    },
+    "merhi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rossi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jolyon_palmer": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 9,
+      "championships": 0
+    },
+    "wehrlein": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "haryanto": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "vandoorne": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 26,
+      "championships": 0
+    },
+    "ocon": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 483,
+      "championships": 0
+    },
+    "giovinazzi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 21,
+      "championships": 0
+    },
+    "stroll": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 325,
+      "championships": 0
+    },
+    "gasly": {
+      "wins": 1,
+      "podiums": 4,
+      "points": 458,
+      "championships": 0
+    },
+    "brendon_hartley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "leclerc": {
+      "wins": 8,
+      "podiums": 42,
+      "points": 1672,
+      "championships": 0
+    },
+    "sirotkin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "norris": {
+      "wins": 11,
+      "podiums": 33,
+      "points": 1430,
+      "championships": 1
+    },
+    "albon": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 313,
+      "championships": 0
+    },
+    "russell": {
+      "wins": 5,
+      "podiums": 19,
+      "points": 1033,
+      "championships": 0
+    },
+    "latifi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 9,
+      "championships": 0
+    },
+    "aitken": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pietro_fittipaldi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tsunoda": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 124,
+      "championships": 0
+    },
+    "mick_schumacher": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 12,
+      "championships": 0
+    },
+    "mazepin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "zhou": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 16,
+      "championships": 0
+    },
+    "de_vries": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "sargeant": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "piastri": {
+      "wins": 9,
+      "podiums": 17,
+      "points": 799,
+      "championships": 0
+    },
+    "lawson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 44,
+      "championships": 0
+    },
+    "bearman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 48,
+      "championships": 0
+    },
+    "colapinto": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "doohan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "antonelli": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 150,
+      "championships": 0
+    },
+    "bortoleto": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 19,
+      "championships": 0
+    },
+    "hadjar": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 51,
+      "championships": 0
+    }
+  },
+  "constructors": {
+    "alfa": {
+      "wins": 11,
+      "podiums": 17,
+      "points": 199,
+      "championships": 0
+    },
+    "lago": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 0,
+      "championships": 0
+    },
+    "era": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "maserati": {
+      "wins": 9,
+      "podiums": 31,
+      "points": 6,
+      "championships": 0
+    },
+    "alta": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ferrari": {
+      "wins": 249,
+      "podiums": 599,
+      "points": 10672,
+      "championships": 16
+    },
+    "simca": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cooper": {
+      "wins": 2,
+      "podiums": 4,
+      "points": 31,
+      "championships": 0
+    },
+    "kurtis_kraft": {
+      "wins": 5,
+      "podiums": 14,
+      "points": 0,
+      "championships": 0
+    },
+    "deidt": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 0,
+      "championships": 0
+    },
+    "moore": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lesovsky": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 0,
+      "championships": 0
+    },
+    "nichels": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "marchese": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "stevens": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "langley": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ewing": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rae": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "olson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "wetteroth": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "snowberger": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "adams": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "watson": {
+      "wins": 3,
+      "podiums": 2,
+      "points": 0,
+      "championships": 0
+    },
+    "milano": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hwm": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "veritas": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sherman": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "schroeder": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kuzma": {
+      "wins": 1,
+      "podiums": 2,
+      "points": 0,
+      "championships": 0
+    },
+    "pawl": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hall": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bromme": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "trevis": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brm": {
+      "wins": 17,
+      "podiums": 44,
+      "points": 385,
+      "championships": 1
+    },
+    "osca": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gordini": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 0,
+      "championships": 0
+    },
+    "frazer_nash": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "afm": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "butterworth": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "connaught": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 0,
+      "championships": 0
+    },
+    "bmw": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "turner": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "del_roy": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "emw": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "phillips": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 0,
+      "championships": 0
+    },
+    "pankratz": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mercedes": {
+      "wins": 131,
+      "podiums": 179,
+      "points": 8159.5,
+      "championships": 8
+    },
+    "vanwall": {
+      "wins": 10,
+      "podiums": 4,
+      "points": 48,
+      "championships": 1
+    },
+    "klenk": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lancia": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 0,
+      "championships": 0
+    },
+    "epperly": {
+      "wins": 2,
+      "podiums": 3,
+      "points": 0,
+      "championships": 0
+    },
+    "arzani-volpini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "bugatti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "emeryson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "dunn": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "porsche": {
+      "wins": 1,
+      "podiums": 4,
+      "points": 46,
+      "championships": 0
+    },
+    "team_lotus": {
+      "wins": 45,
+      "podiums": 69,
+      "points": 907,
+      "championships": 4
+    },
+    "cooper-climax": {
+      "wins": 12,
+      "podiums": 32,
+      "points": 192,
+      "championships": 2
+    },
+    "cooper-maserati": {
+      "wins": 2,
+      "podiums": 5,
+      "points": 61,
+      "championships": 0
+    },
+    "elder": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "vhristensen": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sutton": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "aston_martin": {
+      "wins": 0,
+      "podiums": 9,
+      "points": 595,
+      "championships": 0
+    },
+    "cooper-borgward": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jbw": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cooper-osca": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tec-mec": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "behra-porsche": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "meskowski": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "scarab": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cooper-castellotti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "lotus-climax": {
+      "wins": 22,
+      "podiums": 9,
+      "points": 224,
+      "championships": 2
+    },
+    "de_tomaso-osca": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "gilby": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ferguson": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mbm": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lotus-maserati": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "de_tomaso-alfa_romeo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lola": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 27,
+      "championships": 0
+    },
+    "lotus-brm": {
+      "wins": 1,
+      "podiums": 1,
+      "points": 29,
+      "championships": 0
+    },
+    "enb": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brabham": {
+      "wins": 23,
+      "podiums": 55,
+      "points": 590,
+      "championships": 0
+    },
+    "lotus-borgward": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lds": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "cooper-alfa_romeo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "ats": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 7,
+      "championships": 0
+    },
+    "scirocco": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tomaso": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brp": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 11,
+      "championships": 0
+    },
+    "stebro": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lotus-ford": {
+      "wins": 11,
+      "podiums": 14,
+      "points": 174,
+      "championships": 1
+    },
+    "brabham-climax": {
+      "wins": 2,
+      "podiums": 9,
+      "points": 60,
+      "championships": 0
+    },
+    "brabham-brm": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 13,
+      "championships": 0
+    },
+    "brabham-ford": {
+      "wins": 2,
+      "podiums": 7,
+      "points": 51,
+      "championships": 0
+    },
+    "honda": {
+      "wins": 3,
+      "podiums": 6,
+      "points": 154,
+      "championships": 0
+    },
+    "derrington": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lds-alfa_romeo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "re": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "brabham-repco": {
+      "wins": 8,
+      "podiums": 17,
+      "points": 119,
+      "championships": 2
+    },
+    "mclaren-ford": {
+      "wins": 4,
+      "podiums": 12,
+      "points": 124,
+      "championships": 0
+    },
+    "eagle-climax": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "mclaren-seren": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "cooper-ferrari": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "shannon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "eagle-weslake": {
+      "wins": 1,
+      "podiums": 1,
+      "points": 13,
+      "championships": 0
+    },
+    "lds-climax": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "mclaren-brm": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "matra": {
+      "wins": 0,
+      "podiums": 6,
+      "points": 52,
+      "championships": 0
+    },
+    "cooper-ats": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "protos": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "matra-ford": {
+      "wins": 9,
+      "podiums": 6,
+      "points": 111,
+      "championships": 1
+    },
+    "cooper-brm": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 14,
+      "championships": 0
+    },
+    "mclaren": {
+      "wins": 199,
+      "podiums": 343,
+      "points": 7659.5,
+      "championships": 10
+    },
+    "brm-ford": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "march": {
+      "wins": 3,
+      "podiums": 13,
+      "points": 139.5,
+      "championships": 0
+    },
+    "mclaren-alfa_romeo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "surtees": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 53,
+      "championships": 0
+    },
+    "bellasi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tyrrell": {
+      "wins": 23,
+      "podiums": 54,
+      "points": 614,
+      "championships": 1
+    },
+    "march-ford": {
+      "wins": 0,
+      "podiums": 5,
+      "points": 34,
+      "championships": 0
+    },
+    "march-alfa_romeo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lotus-pw": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "tecno": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "politoys": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "connew": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "iso_marlboro": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "shadow": {
+      "wins": 1,
+      "podiums": 5,
+      "points": 58,
+      "championships": 0
+    },
+    "ensign": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 19,
+      "championships": 0
+    },
+    "hesketh": {
+      "wins": 1,
+      "podiums": 6,
+      "points": 48,
+      "championships": 0
+    },
+    "trojan": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "amon": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "token": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "parnelli": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "penske": {
+      "wins": 1,
+      "podiums": 2,
+      "points": 23,
+      "championships": 0
+    },
+    "shadow-ford": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 9.5,
+      "championships": 0
+    },
+    "williams": {
+      "wins": 114,
+      "podiums": 202,
+      "points": 3780,
+      "championships": 9
+    },
+    "fittipaldi": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 44,
+      "championships": 0
+    },
+    "hill": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 3,
+      "championships": 0
+    },
+    "maki": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lyncar": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "shadow-matra": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "wolf": {
+      "wins": 3,
+      "podiums": 10,
+      "points": 79,
+      "championships": 0
+    },
+    "brabham-alfa_romeo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 16,
+      "championships": 0
+    },
+    "ligier": {
+      "wins": 9,
+      "podiums": 41,
+      "points": 388,
+      "championships": 0
+    },
+    "boro": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "kojima": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lec": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "renault": {
+      "wins": 35,
+      "podiums": 68,
+      "points": 1777,
+      "championships": 2
+    },
+    "merzario": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "arrows": {
+      "wins": 0,
+      "podiums": 8,
+      "points": 142,
+      "championships": 0
+    },
+    "theodore": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "martini": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rebaque": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "osella": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 5,
+      "championships": 0
+    },
+    "toleman": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 26,
+      "championships": 0
+    },
+    "ram": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "spirit": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "minardi": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 38,
+      "championships": 0
+    },
+    "zakspeed": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "benetton": {
+      "wins": 27,
+      "podiums": 75,
+      "points": 861.5,
+      "championships": 1
+    },
+    "ags": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "larrousse": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 22,
+      "championships": 0
+    },
+    "coloni": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "rial": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 6,
+      "championships": 0
+    },
+    "eurobrun": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "dallara": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 15,
+      "championships": 0
+    },
+    "onyx": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 6,
+      "championships": 0
+    },
+    "leyton": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 8,
+      "championships": 0
+    },
+    "lambo": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "jordan": {
+      "wins": 4,
+      "podiums": 15,
+      "points": 291,
+      "championships": 0
+    },
+    "footwork": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 25,
+      "championships": 0
+    },
+    "fondmetal": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "moda": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "sauber": {
+      "wins": 0,
+      "podiums": 11,
+      "points": 631,
+      "championships": 0
+    },
+    "simtek": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "pacific": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "forti": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "prost": {
+      "wins": 0,
+      "podiums": 3,
+      "points": 35,
+      "championships": 0
+    },
+    "stewart": {
+      "wins": 1,
+      "podiums": 4,
+      "points": 47,
+      "championships": 0
+    },
+    "bar": {
+      "wins": 0,
+      "podiums": 15,
+      "points": 227,
+      "championships": 0
+    },
+    "jaguar": {
+      "wins": 0,
+      "podiums": 2,
+      "points": 49,
+      "championships": 0
+    },
+    "toyota": {
+      "wins": 0,
+      "podiums": 13,
+      "points": 278.5,
+      "championships": 0
+    },
+    "red_bull": {
+      "wins": 130,
+      "podiums": 167,
+      "points": 8288,
+      "championships": 6
+    },
+    "toro_rosso": {
+      "wins": 1,
+      "podiums": 2,
+      "points": 500,
+      "championships": 0
+    },
+    "bmw_sauber": {
+      "wins": 1,
+      "podiums": 16,
+      "points": 308,
+      "championships": 0
+    },
+    "mf1": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "super_aguri": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 4,
+      "championships": 0
+    },
+    "spyker_mf1": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "spyker": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "force_india": {
+      "wins": 0,
+      "podiums": 6,
+      "points": 1098,
+      "championships": 0
+    },
+    "brawn": {
+      "wins": 8,
+      "podiums": 7,
+      "points": 172,
+      "championships": 1
+    },
+    "lotus_racing": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "hrt": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "virgin": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "lotus_f1": {
+      "wins": 2,
+      "podiums": 23,
+      "points": 706,
+      "championships": 0
+    },
+    "marussia": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 2,
+      "championships": 0
+    },
+    "caterham": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 0,
+      "championships": 0
+    },
+    "manor": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 1,
+      "championships": 0
+    },
+    "haas": {
+      "wins": 0,
+      "podiums": 0,
+      "points": 386,
+      "championships": 0
+    },
+    "racing_point": {
+      "wins": 1,
+      "podiums": 3,
+      "points": 268,
+      "championships": 0
+    },
+    "alphatauri": {
+      "wins": 1,
+      "podiums": 1,
+      "points": 309,
+      "championships": 0
+    },
+    "alpine": {
+      "wins": 1,
+      "podiums": 5,
+      "points": 535,
+      "championships": 0
+    },
+    "rb": {
+      "wins": 0,
+      "podiums": 1,
+      "points": 138,
+      "championships": 0
+    }
+  }
+}

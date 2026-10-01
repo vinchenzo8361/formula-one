@@ -1,4 +1,4 @@
-import { getConstructorResultsByYear, getConstructorSeasons, getConstructorStandingsHistory, getConstructorDrivers } from "@/lib/api";
+import { getConstructorResultsByYear, getConstructorSeasons, getConstructorStandingsHistory, getConstructorDrivers, getHistoricalConstructorStats } from "@/lib/api";
 import { TEAM_DATA } from "@/lib/staticData";
 import YearSelector from "@/components/YearSelector";
 import { Shield, Flag, Trophy, Clock, Users } from "lucide-react";
@@ -40,14 +40,20 @@ export default async function TeamDetailsPage({
     });
   });
 
-  let allTimePoints = 0;
-  let championships = 0;
-  standingsHistory.forEach(list => {
-    list.ConstructorStandings?.forEach(standing => {
-      allTimePoints += parseFloat(standing.points) || 0;
-      if (standing.position === "1") championships += 1;
-    });
-  });
+  const historicalStats = getHistoricalConstructorStats(teamId);
+  let allTimePoints = historicalStats.points;
+  let championships = historicalStats.championships;
+
+  // Add 2026 points to historical total (if 2026 is part of the fetching)
+  // Actually since getConstructorStandingsHistory includes 2026 if available, wait, we replaced it.
+  // We'll add 2026 results if we have them in the standings history to be safe
+  for (const list of standingsHistory) {
+    if (parseInt(list.season) === 2026) {
+       list.ConstructorStandings?.forEach(standing => {
+         allTimePoints += parseFloat(standing.points) || 0;
+       });
+    }
+  }
   
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let teamInfo: any = { name: teamId.replace('_', ' '), nationality: "Unknown", url: "#" };

@@ -1,4 +1,4 @@
-import { getDriverResultsByYear, getDriverSeasons, getHistoricalDriverStandings, getAllDriverResults, getAllDriverStandings } from "@/lib/api";
+import { getDriverResultsByYear, getDriverSeasons, getHistoricalDriverStandings, getAllDriverResults, getAllDriverStandings, getHistoricalDriverStats } from "@/lib/api";
 import { DRIVER_DATA } from "@/lib/staticData";
 import YearSelector from "@/components/YearSelector";
 import { User, Flag, Trophy, AlertTriangle } from "lucide-react";
@@ -25,8 +25,8 @@ export default async function DriverDetailsPage({
   const [results, standings, allResults, allStandings] = await Promise.all([
     getDriverResultsByYear(driverId, year),
     getHistoricalDriverStandings(year),
-    getAllDriverResults(driverId),
-    getAllDriverStandings(driverId)
+    getAllDriverResults(driverId), // (We leave these for fallback UI, but could remove them later)
+    getAllDriverStandings(driverId),
   ]);
   const finalStanding = standings.find(s => s.Driver.driverId === driverId);
   
@@ -42,23 +42,21 @@ export default async function DriverDetailsPage({
   }
 
   // Calculate advanced stats
-  let totalChampionshipWins = 0;
-  for (const list of allStandings) {
-    if (list.DriverStandings && list.DriverStandings[0].position === "1") {
-      totalChampionshipWins++;
-    }
-  }
+  const historicalStats = getHistoricalDriverStats(driverId);
+  let totalChampionshipWins = historicalStats.championships;
+  let totalPoints = historicalStats.points;
+  let totalRaceWins = historicalStats.wins;
+  let totalPodiums = historicalStats.podiums;
 
-  let totalPoints = 0;
-  let totalRaceWins = 0;
-  let totalPodiums = 0;
-
-  for (const race of allResults) {
-    const res = race.Results?.[0];
-    if (res) {
-      totalPoints += parseFloat(res.points || "0");
-      if (res.position === "1") totalRaceWins++;
-      if (res.position === "2" || res.position === "3") totalPodiums++;
+  // Add 2026 current year stats
+  for (const race of results) {
+    if (parseInt(race.season) === 2026) {
+      const res = race.Results?.[0];
+      if (res) {
+        totalPoints += parseFloat(res.points || "0");
+        if (res.position === "1") totalRaceWins++;
+        if (res.position === "2" || res.position === "3") totalPodiums++;
+      }
     }
   }
 

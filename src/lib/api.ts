@@ -512,3 +512,6 @@ export async function getAllDriverStandings(driverId: string): Promise<Standings
     return [];
   }
 }
+
+export function getHistoricalDriverStats(driverId: string) { return (require('./historicalData.json').drivers[driverId] || { wins: 0, podiums: 0, points: 0, championships: 0 }); }
+export function getHistoricalConstructorStats(teamId: string) { return (require('./historicalData.json').constructors[teamId] || { wins: 0, podiums: 0, points: 0, championships: 0 }); }

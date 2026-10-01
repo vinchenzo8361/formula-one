@@ -1,7 +1,56 @@
-import { MapPin, Navigation2, Target } from "lucide-react";
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import { MapPin, Navigation2, Target, Calendar, Map, Activity, Flag, Clock } from "lucide-react";
+import TrackMap from "@/components/TrackMap";
+
+interface Circuit {
+  circuitId: string;
+  circuitName: string;
+  Location: {
+    locality: string;
+    country: string;
+  };
+}
+
+const mockStats: Record<string, any> = {
+  monza: { elevation: '42.5m', length: '5.793 km', laps: 53, fastestLap: '1:21.046 (Barrichello, 2004)', topSpeed: '362 km/h' },
+  spa: { elevation: '102.2m', length: '7.004 km', laps: 44, fastestLap: '1:46.286 (Bottas, 2018)', topSpeed: '350 km/h' },
+  silverstone: { elevation: '11.3m', length: '5.891 km', laps: 52, fastestLap: '1:27.097 (Verstappen, 2020)', topSpeed: '330 km/h' },
+  monaco: { elevation: '42m', length: '3.337 km', laps: 78, fastestLap: '1:12.909 (Hamilton, 2021)', topSpeed: '290 km/h' },
+  generic: { elevation: '15m', length: '5.000 km', laps: 50, fastestLap: '1:30.000', topSpeed: '320 km/h' }
+};
 
 export default function TracksPage() {
+  const [year, setYear] = useState<number>(2023);
+  const [circuits, setCircuits] = useState<Circuit[]>([]);
+  const [selectedCircuit, setSelectedCircuit] = useState<Circuit | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchCircuits() {
+      setLoading(true);
+      try {
+        const res = await fetch(`https://api.jolpi.ca/ergast/f1/${year}/circuits.json`);
+        const data = await res.json();
+        const circuitsData = data.MRData.CircuitTable.Circuits;
+        setCircuits(circuitsData);
+        setSelectedCircuit(circuitsData[0] || null);
+      } catch (error) {
+        console.error("Failed to fetch circuits:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchCircuits();
+  }, [year]);
+
+  const years = Array.from({ length: 2026 - 1950 + 1 }, (_, i) => 2026 - i);
+
+  const stats = selectedCircuit && mockStats[selectedCircuit.circuitId] 
+    ? mockStats[selectedCircuit.circuitId] 
+    : mockStats.generic;
+
   return (
     <div className="flex-1 bg-panel min-h-screen text-foreground selection:bg-f1-red selection:text-white">
       {/* Header */}
@@ -18,179 +67,124 @@ export default function TracksPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-8 py-16 space-y-24">
-        {/* Guide */}
-        <section className="bg-background border border-gray-200/20 p-8 rounded-3xl shadow-sm">
-          <h2 className="text-3xl font-extrabold uppercase tracking-tight mb-4 flex items-center gap-3">
-            <Navigation2 className="text-f1-red" /> Understanding the Racing Line
-          </h2>
-          <p className="text-lg text-text-muted mb-6">
-            The ideal racing line is the quickest path through a corner. It minimizes the severity of the turn, allowing the driver to carry maximum speed.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1 bg-green-500/10 border-l-4 border-green-500 p-4 rounded-r-xl">
-              <strong className="text-green-400 block mb-1">Green Zone (Throttle)</strong>
-              <span className="text-sm text-text-muted">Full acceleration areas. Maximizing exit speed from corners to carry speed down the straights.</span>
-            </div>
-            <div className="flex-1 bg-yellow-500/10 border-l-4 border-yellow-500 p-4 rounded-r-xl">
-              <strong className="text-yellow-400 block mb-1">Yellow Zone (Trail Braking/Coast)</strong>
-              <span className="text-sm text-text-muted">Easing off the brakes while turning into the apex. Managing weight transfer.</span>
-            </div>
-            <div className="flex-1 bg-red-500/10 border-l-4 border-red-500 p-4 rounded-r-xl">
-              <strong className="text-red-400 block mb-1">Red Zone (Heavy Braking)</strong>
-              <span className="text-sm text-text-muted">Maximum deceleration in a straight line before corner entry. High G-forces.</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Monza */}
-        <section className="space-y-8">
-          <div className="border-b-4 border-f1-red pb-4 flex justify-between items-end">
-            <div>
-              <h2 className="text-5xl font-black uppercase tracking-tight">Monza</h2>
-              <p className="text-xl text-text-muted mt-2">Autodromo Nazionale di Monza, Italy</p>
-            </div>
-            <div className="text-right hidden md:block">
-              <div className="text-f1-red font-bold text-lg">Temple of Speed</div>
-            </div>
+      <div className="max-w-6xl mx-auto px-8 py-16 space-y-16">
+        
+        {/* Selectors */}
+        <div className="flex flex-col md:flex-row gap-6 bg-background p-6 rounded-3xl border border-gray-200/20 shadow-sm">
+          <div className="flex-1">
+            <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider flex items-center gap-2">
+              <Calendar className="w-4 h-4" /> Season
+            </label>
+            <select
+              value={year}
+              onChange={(e) => setYear(Number(e.target.value))}
+              className="w-full bg-panel border border-gray-200/20 text-foreground text-lg rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-f1-red"
+            >
+              {years.map(y => (
+                <option key={y} value={y}>{y}</option>
+              ))}
+            </select>
           </div>
           
-          <div className="bg-white p-8 rounded-2xl flex justify-center shadow-inner">
-             {/* Use Wikimedia svg for Monza */}
-             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Monza_track_map.svg" alt="Monza Track Map" className="w-full max-w-xl invert-0" style={{ filter: 'brightness(0)' }} />
+          <div className="flex-1">
+            <label className="block text-sm font-semibold text-text-muted mb-2 uppercase tracking-wider flex items-center gap-2">
+              <Map className="w-4 h-4" /> Circuit
+            </label>
+            <select
+              value={selectedCircuit?.circuitId || ""}
+              onChange={(e) => {
+                const circuit = circuits.find(c => c.circuitId === e.target.value);
+                if (circuit) setSelectedCircuit(circuit);
+              }}
+              className="w-full bg-panel border border-gray-200/20 text-foreground text-lg rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-f1-red"
+              disabled={loading || circuits.length === 0}
+            >
+              {loading ? (
+                <option>Loading circuits...</option>
+              ) : (
+                circuits.map(c => (
+                  <option key={c.circuitId} value={c.circuitId}>
+                    {c.circuitName} ({c.Location.country})
+                  </option>
+                ))
+              )}
+            </select>
           </div>
+        </div>
 
-          <div className="prose prose-lg prose-gray max-w-none text-foreground">
-            <h3 className="text-2xl font-bold">Key Characteristics</h3>
-            <p>
-              Monza is the fastest circuit on the calendar, demanding the lowest downforce setups. Cars spend nearly 80% of the lap at full throttle (Green Zone), reaching speeds in excess of 340 km/h.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mt-6">
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-red-500"/> Turn 1 (Rettifilo Chicane)</h4>
-                <p className="text-text-muted text-base">
-                  One of the heaviest braking zones in F1. Cars decelerate from 340 km/h to 80 km/h in just 120 meters. Hitting the Red Zone perfectly here is crucial for overtaking.
-                </p>
+        {selectedCircuit && (
+          <div className="space-y-12">
+            <div className="border-b-4 border-f1-red pb-4">
+              <h2 className="text-5xl font-black uppercase tracking-tight">{selectedCircuit.circuitName}</h2>
+              <p className="text-xl text-text-muted mt-2">{selectedCircuit.Location.locality}, {selectedCircuit.Location.country}</p>
+            </div>
+
+            {/* Split View */}
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Normal View */}
+              <div className="bg-white p-8 rounded-3xl flex flex-col items-center shadow-sm">
+                <h3 className="text-2xl font-bold uppercase text-black mb-8 w-full text-center tracking-tight border-b pb-4">Track Layout</h3>
+                <div className="w-full max-w-md text-black">
+                  <TrackMap circuitId={selectedCircuit.circuitId} colored={false} />
+                </div>
               </div>
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-yellow-500"/> Turn 11 (Parabolica)</h4>
-                <p className="text-text-muted text-base">
-                  A long, sweeping right-hander that requires careful trail braking on entry and early throttle application to maximize speed down the massive main straight.
-                </p>
+
+              {/* Colored View */}
+              <div className="bg-white p-8 rounded-3xl flex flex-col items-center shadow-sm">
+                <h3 className="text-2xl font-bold uppercase text-black mb-8 w-full text-center tracking-tight border-b pb-4">Speed Zones</h3>
+                <div className="w-full max-w-md text-black">
+                  <TrackMap circuitId={selectedCircuit.circuitId} colored={true} />
+                </div>
+                
+                {/* Legend */}
+                <div className="flex gap-4 mt-8 w-full justify-center text-sm font-semibold text-black">
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-green-500"></div> Throttle
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-yellow-500"></div> Coast
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-red-500"></div> Brake
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Spa */}
-        <section className="space-y-8">
-          <div className="border-b-4 border-f1-red pb-4 flex justify-between items-end">
-            <div>
-              <h2 className="text-5xl font-black uppercase tracking-tight">Spa-Francorchamps</h2>
-              <p className="text-xl text-text-muted mt-2">Circuit de Spa-Francorchamps, Belgium</p>
-            </div>
-          </div>
-          
-          <div className="bg-white p-8 rounded-2xl flex justify-center shadow-inner">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Spa-Francorchamps_of_Belgium.svg" alt="Spa Track Map" className="w-full max-w-xl" style={{ filter: 'brightness(0)' }} />
-          </div>
-
-          <div className="prose prose-lg prose-gray max-w-none text-foreground">
-            <h3 className="text-2xl font-bold">Key Characteristics</h3>
-            <p>
-              The longest circuit on the calendar at 7.004 km, Spa features dramatic elevation changes, unpredictable weather, and requires a delicate balance between straight-line speed and high-speed cornering grip.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mt-6">
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-green-500"/> Eau Rouge & Raidillon</h4>
-                <p className="text-text-muted text-base">
-                  The most famous corner sequence in motorsport. A steep downhill left-hander (Eau Rouge) immediately followed by a blind uphill right-left sweep (Raidillon). In dry conditions, modern F1 cars take this entirely flat-out (Green Zone).
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-red-500"/> Les Combes</h4>
-                <p className="text-text-muted text-base">
-                  At the end of the massive Kemmel Straight (a prime DRS zone), drivers hit the brakes hard for this right-left-right chicane. It&apos;s the best overtaking opportunity on the track.
-                </p>
+            {/* Stats */}
+            <div className="bg-background border border-gray-200/20 p-8 rounded-3xl shadow-sm">
+              <h3 className="text-3xl font-extrabold uppercase tracking-tight mb-8">Circuit Statistics</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10">
+                  <Navigation2 className="w-8 h-8 text-f1-red mb-4" />
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Length</div>
+                  <div className="text-2xl font-bold">{stats.length}</div>
+                </div>
+                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10">
+                  <Activity className="w-8 h-8 text-f1-red mb-4" />
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Elevation</div>
+                  <div className="text-2xl font-bold">{stats.elevation}</div>
+                </div>
+                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10">
+                  <Flag className="w-8 h-8 text-f1-red mb-4" />
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Laps</div>
+                  <div className="text-2xl font-bold">{stats.laps}</div>
+                </div>
+                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10 md:col-span-2 lg:col-span-1">
+                  <Target className="w-8 h-8 text-f1-red mb-4" />
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Top Speed</div>
+                  <div className="text-2xl font-bold">{stats.topSpeed}</div>
+                </div>
+                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10 md:col-span-3 lg:col-span-1">
+                  <Clock className="w-8 h-8 text-f1-red mb-4" />
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Fastest Lap</div>
+                  <div className="text-xl font-bold truncate" title={stats.fastestLap}>{stats.fastestLap}</div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Silverstone */}
-        <section className="space-y-8">
-          <div className="border-b-4 border-f1-red pb-4 flex justify-between items-end">
-            <div>
-              <h2 className="text-5xl font-black uppercase tracking-tight">Silverstone</h2>
-              <p className="text-xl text-text-muted mt-2">Silverstone Circuit, Great Britain</p>
-            </div>
           </div>
-          
-          <div className="bg-white p-8 rounded-2xl flex justify-center shadow-inner">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Silverstone_Circuit_2020.svg" alt="Silverstone Track Map" className="w-full max-w-xl" style={{ filter: 'brightness(0)' }} />
-          </div>
-
-          <div className="prose prose-lg prose-gray max-w-none text-foreground">
-            <h3 className="text-2xl font-bold">Key Characteristics</h3>
-            <p>
-              The birthplace of the Formula 1 World Championship. Silverstone is a high-speed, flowing circuit that places immense lateral loads on the tires. Aerodynamic efficiency and high-speed stability are paramount here.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mt-6">
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-green-500"/> Maggotts, Becketts & Chapel</h4>
-                <p className="text-text-muted text-base">
-                  A phenomenal sequence of sweeping, high-speed left-right-left-right-left turns. Drivers barely touch the brakes, relying entirely on downforce to stick the car to the track before catapulting onto the Hangar Straight.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-red-500"/> Stowe</h4>
-                <p className="text-text-muted text-base">
-                  Approached at nearly 330 km/h, Stowe requires a brief but firm dab of the brakes before turning right at very high speeds. It demands absolute confidence in the car&apos;s rear end.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Monaco */}
-        <section className="space-y-8">
-          <div className="border-b-4 border-f1-red pb-4 flex justify-between items-end">
-            <div>
-              <h2 className="text-5xl font-black uppercase tracking-tight">Monaco</h2>
-              <p className="text-xl text-text-muted mt-2">Circuit de Monaco, Monte Carlo</p>
-            </div>
-          </div>
-          
-          <div className="bg-white p-8 rounded-2xl flex justify-center shadow-inner">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Monte_Carlo_Formula_1_track_map.svg" alt="Monaco Track Map" className="w-full max-w-xl" style={{ filter: 'brightness(0)' }} />
-          </div>
-
-          <div className="prose prose-lg prose-gray max-w-none text-foreground">
-            <h3 className="text-2xl font-bold">Key Characteristics</h3>
-            <p>
-              The crown jewel of F1. Monaco is incredibly tight, twisty, and punishing, surrounded by unforgiving barriers. It requires maximum downforce setups and absolute precision from the drivers, as overtaking is nearly impossible.
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mt-6">
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-yellow-500"/> The Hairpin (Fairmont)</h4>
-                <p className="text-text-muted text-base">
-                  The slowest corner on the entire F1 calendar. Cars drop to around 45 km/h, requiring maximum steering lock to navigate the tight left-hand hairpin.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold flex items-center gap-2"><Target className="w-5 h-5 text-red-500"/> Nouvelle Chicane</h4>
-                <p className="text-text-muted text-base">
-                  After exiting the incredibly fast, blind tunnel, drivers face a bumpy, heavy braking zone into a left-right chicane. It is essentially the only viable overtaking spot on the circuit.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        )}
       </div>
     </div>
   );
