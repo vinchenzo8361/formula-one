@@ -1,4 +1,4 @@
-import { getDriverResultsByYear, getDriverSeasons, getHistoricalDriverStandings, getAllDriverResults, getAllDriverStandings, getHistoricalDriverStats } from "@/lib/api";
+import { getDriverResultsByYear, getDriverSeasons, getHistoricalDriverStandings, getAllDriverResults, getAllDriverStandings, getHistoricalDriverStats, calculateCareerDNFs, calculateSeasonDNFs } from "@/lib/api";
 import { DRIVER_DATA } from "@/lib/staticData";
 import YearSelector from "@/components/YearSelector";
 import { User, Flag, Trophy, AlertTriangle } from "lucide-react";
@@ -54,8 +54,12 @@ export default async function DriverDetailsPage({
       const res = race.Results?.[0];
       if (res) {
         totalPoints += parseFloat(res.points || "0");
-        if (res.position === "1") totalRaceWins++;
-        if (res.position === "2" || res.position === "3") totalPodiums++;
+        if (res.position === "1") {
+          totalRaceWins++;
+          totalPodiums++;
+        } else if (res.position === "2" || res.position === "3") {
+          totalPodiums++;
+        }
       }
     }
   }
@@ -72,7 +76,7 @@ export default async function DriverDetailsPage({
 
   return (
     <div className="flex-1 p-8 text-foreground bg-background min-h-screen">
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-7xl mx-auto space-y-8">
         <Link href="/drivers" className="text-text-muted hover:text-f1-red text-sm font-bold uppercase tracking-wider mb-4 inline-block">
           &larr; Back to Drivers
         </Link>
@@ -95,84 +99,10 @@ export default async function DriverDetailsPage({
           </Suspense>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
-          {/* Main Results Content */}
-          <div className="md:col-span-2 space-y-6">
-            {/* Final Standing Block */}
-            {finalStanding && (
-              <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 flex items-center justify-around">
-                <div className="text-center">
-                  <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-1">Championship Pos</div>
-                  <div className="text-4xl font-black text-f1-red">P{finalStanding.position}</div>
-                </div>
-                <div className="h-12 w-px bg-gray-200/20"></div>
-                <div className="text-center">
-                  <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-1">Total Points</div>
-                  <div className="text-4xl font-black">{finalStanding.points}</div>
-                </div>
-                <div className="h-12 w-px bg-gray-200/20"></div>
-                <div className="text-center">
-                  <div className="text-sm font-bold text-text-muted uppercase tracking-widest mb-1">Wins</div>
-                  <div className="text-4xl font-black">{finalStanding.wins}</div>
-                </div>
-              </div>
-            )}
-
-            <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20">
-              <div className="flex items-center gap-3 mb-6">
-                <Flag className="w-6 h-6 text-f1-red" />
-                <h2 className="text-2xl font-bold tracking-tight">{year} Race Results</h2>
-              </div>
-
-              {results.length === 0 ? (
-                <div className="text-center p-12 text-text-muted font-medium bg-background rounded-2xl">
-                  No results found for this driver in {year}.
-                </div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b-2 border-gray-200/20 text-xs uppercase tracking-widest text-text-muted">
-                        <th className="pb-4 font-bold px-4">Round</th>
-                        <th className="pb-4 font-bold px-4">Race</th>
-                        <th className="pb-4 font-bold px-4 text-center">Grid</th>
-                        <th className="pb-4 font-bold px-4 text-center">Pos</th>
-                        <th className="pb-4 font-bold px-4 text-right">Points</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200/20">
-                      {results.map((race) => {
-                        const result = race.Results?.[0];
-                        return (
-                          <tr key={race.round} className="hover:bg-background transition-colors">
-                            <td className="py-4 px-4 text-text-muted font-bold">
-                              {race.round}
-                            </td>
-                            <td className="py-4 px-4">
-                              <div className="font-bold text-foreground">{race.raceName}</div>
-                            </td>
-                            <td className="py-4 px-4 text-center text-text-muted font-medium">
-                              {result?.grid || "-"}
-                            </td>
-                            <td className="py-4 px-4 text-center">
-                              <span className="font-extrabold text-foreground text-lg">{result?.position || "-"}</span>
-                            </td>
-                            <td className="py-4 px-4 text-right">
-                              <span className="font-bold text-lg text-f1-red">{result?.points || "0"}</span>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </section>
-          </div>
-
-          {/* Sidebar Static Data */}
-          <div className="space-y-6">
+          {/* Left Column: Bio, Fun Facts, Stats */}
+          <div className="md:col-span-3 space-y-6">
             <section className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20">
               <h3 className="text-lg font-bold tracking-tight mb-4 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-f1-red" /> Career Stats
@@ -184,7 +114,7 @@ export default async function DriverDetailsPage({
                 </div>
                 <div className="text-center bg-background p-3 rounded-xl">
                   <div className="text-2xl font-black text-foreground">{totalRaceWins}</div>
-                  <div className="text-xs font-bold text-text-muted uppercase">Race Wins</div>
+                  <div className="text-xs font-bold text-text-muted uppercase">Wins</div>
                 </div>
                 <div className="text-center bg-background p-3 rounded-xl">
                   <div className="text-2xl font-black text-foreground">{totalPodiums}</div>
@@ -192,71 +122,157 @@ export default async function DriverDetailsPage({
                 </div>
                 <div className="text-center bg-background p-3 rounded-xl">
                   <div className="text-2xl font-black text-foreground">{totalPoints}</div>
-                  <div className="text-xs font-bold text-text-muted uppercase">Total Points</div>
+                  <div className="text-xs font-bold text-text-muted uppercase">Points</div>
                 </div>
+                {staticData && (
+                  <>
+                    <div className="text-center bg-background p-3 rounded-xl">
+                      <div className="text-2xl font-black text-foreground">{calculateCareerDNFs(allResults)}</div>
+                      <div className="text-xs font-bold text-text-muted uppercase">DNFs (Career)</div>
+                    </div>
+                    <div className="text-center bg-background p-3 rounded-xl">
+                      <div className="text-2xl font-black text-foreground">{calculateSeasonDNFs(results)}</div>
+                      <div className="text-xs font-bold text-text-muted uppercase">DNFs ({year})</div>
+                    </div>
+                    <div className="text-center bg-background p-3 rounded-xl">
+                      <div className="text-2xl font-black text-foreground">{staticData.dqCount}</div>
+                      <div className="text-xs font-bold text-text-muted uppercase">DQs</div>
+                    </div>
+                  </>
+                )}
               </div>
             </section>
 
             <FunFacts facts={funFacts} />
 
-            <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20">
-              <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">
+            <section className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20">
+              <h3 className="text-lg font-bold tracking-tight mb-4 flex items-center gap-2">
                 <User className="w-5 h-5 text-f1-red" /> Biography
               </h3>
-              <p className="text-foreground leading-relaxed font-medium mb-4">{blurb}</p>
+              <p className="text-foreground text-sm leading-relaxed font-medium mb-4">{blurb}</p>
               {driverInfo.url && driverInfo.url !== "#" && (
-                <a href={driverInfo.url} target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline font-bold text-sm uppercase tracking-widest">
+                <a href={driverInfo.url} target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline font-bold text-xs uppercase tracking-widest">
                   View Wikipedia &rarr;
                 </a>
               )}
             </section>
 
-            {staticData && (
-              <>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 text-center">
-                    <div className="text-4xl font-black text-foreground mb-1">{staticData.dnfCount}</div>
-                    <div className="text-xs font-bold text-text-muted uppercase tracking-widest">Career DNFs</div>
-                  </div>
-                  <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 text-center">
-                    <div className="text-4xl font-black text-foreground mb-1">{staticData.dqCount}</div>
-                    <div className="text-xs font-bold text-text-muted uppercase tracking-widest">Career DQs</div>
-                  </div>
-                </div>
-
-                {staticData.fines && staticData.fines.length > 0 && (
-                  <section className="bg-f1-red/10 rounded-3xl p-8 shadow-sm border border-f1-red/20">
-                    <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2 text-f1-red">
-                      <AlertTriangle className="w-5 h-5 text-f1-red" /> Notable Fines
-                    </h3>
-                    <div className="space-y-4">
-                      {staticData.fines.map((fine, idx) => (
-                        <div key={idx} className="bg-panel p-4 rounded-xl shadow-sm border border-f1-red/20">
-                          <div className="font-black text-f1-red text-lg mb-1">{fine.amount}</div>
-                          <div className="text-sm text-foreground font-medium">{fine.reason}</div>
-                        </div>
-                      ))}
+            {staticData?.fines && staticData.fines.length > 0 && (
+              <section className="bg-f1-red/10 rounded-3xl p-6 shadow-sm border border-f1-red/20">
+                <h3 className="text-lg font-bold tracking-tight mb-4 flex items-center gap-2 text-f1-red">
+                  <AlertTriangle className="w-5 h-5 text-f1-red" /> Notable Fines
+                </h3>
+                <div className="space-y-4">
+                  {staticData.fines.map((fine, idx) => (
+                    <div key={idx} className="bg-panel p-3 rounded-xl shadow-sm border border-f1-red/20">
+                      <div className="font-black text-f1-red text-md mb-1">{fine.amount}</div>
+                      <div className="text-xs text-foreground font-medium">{fine.reason}</div>
                     </div>
-                  </section>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Middle Column: Results & Season Summary */}
+          <div className="md:col-span-6 space-y-6">
+            {finalStanding && (
+              <div className="bg-panel rounded-3xl p-4 shadow-sm border border-gray-200/20 flex flex-wrap items-center justify-around gap-2 text-sm">
+                <div className="text-center">
+                  <div className="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">Championship Pos</div>
+                  <div className="text-3xl font-black text-f1-red">P{finalStanding.position}</div>
+                </div>
+                <div className="h-10 w-px bg-gray-200/20"></div>
+                <div className="text-center">
+                  <div className="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">{year} Total Points</div>
+                  <div className="text-3xl font-black">{finalStanding.points}</div>
+                </div>
+                <div className="h-10 w-px bg-gray-200/20"></div>
+                <div className="text-center">
+                  <div className="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">{year} Wins</div>
+                  <div className="text-3xl font-black">{finalStanding.wins}</div>
+                </div>
+                {staticData && (
+                  <>
+                    <div className="h-10 w-px bg-gray-200/20"></div>
+                    <div className="text-center">
+                      <div className="text-xs font-bold text-text-muted uppercase tracking-widest mb-1">Season DNFs</div>
+                      <div className="text-3xl font-black text-text-muted">{calculateSeasonDNFs(results)}</div>
+                    </div>
+                  </>
                 )}
-              </>
+              </div>
             )}
 
+            <section className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 text-sm">
+              <div className="flex items-center gap-3 mb-6">
+                <Flag className="w-5 h-5 text-f1-red" />
+                <h2 className="text-xl font-bold tracking-tight">{year} Race Results</h2>
+              </div>
+
+              {results.length === 0 ? (
+                <div className="text-center p-8 text-text-muted font-medium bg-background rounded-2xl">
+                  No results found for this driver in {year}.
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b-2 border-gray-200/20 text-[10px] uppercase tracking-widest text-text-muted">
+                        <th className="pb-3 font-bold px-3">Round</th>
+                        <th className="pb-3 font-bold px-3">Race</th>
+                        <th className="pb-3 font-bold px-3 text-center">Grid</th>
+                        <th className="pb-3 font-bold px-3 text-center">Pos</th>
+                        <th className="pb-3 font-bold px-3 text-right">Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200/20">
+                      {results.map((race) => {
+                        const result = race.Results?.[0];
+                        return (
+                          <tr key={race.round} className="hover:bg-background transition-colors text-xs">
+                            <td className="py-3 px-3 text-text-muted font-bold">
+                              {race.round}
+                            </td>
+                            <td className="py-3 px-3">
+                              <div className="font-bold text-foreground">{race.raceName}</div>
+                            </td>
+                            <td className="py-3 px-3 text-center text-text-muted font-medium">
+                              {result?.grid || "-"}
+                            </td>
+                            <td className="py-3 px-3 text-center">
+                              <span className="font-extrabold text-foreground text-sm">{result?.position || "-"}</span>
+                            </td>
+                            <td className="py-3 px-3 text-right">
+                              <span className="font-bold text-sm text-f1-red">{result?.points || "0"}</span>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+          </div>
+
+          {/* Right Column: Standings List */}
+          <div className="md:col-span-3 space-y-6">
             {standings.length > 0 && (
-              <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20">
-                <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-f1-red" /> {year} Top 10 Standings
+              <section className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20">
+                <h3 className="text-lg font-bold tracking-tight mb-4 flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-f1-red" /> {year} Standings
                 </h3>
-                <div className="space-y-3">
-                  {standings.slice(0, 10).map((s) => (
-                    <div key={s.Driver.driverId} className={`flex items-center justify-between p-3 rounded-xl border border-transparent transition-colors ${s.Driver.driverId === driverId ? 'bg-f1-red/10 border-f1-red/20' : 'bg-background hover:border-gray-200/20'}`}>
-                      <div className="flex items-center gap-3">
-                        <div className="font-black text-text-muted w-6 text-center">{s.position}</div>
-                        <Link href={`/drivers/${s.Driver.driverId}`} className="font-bold text-foreground hover:text-f1-red">
+                <div className="space-y-2">
+                  {standings.map((s) => (
+                    <div key={s.Driver.driverId} className={`flex items-center justify-between p-2 rounded-lg border border-transparent transition-colors text-sm ${s.Driver.driverId === driverId ? 'bg-f1-red/10 border-f1-red/20' : 'bg-background hover:border-gray-200/20'}`}>
+                      <div className="flex items-center gap-2">
+                        <div className="font-black text-text-muted w-5 text-center text-xs">{s.position}</div>
+                        <Link href={`/drivers/${s.Driver.driverId}`} className="font-bold text-foreground hover:text-f1-red truncate max-w-[120px]">
                           {s.Driver.givenName} {s.Driver.familyName}
                         </Link>
                       </div>
-                      <div className="font-black text-f1-red">{s.points}</div>
+                      <div className="font-black text-f1-red text-xs">{s.points} pt</div>
                     </div>
                   ))}
                 </div>

@@ -22,7 +22,7 @@ const mockStats: Record<string, any> = {
 };
 
 export default function TracksPage() {
-  const [year, setYear] = useState<number>(2023);
+  const [year, setYear] = useState<number>(2026);
   const [circuits, setCircuits] = useState<Circuit[]>([]);
   const [selectedCircuit, setSelectedCircuit] = useState<Circuit | null>(null);
   const [loading, setLoading] = useState(false);
@@ -122,22 +122,24 @@ export default function TracksPage() {
             {/* Split View */}
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Normal View */}
-              <div className="bg-white p-8 rounded-3xl flex flex-col items-center shadow-sm">
-                <h3 className="text-2xl font-bold uppercase text-black mb-8 w-full text-center tracking-tight border-b pb-4">Track Layout</h3>
-                <div className="w-full max-w-md text-black">
+              <div className="bg-panel border border-gray-200/10 p-8 rounded-3xl flex flex-col items-center shadow-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
+                <h3 className="text-2xl font-bold uppercase text-foreground mb-8 w-full text-center tracking-tight border-b border-gray-200/10 pb-4 relative z-10">Track Layout</h3>
+                <div className="w-full max-w-md text-foreground relative z-10">
                   <TrackMap circuitId={selectedCircuit.circuitId} colored={false} />
                 </div>
               </div>
 
               {/* Colored View */}
-              <div className="bg-white p-8 rounded-3xl flex flex-col items-center shadow-sm">
-                <h3 className="text-2xl font-bold uppercase text-black mb-8 w-full text-center tracking-tight border-b pb-4">Speed Zones</h3>
-                <div className="w-full max-w-md text-black">
+              <div className="bg-panel border border-gray-200/10 p-8 rounded-3xl flex flex-col items-center shadow-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
+                <h3 className="text-2xl font-bold uppercase text-foreground mb-8 w-full text-center tracking-tight border-b border-gray-200/10 pb-4 relative z-10">Speed Zones</h3>
+                <div className="w-full max-w-md text-foreground relative z-10">
                   <TrackMap circuitId={selectedCircuit.circuitId} colored={true} />
                 </div>
                 
                 {/* Legend */}
-                <div className="flex gap-4 mt-8 w-full justify-center text-sm font-semibold text-black">
+                <div className="flex gap-4 mt-8 w-full justify-center text-sm font-semibold text-foreground relative z-10">
                   <div className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded-full bg-green-500"></div> Throttle
                   </div>

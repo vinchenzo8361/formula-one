@@ -515,3 +515,54 @@ export async function getAllDriverStandings(driverId: string): Promise<Standings
 
 export function getHistoricalDriverStats(driverId: string) { return (require('./historicalData.json').drivers[driverId] || { wins: 0, podiums: 0, points: 0, championships: 0 }); }
 export function getHistoricalConstructorStats(teamId: string) { return (require('./historicalData.json').constructors[teamId] || { wins: 0, podiums: 0, points: 0, championships: 0 }); }
+
+/**
+ * Calculates DNFs for a given season (array of races).
+ * A DNF is any race where the status does not include "Finished" or "+X Laps".
+ */
+export function calculateSeasonDNFs(races: Race[]): number {
+  let dnfs = 0;
+  for (const race of races) {
+    const results = race.Results || [];
+    for (const res of results) {
+      const status = res.status || "";
+      if (!status.includes("Finished") && !status.includes("+")) {
+        dnfs++;
+      }
+    }
+  }
+  return dnfs;
+}
+
+/**
+ * Calculates total career DNFs across all races.
+ */
+export function calculateCareerDNFs(allRaces: Race[]): number {
+  return calculateSeasonDNFs(allRaces);
+}
+
+/**
+ * Calculates Driver Championships won while driving for a specific constructor.
+ */
+export function calculateChampionshipsForConstructor(standingsList: StandingsList[], constructorId: string): number {
+  let championships = 0;
+  for (const list of standingsList) {
+    if (list.DriverStandings && list.DriverStandings.length > 0) {
+      const champion = list.DriverStandings[0];
+      if (champion.position === "1") {
+        const droveForTeam = champion.Constructors?.some(c => c.constructorId === constructorId);
+        if (droveForTeam) {
+          championships++;
+        }
+      }
+    }
+  }
+  return championships;
+}
+/**
+ * Calculates podiums from a list of results.
+ * A podium is any result where position is 1, 2, or 3.
+ */
+export function calculatePodiums(results: RaceResult[]): number {
+  return results.filter(r => r.position === "1" || r.position === "2" || r.position === "3").length;
+}

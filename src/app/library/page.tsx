@@ -1,9 +1,11 @@
-import { BookOpen, Zap, Wind, ShieldCheck, Wrench, Navigation, TrendingUp, Cpu, Gauge, Fuel } from "lucide-react";
+import { BookOpen, Zap, Wind, ShieldCheck, Wrench, Navigation, TrendingUp, Cpu, Gauge, Fuel, List, Settings, Globe } from "lucide-react";
 import Link from 'next/link';
+import Car3DViewer from '@/components/Car3DViewer';
 
 export default function LibraryPage() {
   return (
     <div className="flex-1 bg-panel min-h-screen text-foreground selection:bg-f1-red selection:text-white pb-24">
+      <Car3DViewer />
       {/* Magazine Cover Header */}
       <div className="relative bg-black text-white py-32 px-8 overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-600 via-black to-black"></div>
@@ -209,6 +211,99 @@ export default function LibraryPage() {
               <p className="text-text-muted text-sm">
                 Adrian Newey&apos;s mastery of fluid dynamics led to an incredibly complex 3D underbody geometry when ground effect regulations returned. While rivals chased top-surface aerodynamics and suffered from "porpoising," Red Bull generated peerless, stable downforce from below, resulting in one of the most dominant periods in motorsport history.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: The FIA */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+            <Globe className="w-10 h-10 text-f1-red" />
+            <h2 className="text-4xl font-extrabold uppercase tracking-tight">The FIA: The Governing Body</h2>
+          </div>
+          <div className="prose prose-lg prose-gray max-w-none text-foreground">
+            <p>
+              The Fédération Internationale de l'Automobile (FIA) is the governing body of motorsport worldwide, including Formula 1. Established in 1904, it aims to oversee regulations, safety, and sporting fair play. While Formula One Management (FOM) handles the commercial rights, the FIA dictates the technical, sporting, and financial regulations.
+            </p>
+            <p>
+              The FIA stewards officiate the races, making real-time decisions on penalties, safety cars, and race suspensions. They are also responsible for the relentless push for safety standards, from the introduction of crash testing to the mandatory Halo device and HANS systems, drastically reducing fatalities in the sport over recent decades.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 7: The Reverse Gearbox Mandate */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+            <Settings className="w-10 h-10 text-f1-red" />
+            <h2 className="text-4xl font-extrabold uppercase tracking-tight">The Reverse Gearbox Mandate</h2>
+          </div>
+          <div className="prose prose-lg prose-gray max-w-none text-foreground">
+            <p>
+              An interesting quirk in Formula 1 regulations is the mandatory inclusion of a reverse gear. Article 9.6 of the FIA Technical Regulations dictates that every car must have a reverse gear that can be operated by the driver at any time while the engine is running.
+            </p>
+            <p>
+              Despite this requirement, reverse gear is almost never used. F1 cars are designed solely to go forwards as fast as possible. The reverse gear is exceedingly small, fragile, and difficult to engage, mostly serving to get a car out of a barrier if it hasn't stalled. Due to weight saving, the gear is so delicate that using it risks shattering the transmission. It exists simply because the FIA mandates it for safety and track clearing, but drivers will often prefer to be pushed by marshals rather than risk their gearbox.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 8: 2026 F1 Car Parts List */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+            <List className="w-10 h-10 text-f1-red" />
+            <h2 className="text-4xl font-extrabold uppercase tracking-tight">2026 F1 Car Parts List</h2>
+          </div>
+          <div className="prose prose-lg prose-gray max-w-none text-foreground">
+            <p>A high-level breakdown of the thousands of bespoke components that make up a 2026 Formula 1 challenger.</p>
+            <div className="grid md:grid-cols-2 gap-8 mt-6">
+              <div className="bg-panel p-6 rounded-2xl border border-gray-200/20 shadow-sm">
+                <h3 className="text-xl font-bold mb-3 border-b border-gray-700 pb-2">Aerodynamics & Bodywork</h3>
+                <ul className="list-disc pl-5 text-text-muted space-y-1">
+                  <li>Active Front Wing Elements (2026 regs)</li>
+                  <li>Active Rear Wing (replacing DRS)</li>
+                  <li>Ground-Effect Venturi Floor Tunnels</li>
+                  <li>Sidepod Intake Vanes</li>
+                  <li>Carbon Fiber Engine Cover & Shark Fin</li>
+                  <li>Brake Duct Aerodynamic Fairings</li>
+                  <li>Nose Cone & Crash Structure</li>
+                </ul>
+              </div>
+              <div className="bg-panel p-6 rounded-2xl border border-gray-200/20 shadow-sm">
+                <h3 className="text-xl font-bold mb-3 border-b border-gray-700 pb-2">Power Unit (PU)</h3>
+                <ul className="list-disc pl-5 text-text-muted space-y-1">
+                  <li>1.6L V6 Internal Combustion Engine (ICE)</li>
+                  <li>Upgraded 350kW MGU-K (Kinetic)</li>
+                  <li>Energy Store (High-capacity Lithium-Ion Battery)</li>
+                  <li>Turbocharger (MGU-H removed for 2026)</li>
+                  <li>Custom Exhaust Manifold & Tailpipe</li>
+                  <li>High-Pressure Direct Fuel Injectors (100% Sustainable Fuel)</li>
+                  <li>Pre-chamber Ignition Plugs</li>
+                </ul>
+              </div>
+              <div className="bg-panel p-6 rounded-2xl border border-gray-200/20 shadow-sm">
+                <h3 className="text-xl font-bold mb-3 border-b border-gray-700 pb-2">Chassis & Suspension</h3>
+                <ul className="list-disc pl-5 text-text-muted space-y-1">
+                  <li>Carbon-Fiber Honeycomb Monocoque</li>
+                  <li>Titanium Halo Cockpit Protection</li>
+                  <li>Push-rod / Pull-rod Suspension Wishbones</li>
+                  <li>Inboard Torsion Springs & Dampers</li>
+                  <li>18-inch BBS Forged Magnesium Wheels</li>
+                  <li>Pirelli P-Zero Slicks & Cinturato Wets</li>
+                  <li>Carbon-Ceramic Brake Discs & Calipers</li>
+                </ul>
+              </div>
+              <div className="bg-panel p-6 rounded-2xl border border-gray-200/20 shadow-sm">
+                <h3 className="text-xl font-bold mb-3 border-b border-gray-700 pb-2">Electronics & Transmission</h3>
+                <ul className="list-disc pl-5 text-text-muted space-y-1">
+                  <li>Standardized Electronic Control Unit (ECU)</li>
+                  <li>8-Speed Semi-Automatic Seamless Shift Gearbox</li>
+                  <li>Mandatory Reverse Gear (Fragile, rarely used)</li>
+                  <li>Driver Steering Wheel with Integrated Dash Display</li>
+                  <li>Telemetry Sensors (over 300 per car)</li>
+                  <li>Fly-by-Wire Throttle & Brake Systems</li>
+                  <li>Two-Way Team Radio System</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

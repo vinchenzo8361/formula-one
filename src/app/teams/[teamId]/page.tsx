@@ -1,7 +1,7 @@
-import { getConstructorResultsByYear, getConstructorSeasons, getConstructorStandingsHistory, getConstructorDrivers, getHistoricalConstructorStats } from "@/lib/api";
+import { getConstructorResultsByYear, getConstructorSeasons, getConstructorStandingsHistory, getConstructorDrivers, getHistoricalConstructorStats, formatTeamName } from "@/lib/api";
 import { TEAM_DATA } from "@/lib/staticData";
 import YearSelector from "@/components/YearSelector";
-import { Shield, Flag, Trophy, Clock, Users } from "lucide-react";
+import { Shield, Flag, Trophy, Clock, Users, User } from "lucide-react";
 import { Suspense } from "react";
 import Link from "next/link";
 
@@ -43,10 +43,9 @@ export default async function TeamDetailsPage({
   const historicalStats = getHistoricalConstructorStats(teamId);
   let allTimePoints = historicalStats.points;
   let championships = historicalStats.championships;
+  let driverChampionships = (historicalStats as any).driverChampionships || Math.max(0, championships - 1); 
 
   // Add 2026 points to historical total (if 2026 is part of the fetching)
-  // Actually since getConstructorStandingsHistory includes 2026 if available, wait, we replaced it.
-  // We'll add 2026 results if we have them in the standings history to be safe
   for (const list of standingsHistory) {
     if (parseInt(list.season) === 2026) {
        list.ConstructorStandings?.forEach(standing => {
@@ -60,6 +59,8 @@ export default async function TeamDetailsPage({
   if (standingsHistory.length > 0 && standingsHistory[0].ConstructorStandings && standingsHistory[0].ConstructorStandings.length > 0) {
     teamInfo = standingsHistory[0].ConstructorStandings[0].Constructor;
   }
+  
+  teamInfo.name = formatTeamName(teamInfo.name);
 
   const staticData = TEAM_DATA[teamId] || TEAM_DATA[teamId.replace('_', '')] || null;
   
@@ -87,7 +88,7 @@ export default async function TeamDetailsPage({
             </div>
             <div>
               <h1 className="text-5xl font-extrabold tracking-tight mb-2 capitalize italic text-foreground">
-                {teamInfo.name}
+                {formatTeamName(teamInfo.name)}
               </h1>
               <p className="text-text-muted text-lg font-medium">Constructor Profile</p>
             </div>
@@ -98,12 +99,19 @@ export default async function TeamDetailsPage({
         </div>
 
         {/* Extended Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 flex items-center gap-4">
             <Trophy className="w-10 h-10 text-f1-red" />
             <div>
-              <div className="text-sm font-bold text-text-muted uppercase tracking-widest">Championships</div>
+              <div className="text-sm font-bold text-text-muted uppercase tracking-widest">WCC Titles</div>
               <div className="text-3xl font-black text-foreground">{championships}</div>
+            </div>
+          </div>
+          <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 flex items-center gap-4">
+            <User className="w-10 h-10 text-f1-red" />
+            <div>
+              <div className="text-sm font-bold text-text-muted uppercase tracking-widest">WDC Titles</div>
+              <div className="text-3xl font-black text-foreground">{driverChampionships}</div>
             </div>
           </div>
           <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 flex items-center gap-4">
