@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MapPin, Navigation2, Target, Calendar, Map, Activity, Flag, Clock } from "lucide-react";
+import { MapPin, Navigation2, Calendar, Map, Activity, Flag, Clock } from "lucide-react";
 import TrackMap from "@/components/TrackMap";
+import trackDataJson from "@/lib/trackData.json";
 
 interface Circuit {
   circuitId: string;
@@ -13,13 +14,14 @@ interface Circuit {
   };
 }
 
-const mockStats: Record<string, any> = {
-  monza: { elevation: '42.5m', length: '5.793 km', laps: 53, fastestLap: '1:21.046 (Barrichello, 2004)', topSpeed: '362 km/h' },
-  spa: { elevation: '102.2m', length: '7.004 km', laps: 44, fastestLap: '1:46.286 (Bottas, 2018)', topSpeed: '350 km/h' },
-  silverstone: { elevation: '11.3m', length: '5.891 km', laps: 52, fastestLap: '1:27.097 (Verstappen, 2020)', topSpeed: '330 km/h' },
-  monaco: { elevation: '42m', length: '3.337 km', laps: 78, fastestLap: '1:12.909 (Hamilton, 2021)', topSpeed: '290 km/h' },
-  generic: { elevation: '15m', length: '5.000 km', laps: 50, fastestLap: '1:30.000', topSpeed: '320 km/h' }
+type TrackStats = {
+  length: string;
+  lapRecord: string;
+  totalTurns: number;
+  minPitStops: number;
 };
+
+type TrackDataMap = Record<string, { stats: TrackStats }>;
 
 export default function TracksPage() {
   const [year, setYear] = useState<number>(2026);
@@ -47,9 +49,12 @@ export default function TracksPage() {
 
   const years = Array.from({ length: 2026 - 1950 + 1 }, (_, i) => 2026 - i);
 
-  const stats = selectedCircuit && mockStats[selectedCircuit.circuitId] 
-    ? mockStats[selectedCircuit.circuitId] 
-    : mockStats.generic;
+  const typedTrackData = trackDataJson as TrackDataMap;
+  const trackDataInfo = selectedCircuit && typedTrackData[selectedCircuit.circuitId]
+    ? typedTrackData[selectedCircuit.circuitId]
+    : typedTrackData.generic;
+
+  const stats = trackDataInfo.stats;
 
   return (
     <div className="flex-1 bg-panel min-h-screen text-foreground selection:bg-f1-red selection:text-white">
@@ -125,7 +130,7 @@ export default function TracksPage() {
               <div className="bg-panel border border-gray-200/10 p-8 rounded-3xl flex flex-col items-center shadow-sm relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
                 <h3 className="text-2xl font-bold uppercase text-foreground mb-8 w-full text-center tracking-tight border-b border-gray-200/10 pb-4 relative z-10">Track Layout</h3>
-                <div className="w-full max-w-md text-foreground relative z-10">
+                <div className="w-full max-w-md text-foreground relative z-10 flex justify-center p-4">
                   <TrackMap circuitId={selectedCircuit.circuitId} colored={false} />
                 </div>
               </div>
@@ -134,7 +139,7 @@ export default function TracksPage() {
               <div className="bg-panel border border-gray-200/10 p-8 rounded-3xl flex flex-col items-center shadow-sm relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
                 <h3 className="text-2xl font-bold uppercase text-foreground mb-8 w-full text-center tracking-tight border-b border-gray-200/10 pb-4 relative z-10">Speed Zones</h3>
-                <div className="w-full max-w-md text-foreground relative z-10">
+                <div className="w-full max-w-md text-foreground relative z-10 flex justify-center p-4">
                   <TrackMap circuitId={selectedCircuit.circuitId} colored={true} />
                 </div>
                 
@@ -156,7 +161,7 @@ export default function TracksPage() {
             {/* Stats */}
             <div className="bg-background border border-gray-200/20 p-8 rounded-3xl shadow-sm">
               <h3 className="text-3xl font-extrabold uppercase tracking-tight mb-8">Circuit Statistics</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="bg-panel p-6 rounded-2xl border border-gray-200/10">
                   <Navigation2 className="w-8 h-8 text-f1-red mb-4" />
                   <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Length</div>
@@ -164,23 +169,18 @@ export default function TracksPage() {
                 </div>
                 <div className="bg-panel p-6 rounded-2xl border border-gray-200/10">
                   <Activity className="w-8 h-8 text-f1-red mb-4" />
-                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Elevation</div>
-                  <div className="text-2xl font-bold">{stats.elevation}</div>
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Total Turns</div>
+                  <div className="text-2xl font-bold">{stats.totalTurns}</div>
                 </div>
                 <div className="bg-panel p-6 rounded-2xl border border-gray-200/10">
                   <Flag className="w-8 h-8 text-f1-red mb-4" />
-                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Laps</div>
-                  <div className="text-2xl font-bold">{stats.laps}</div>
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Min Pit Stops</div>
+                  <div className="text-2xl font-bold">{stats.minPitStops}</div>
                 </div>
-                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10 md:col-span-2 lg:col-span-1">
-                  <Target className="w-8 h-8 text-f1-red mb-4" />
-                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Top Speed</div>
-                  <div className="text-2xl font-bold">{stats.topSpeed}</div>
-                </div>
-                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10 md:col-span-3 lg:col-span-1">
+                <div className="bg-panel p-6 rounded-2xl border border-gray-200/10 md:col-span-4 lg:col-span-1">
                   <Clock className="w-8 h-8 text-f1-red mb-4" />
-                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Fastest Lap</div>
-                  <div className="text-xl font-bold truncate" title={stats.fastestLap}>{stats.fastestLap}</div>
+                  <div className="text-sm text-text-muted font-semibold uppercase tracking-wider mb-1">Lap Record</div>
+                  <div className="text-xl font-bold truncate" title={stats.lapRecord}>{stats.lapRecord}</div>
                 </div>
               </div>
             </div>

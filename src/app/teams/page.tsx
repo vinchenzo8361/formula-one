@@ -68,7 +68,7 @@ export default async function TeamsPage() {
 
         <div className="flex flex-col md:flex-row gap-12">
           {/* Sidebar Era Counter */}
-          <div className="md:w-48 shrink-0 border-r border-gray-200/20 pr-6 sticky top-8 h-fit hidden md:block">
+          <div className="md:w-48 shrink-0 border-r border-gray-200/20 pr-6 sticky top-32 h-[calc(100vh-8rem)] overflow-y-auto hidden md:block">
              <div className="text-xl font-black mb-4 italic">ERAS</div>
              <ul className="space-y-4 text-text-muted font-bold tracking-wider uppercase text-sm">
                <li><a href="#era-current" className="hover:text-f1-red transition-colors">Current</a></li>

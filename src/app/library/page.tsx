@@ -5,7 +5,6 @@ import Car3DViewer from '@/components/Car3DViewer';
 export default function LibraryPage() {
   return (
     <div className="flex-1 bg-panel min-h-screen text-foreground selection:bg-f1-red selection:text-white pb-24">
-      <Car3DViewer />
       {/* Magazine Cover Header */}
       <div className="relative bg-black text-white py-32 px-8 overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-600 via-black to-black"></div>
@@ -20,10 +19,35 @@ export default function LibraryPage() {
           <div className="mt-8 flex gap-4">
             <Link href="https://www.formula1.com/en/latest/tags.technical.31dF3uR5r3Z864a7OIKsCO.html" target="_blank" className="px-6 py-3 bg-f1-red text-white font-bold rounded-full hover:bg-f1-red/90 transition">Official F1 Tech</Link>
           </div>
+          <div className="w-full mt-12">
+            <Car3DViewer />
+          </div>
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto px-8 py-16 space-y-24">
+        {/* Section 0: F1 History */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+            <BookOpen className="w-10 h-10 text-f1-red" />
+            <h2 className="text-4xl font-extrabold uppercase tracking-tight">F1 History & Evolution</h2>
+          </div>
+          <div className="prose prose-lg prose-gray max-w-none text-foreground">
+            <h3 className="text-2xl font-bold mt-8 mb-3">The 1950 Origins at Silverstone</h3>
+            <p className="text-text-muted">
+              The story of the Formula One World Championship began on May 13, 1950, at the Silverstone Circuit in the United Kingdom. Formed from the ashes of pre-war Grand Prix racing, the newly established FIA formalized the rules (the "formula") that participants had to adhere to. The inaugural race, attended by King George VI, saw Alfa Romeo dominate with their supercharged 158 Alfettas, driven by legendary figures like Giuseppe Farina, who would go on to become the first World Champion, and Juan Manuel Fangio.
+            </p>
+            <h3 className="text-2xl font-bold mt-8 mb-3">The Rear-Engine Revolution</h3>
+            <p className="text-text-muted">
+              Throughout the 1950s, Formula 1 cars were front-engined beasts, characterized by massive power, narrow tires, and upright driver positions. This paradigm was shattered by the Cooper Car Company in the late 1950s. By placing a small Climax engine behind the driver, Cooper drastically reduced the car's polar moment of inertia, improving handling and aerodynamics. When Jack Brabham won the World Championship in 1959 and 1960 in the rear-engined Cooper, the entire grid realized the front-engine era was obsolete. Within a few years, every F1 car had transitioned to a mid-engine layout, fundamentally changing the sport's DNA forever.
+            </p>
+            <h3 className="text-2xl font-bold mt-8 mb-3">The Aerodynamics Revolution</h3>
+            <p className="text-text-muted">
+              In the late 1960s, a new frontier was explored: aerodynamics. Engineers like Colin Chapman of Lotus began strapping rudimentary wings onto cars to generate downforce, pushing the tires into the track for previously unimaginable cornering speeds. What started as fragile, high-mounted struts quickly evolved into an exact science. By the late 1970s, Lotus introduced "ground effect," shaping the entire underside of the car into a massive inverted wing. This era transformed cars from slippery, cigar-shaped tubes into aggressive, wedge-like fighter jets for the road, laying the groundwork for the wind-tunnel-perfected aero-monsters of today.
+            </p>
+          </div>
+        </section>
+
         {/* Section 1: Power Unit */}
         <section className="space-y-8">
           <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
@@ -304,6 +328,40 @@ export default function LibraryPage() {
                   <li>Two-Way Team Radio System</li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 9: Random F1 Fun Facts */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+            <Zap className="w-10 h-10 text-f1-red" />
+            <h2 className="text-4xl font-extrabold uppercase tracking-tight">Random F1 Fun Facts</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-black uppercase text-f1-red mb-2">The Six-Wheeled Wonder</h3>
+              <p className="text-text-muted text-sm">
+                In 1976, Tyrrell introduced the P34, the only six-wheeled car to ever race in F1. It featured four tiny 10-inch wheels at the front to reduce aerodynamic drag while maintaining the same contact patch as two normal tires. Unbelievably, it actually worked, securing a 1-2 finish at the 1976 Swedish Grand Prix before tire development issues rendered it obsolete.
+              </p>
+            </div>
+            <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-black uppercase text-f1-red mb-2">The Closest Finish in History</h3>
+              <p className="text-text-muted text-sm">
+                The 1971 Italian Grand Prix at Monza holds the record for the closest finish ever, with Peter Gethin beating Ronnie Peterson by just 0.01 seconds. The top five drivers crossed the finish line separated by a mere 0.61 seconds in a breathtaking slipstreaming battle.
+              </p>
+            </div>
+            <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-black uppercase text-f1-red mb-2">Weight Loss During a Race</h3>
+              <p className="text-text-muted text-sm">
+                F1 drivers experience such intense G-forces and heat inside the cockpit that they can lose up to 3-4 kg (6-9 lbs) of body weight in sweat during a single two-hour race, particularly in hot, humid climates like Singapore.
+              </p>
+            </div>
+            <div className="bg-panel border-2 border-gray-200/20 rounded-3xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-black uppercase text-f1-red mb-2">Upside-Down Downforce</h3>
+              <p className="text-text-muted text-sm">
+                A modern Formula 1 car generates so much aerodynamic downforce that, theoretically, once it surpasses speeds of around 130 mph (210 km/h), it could drive upside down on the ceiling of a tunnel. The air pushing the car up against the ceiling would exceed the car's weight pulling it down.
+              </p>
             </div>
           </div>
         </section>
