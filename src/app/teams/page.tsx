@@ -1,6 +1,7 @@
 import { getAllConstructors, Constructor, formatTeamName } from "@/lib/api";
 import Link from "next/link";
 import constructorEras from "@/lib/constructorEras.json";
+import TeamsSidebar from "@/components/TeamsSidebar";
 
 export default async function TeamsPage() {
   const allConstructors = await getAllConstructors();
@@ -55,7 +56,7 @@ export default async function TeamsPage() {
   };
 
   return (
-    <div className="flex-1 p-8 text-foreground bg-background min-h-screen">
+    <div className="flex-1 p-8 text-foreground min-h-screen">
       <div className="max-w-7xl mx-auto space-y-12">
         <header className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6 bg-panel p-8 rounded-3xl shadow-sm border border-gray-200/20">
           <div className="flex items-center gap-6">
@@ -68,15 +69,7 @@ export default async function TeamsPage() {
 
         <div className="flex flex-col md:flex-row gap-12">
           {/* Sidebar Era Counter */}
-          <div className="md:w-48 shrink-0 border-r border-gray-200/20 pr-6 sticky top-32 h-[calc(100vh-8rem)] overflow-y-auto hidden md:block">
-             <div className="text-xl font-black mb-4 italic">ERAS</div>
-             <ul className="space-y-4 text-text-muted font-bold tracking-wider uppercase text-sm">
-               <li><a href="#era-current" className="hover:text-f1-red transition-colors">Current</a></li>
-               {eras.map(era => (
-                 <li key={era.label}><a href={`#era-${era.label}`} className="hover:text-f1-red transition-colors">{era.label}</a></li>
-               ))}
-             </ul>
-          </div>
+          <TeamsSidebar eras={eras} />
 
           <div className="flex-1 space-y-16">
             <section id="era-current">

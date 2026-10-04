@@ -7,7 +7,7 @@ import { Search, ChevronDown, Check, Users, Flag, ChevronRight } from "lucide-re
 
 export default function TeamDriverPicker({ constructors }: { constructors: Constructor[] }) {
   const [selectedConstructor, setSelectedConstructor] = useState<Constructor | null>(null);
-  const [drivers, setDrivers] = useState<Driver[]>([]);
+  const [drivers, setDrivers] = useState<(Driver & { yearsStr?: string })[]>([]);
   const [loading, setLoading] = useState(false);
   const [teamSearch, setTeamSearch] = useState("");
   const [driverSearch, setDriverSearch] = useState("");
@@ -34,9 +34,38 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
     async function fetchDrivers() {
       setLoading(true);
       try {
-        const res = await fetch(`https://api.jolpi.ca/ergast/f1/constructors/${selectedConstructor?.constructorId}/drivers.json?limit=500`);
+        const res = await fetch(`https://api.jolpi.ca/ergast/f1/constructors/${selectedConstructor?.constructorId}/results.json?limit=2000`);
         const data = await res.json();
-        const fetchedDrivers = data?.MRData?.DriverTable?.Drivers || [];
+        const races = data?.MRData?.RaceTable?.Races || [];
+        
+        const driverMap = new Map();
+        for (const race of races) {
+          const season = parseInt(race.season, 10);
+          for (const result of race.Results || []) {
+            const driver = result.Driver;
+            if (!driverMap.has(driver.driverId)) {
+              driverMap.set(driver.driverId, {
+                ...driver,
+                years: new Set<number>()
+              });
+            }
+            driverMap.get(driver.driverId).years.add(season);
+          }
+        }
+
+        const fetchedDrivers = Array.from(driverMap.values()).map(d => {
+          const yearsArr = Array.from(d.years as Set<number>).sort((a, b) => a - b);
+          let yearsStr = "";
+          if (yearsArr.length > 0) {
+            const min = yearsArr[0];
+            const max = yearsArr[yearsArr.length - 1];
+            yearsStr = min === max ? `${min}` : `${min}-${max}`;
+          }
+          return {
+            ...d,
+            yearsStr
+          };
+        });
         setDrivers(fetchedDrivers);
       } catch (error) {
         console.error(error);
@@ -183,7 +212,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
                         <div className="flex justify-between items-center">
                           <div>
                             <div className="font-extrabold text-foreground text-lg mb-1 group-hover:text-f1-red transition-colors">
-                              {driver.givenName} {driver.familyName}
+                              {driver.givenName} {driver.familyName} <span className="text-sm text-text-muted ml-2 font-medium">{driver.yearsStr ? `(${driver.yearsStr})` : ''}</span>
                             </div>
                             <div className="text-xs font-bold text-text-muted uppercase tracking-widest">
                               {driver.nationality}

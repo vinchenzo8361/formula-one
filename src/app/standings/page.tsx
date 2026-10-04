@@ -1,13 +1,8 @@
-import { getHistoricalDriverStandings } from "@/lib/api";
+import { getHistoricalDriverStandings, formatTeamName } from "@/lib/api";
 import YearSelector from "@/components/YearSelector";
 import { Trophy } from "lucide-react";
 import { Suspense } from "react";
 import Link from "next/link";
-
-function formatConstructor(name: string) {
-  if (name === "RB" || name === "VCARB") return "Racing Bulls";
-  return name;
-}
 
 export default async function StandingsPage(props: { searchParams: Promise<{ year?: string }> }) {
   const searchParams = await props.searchParams;
@@ -68,7 +63,7 @@ export default async function StandingsPage(props: { searchParams: Promise<{ yea
                       <td className="py-4 px-4 text-text-muted">
                         {standing.Constructors[0] ? (
                           <Link href={`/teams/${standing.Constructors[0].constructorId}`} className="hover:text-f1-red transition-colors">
-                            {formatConstructor(standing.Constructors[0].name)}
+                            {formatTeamName(standing.Constructors[0].name)}
                           </Link>
                         ) : (
                           "N/A"

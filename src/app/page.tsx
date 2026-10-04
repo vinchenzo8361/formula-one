@@ -1,5 +1,5 @@
 import { Timer, Trophy, TrendingUp } from "lucide-react";
-import { getCurrentSchedule, getCurrentDriverStandings } from "@/lib/api";
+import { getCurrentSchedule, getCurrentDriverStandings, getRaceResults, getCurrentConstructorStandings } from "@/lib/api";
 import Countdown from "@/components/Countdown";
 import Link from "next/link";
 
@@ -11,6 +11,21 @@ function formatConstructor(name: string) {
 export default async function Home() {
   const schedule = await getCurrentSchedule();
   const standings = await getCurrentDriverStandings();
+  const constructorStandings = await getCurrentConstructorStandings();
+
+  let lastRaceName = "Latest Race";
+  let lastRaceResults: any[] = [];
+  try {
+    const res = await fetch("https://api.jolpi.ca/ergast/f1/current/last/results.json", { next: { revalidate: 3600 }});
+    const data = await res.json();
+    const races = data?.MRData?.RaceTable?.Races;
+    if (races && races.length > 0) {
+      lastRaceName = races[0].raceName;
+      lastRaceResults = races[0].Results || [];
+    }
+  } catch (e) {
+    console.error(e);
+  }
   
   // Find next race dynamically
   const now = new Date();
@@ -30,7 +45,7 @@ export default async function Home() {
   const top5Drivers = standings.slice(0, 5);
 
   return (
-    <div className="flex-1 p-8 text-foreground min-h-screen bg-gradient-to-br from-background to-panel">
+    <div className="flex-1 p-8 text-foreground min-h-screen">
       <div className="max-w-6xl mx-auto space-y-8 relative z-10">
         <header className="mb-10 bg-panel/80 backdrop-blur p-8 rounded-3xl shadow-sm border border-gray-200/20 flex items-center justify-between">
           <div>
@@ -105,6 +120,60 @@ export default async function Home() {
               )}
             </div>
           </section>
+          {/* Latest Race Results & Constructor Standings */}
+          <div className="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-5 gap-6">
+            <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 md:col-span-3 border border-gray-200/20">
+              <div className="flex items-center gap-3 mb-6">
+                <Timer className="w-6 h-6 text-f1-red" />
+                <h2 className="text-xl font-bold tracking-tight">Latest Race: {lastRaceName}</h2>
+              </div>
+              <div className="space-y-3">
+                {lastRaceResults.slice(0, 5).map((result) => (
+                  <div key={result.position} className="flex justify-between items-center p-3 rounded-2xl hover:bg-background transition-colors border border-transparent hover:border-gray-200/20">
+                    <div className="flex items-center gap-4">
+                      <span className="text-xl font-extrabold text-f1-red w-5 text-center">{result.position}</span>
+                      <div>
+                        <Link href={`/drivers/${result.Driver.driverId}`} className="font-bold text-foreground text-lg hover:text-f1-red transition-colors block">
+                          {result.Driver.givenName} {result.Driver.familyName}
+                        </Link>
+                        <div className="text-xs text-text-muted uppercase font-bold tracking-wider">{formatConstructor(result.Constructor.name)}</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm font-mono text-text-muted font-bold">{result.Time?.time || result.status}</div>
+                      <div className="text-sm font-bold text-f1-red">+{result.points} pts</div>
+                    </div>
+                  </div>
+                ))}
+                {lastRaceResults.length === 0 && (
+                  <div className="p-4 text-center text-text-muted">No race results available.</div>
+                )}
+              </div>
+            </section>
+            
+            <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-200/20">
+              <div className="flex items-center gap-3 mb-6">
+                <Trophy className="w-6 h-6 text-f1-red" />
+                <h2 className="text-xl font-bold tracking-tight">Constructor Standings</h2>
+              </div>
+              <div className="space-y-3">
+                {constructorStandings.slice(0, 5).map((team) => (
+                  <div key={team.position} className="flex justify-between items-center p-3 rounded-2xl hover:bg-background transition-colors border border-transparent hover:border-gray-200/20">
+                    <div className="flex items-center gap-4">
+                      <span className="text-xl font-extrabold text-f1-red w-5 text-center">{team.position}</span>
+                      <Link href={`/teams/${team.Constructor.constructorId}`} className="font-bold text-foreground text-lg hover:text-f1-red transition-colors block">
+                        {formatConstructor(team.Constructor.name)}
+                      </Link>
+                    </div>
+                    <div className="text-lg font-bold text-foreground">{team.points} pts</div>
+                  </div>
+                ))}
+                {constructorStandings.length === 0 && (
+                  <div className="p-4 text-center text-text-muted">No constructor standings available.</div>
+                )}
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { getDriverResultsByYear, getDriverSeasons, getHistoricalDriverStandings, getAllDriverResults, getAllDriverStandings, getHistoricalDriverStats, calculateCareerDNFs, calculateSeasonDNFs } from "@/lib/api";
+import { getDriverResultsByYear, getDriverSeasons, getHistoricalDriverStandings, getAllDriverResults, getAllDriverStandings, getHistoricalDriverStats, calculateCareerDNFs, calculateSeasonDNFs, formatTeamName } from "@/lib/api";
 import { DRIVER_DATA } from "@/lib/staticData";
 import YearSelector from "@/components/YearSelector";
 import { User, Flag, Trophy, AlertTriangle } from "lucide-react";
@@ -63,6 +63,26 @@ export default async function DriverDetailsPage({
       }
     }
   }
+
+  // Calculate driver timeline from allResults
+  const timelineMap = new Map<number, Set<string>>();
+  for (const race of allResults) {
+    const s = parseInt(race.season, 10);
+    const result = race.Results?.[0];
+    if (result?.Constructor?.name) {
+      if (!timelineMap.has(s)) {
+        timelineMap.set(s, new Set<string>());
+      }
+      timelineMap.get(s)?.add(formatTeamName(result.Constructor.name));
+    }
+  }
+
+  const timeline = Array.from(timelineMap.entries())
+    .sort(([yearA], [yearB]) => yearA - yearB)
+    .map(([y, teamsSet]) => ({
+      year: y,
+      teams: Array.from(teamsSet).join(", "),
+    }));
 
   const staticData = DRIVER_DATA[driverId];
   
@@ -280,6 +300,23 @@ export default async function DriverDetailsPage({
             )}
           </div>
         </div>
+
+        {/* Timeline Section */}
+        {timeline.length > 0 && (
+          <section className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 mt-8">
+            <h3 className="text-xl font-bold tracking-tight mb-6 flex items-center gap-2">
+              <User className="w-5 h-5 text-f1-red" /> Career Timeline
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {timeline.map((item) => (
+                <div key={item.year} className="bg-background border border-gray-200/20 rounded-xl p-4 min-w-[150px] flex-1">
+                  <div className="text-f1-red font-black text-xl mb-1">{item.year}</div>
+                  <div className="text-foreground font-bold text-sm">{item.teams}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

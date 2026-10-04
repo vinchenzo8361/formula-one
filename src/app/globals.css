@@ -29,9 +29,9 @@
 body {
   background-color: var(--background);
   background-image: 
-    linear-gradient(90deg, transparent 80%, rgba(225, 6, 0, 0.05) 80%, rgba(225, 6, 0, 0.05) 82%, transparent 82%, transparent 83%, rgba(0, 0, 0, 0.05) 83%, rgba(0, 0, 0, 0.05) 85%, transparent 85%),
-    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.01) 75%, rgba(0,0,0,0.01)),
-    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.01) 75%, rgba(0,0,0,0.01));
+    linear-gradient(90deg, transparent 80%, rgba(225, 6, 0, 0.20) 80%, rgba(225, 6, 0, 0.20) 82%, transparent 82%, transparent 83%, rgba(0, 0, 0, 0.20) 83%, rgba(0, 0, 0, 0.20) 85%, transparent 85%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.16) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.16) 75%, rgba(0,0,0,0.16)),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.16) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.16) 75%, rgba(0,0,0,0.16));
   background-size: 100% 100%, 60px 60px, 60px 60px;
   background-position: 0 0, 0 0, 30px 30px;
   color: var(--foreground);
@@ -43,5 +43,5 @@ body {
   background-image: 
     repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,0.05) 5px, rgba(255,255,255,0.05) 10px),
     repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,255,255,0.05) 5px, rgba(255,255,255,0.05) 10px);
-  background-size: 256px 256px;
+  background-size: 205px 205px;
 }

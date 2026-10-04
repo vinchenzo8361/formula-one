@@ -57,7 +57,7 @@ export default function TracksPage() {
   const stats = trackDataInfo.stats;
 
   return (
-    <div className="flex-1 bg-panel min-h-screen text-foreground selection:bg-f1-red selection:text-white">
+    <div className="flex-1 min-h-screen text-foreground selection:bg-f1-red selection:text-white">
       {/* Header */}
       <div className="relative bg-black text-white py-32 px-8 overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-f1-red via-black to-black"></div>
