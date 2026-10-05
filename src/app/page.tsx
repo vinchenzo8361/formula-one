@@ -128,7 +128,7 @@ export default async function Home() {
                 <h2 className="text-xl font-bold tracking-tight">Latest Race: {lastRaceName}</h2>
               </div>
               <div className="space-y-3">
-                {lastRaceResults.slice(0, 5).map((result) => (
+                {lastRaceResults.slice(0, 10).map((result) => (
                   <div key={result.position} className="flex justify-between items-center p-3 rounded-2xl hover:bg-background transition-colors border border-transparent hover:border-gray-200/20">
                     <div className="flex items-center gap-4">
                       <span className="text-xl font-extrabold text-f1-red w-5 text-center">{result.position}</span>
@@ -157,7 +157,7 @@ export default async function Home() {
                 <h2 className="text-xl font-bold tracking-tight">Constructor Standings</h2>
               </div>
               <div className="space-y-3">
-                {constructorStandings.slice(0, 5).map((team) => (
+                {constructorStandings.map((team) => (
                   <div key={team.position} className="flex justify-between items-center p-3 rounded-2xl hover:bg-background transition-colors border border-transparent hover:border-gray-200/20">
                     <div className="flex items-center gap-4">
                       <span className="text-xl font-extrabold text-f1-red w-5 text-center">{team.position}</span>

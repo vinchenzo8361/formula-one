@@ -65,7 +65,7 @@ const BASE_URL = 'https://api.jolpi.ca/ergast/f1';
  */
 export async function getCurrentDriverStandings(): Promise<DriverStanding[]> {
   try {
-    const res = await fetch(`${BASE_URL}/current/driverStandings.json`, {
+    const res = await fetch(`${BASE_URL}/current/driverStandings.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) {
@@ -88,7 +88,7 @@ export async function getCurrentDriverStandings(): Promise<DriverStanding[]> {
  */
 export async function getCurrentConstructorStandings(): Promise<ConstructorStanding[]> {
   try {
-    const res = await fetch(`${BASE_URL}/current/constructorStandings.json`, {
+    const res = await fetch(`${BASE_URL}/current/constructorStandings.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) {
@@ -111,7 +111,7 @@ export async function getCurrentConstructorStandings(): Promise<ConstructorStand
  */
 export async function getCurrentSchedule(): Promise<Race[]> {
   try {
-    const res = await fetch(`${BASE_URL}/current.json`, {
+    const res = await fetch(`${BASE_URL}/current.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) {
@@ -131,7 +131,7 @@ export async function getCurrentSchedule(): Promise<Race[]> {
  */
 export async function getHistoricalDriverStandings(year: number): Promise<DriverStanding[]> {
   try {
-    const res = await fetch(`${BASE_URL}/${year}/driverStandings.json`, {
+    const res = await fetch(`${BASE_URL}/${year}/driverStandings.json?limit=1000`, {
       next: { revalidate: 86400 }, // Cache longer for historical data
     });
     if (!res.ok) {
@@ -256,7 +256,7 @@ export function formatTeamName(name: string): string {
  */
 export async function getRaceResults(season: string, round: string): Promise<RaceResult[]> {
   try {
-    const res = await fetch(`${BASE_URL}/${season}/${round}/results.json`, {
+    const res = await fetch(`${BASE_URL}/${season}/${round}/results.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error(`Failed to fetch race results for ${season} round ${round}`);
@@ -277,7 +277,7 @@ export async function getRaceResults(season: string, round: string): Promise<Rac
  */
 export async function getQualifyingResults(season: string, round: string): Promise<QualifyingResult[]> {
   try {
-    const res = await fetch(`${BASE_URL}/${season}/${round}/qualifying.json`, {
+    const res = await fetch(`${BASE_URL}/${season}/${round}/qualifying.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error(`Failed to fetch qualifying results for ${season} round ${round}`);
@@ -298,7 +298,7 @@ export async function getQualifyingResults(season: string, round: string): Promi
  */
 export async function getDriverResultsByYear(driverId: string, year: number | string): Promise<Race[]> {
   try {
-    const res = await fetch(`${BASE_URL}/${year}/drivers/${driverId}/results.json`, {
+    const res = await fetch(`${BASE_URL}/${year}/drivers/${driverId}/results.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error(`Failed to fetch driver results for ${driverId} in ${year}`);
@@ -320,7 +320,7 @@ export interface Season {
  */
 export async function getDriverSeasons(driverId: string): Promise<number[]> {
   try {
-    const res = await fetch(`${BASE_URL}/drivers/${driverId}/seasons.json`, {
+    const res = await fetch(`${BASE_URL}/drivers/${driverId}/seasons.json?limit=1000`, {
       next: { revalidate: 86400 },
     });
     if (!res.ok) throw new Error(`Failed to fetch seasons for driver ${driverId}`);
@@ -338,7 +338,7 @@ export async function getDriverSeasons(driverId: string): Promise<number[]> {
  */
 export async function getConstructorSeasons(constructorId: string): Promise<number[]> {
   try {
-    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/seasons.json`, {
+    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/seasons.json?limit=1000`, {
       next: { revalidate: 86400 },
     });
     if (!res.ok) throw new Error(`Failed to fetch seasons for constructor ${constructorId}`);
@@ -356,7 +356,7 @@ export async function getConstructorSeasons(constructorId: string): Promise<numb
  */
 export async function getConstructorResultsByYear(constructorId: string, year: number | string): Promise<Race[]> {
   try {
-    const res = await fetch(`${BASE_URL}/${year}/constructors/${constructorId}/results.json`, {
+    const res = await fetch(`${BASE_URL}/${year}/constructors/${constructorId}/results.json?limit=1000`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error(`Failed to fetch constructor results for ${constructorId} in ${year}`);
@@ -397,7 +397,7 @@ export async function getAllConstructors(): Promise<Constructor[]> {
  */
 export async function getConstructorDrivers(constructorId: string): Promise<Driver[]> {
   try {
-    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/drivers.json?limit=500`, {
+    const res = await fetch(`${BASE_URL}/constructors/${constructorId}/drivers.json?limit=1000`, {
       next: { revalidate: 86400 },
     });
     if (!res.ok) throw new Error(`Failed to fetch drivers for constructor ${constructorId}: ${res.statusText}`);

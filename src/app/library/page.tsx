@@ -8,6 +8,7 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 export default function LibraryPage() {
   const sectionIds = [
     'how-it-works',
+    'race-strategy',
     'history',
     'power-unit',
     'aero',
@@ -59,6 +60,7 @@ export default function LibraryPage() {
             <ul className="space-y-3 font-bold text-sm tracking-wider uppercase">
               {[
                 { id: 'how-it-works', label: 'How F1 Works' },
+                { id: 'race-strategy', label: 'Race Strategy' },
                 { id: 'history', label: 'History' },
                 { id: 'power-unit', label: 'Power Unit' },
                 { id: 'aero', label: 'Aerodynamics' },
@@ -106,6 +108,23 @@ export default function LibraryPage() {
             </div>
           </section>
 
+          <section id="race-strategy" className="space-y-8 pt-8">
+            <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+              <TrendingUp className="w-10 h-10 text-f1-red" />
+              <h2 className="text-4xl font-extrabold uppercase tracking-tight">Race Strategy</h2>
+            </div>
+            <div className="prose prose-lg prose-gray max-w-none text-foreground">
+              <h3 className="text-2xl font-bold mt-8 mb-3">Pit Stops</h3>
+              <p className="text-text-muted">A modern F1 pit stop is a choreographed masterpiece taking around 2 to 2.5 seconds. A crew of nearly 20 mechanics changes all four tires using precision pneumatic wheel guns. Beyond just changing tires, mechanics can adjust the front wing angle to balance the car's aerodynamics as the fuel load decreases.</p>
+              
+              <h3 className="text-2xl font-bold mt-8 mb-3">The Undercut</h3>
+              <p className="text-text-muted">The undercut occurs when a driver pits earlier than the car ahead. The fresh tires provide an immediate pace advantage on the out-lap. If the driver ahead pits on the next lap, the time gained by the chasing car on fresh tires is often enough to leapfrog them when they exit the pits.</p>
+              
+              <h3 className="text-2xl font-bold mt-8 mb-3">The Overcut</h3>
+              <p className="text-text-muted">The overcut is the opposite strategy. A driver stays out on older tires while the car ahead pits. This works when the car pitting gets stuck in traffic or takes longer to warm up the hard compound tires, allowing the car staying out to put in fast laps in clean air before pitting later and emerging ahead.</p>
+            </div>
+          </section>
+
           <section id="history" className="space-y-8 pt-8">
             <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
               <BookOpen className="w-10 h-10 text-f1-red" />
@@ -140,7 +159,7 @@ export default function LibraryPage() {
               <p className="text-xl leading-relaxed font-medium text-foreground">
                 Introduced in 2014, the current Formula 1 power units are the most efficient and complex internal combustion engines ever created. Delivering over 1,000 horsepower from a tiny 1.6-liter displacement, they represent a monumental leap in automotive engineering.
               </p>
-              <div className="grid md:grid-cols-2 gap-8 my-8">
+              <div className="grid md:grid-cols-3 gap-8 my-8">
                 <div className="bg-background p-6 rounded-2xl border border-gray-200/20 shadow-sm">
                   <h3 className="text-2xl font-bold mb-3 flex items-center gap-2"><Gauge className="w-6 h-6 text-f1-red" /> MGU-K (Kinetic)</h3>
                   <p className="text-text-muted">
@@ -153,12 +172,15 @@ export default function LibraryPage() {
                     The Motor Generator Unit - Heat is connected directly to the turbocharger shaft. It captures heat energy from the exhaust gases and uses it to generate electrical power or spool up the turbo compressor, eliminating &quot;turbo lag&quot; entirely and optimizing the air intake mixture at any engine RPM.
                   </p>
                 </div>
+                <div className="bg-background p-6 rounded-2xl border border-gray-200/20 shadow-sm">
+                  <h3 className="text-2xl font-bold mb-3 flex items-center gap-2"><Cpu className="w-6 h-6 text-f1-red" /> ICE (Internal Combustion)</h3>
+                  <p className="text-text-muted">
+                    The 1.6-liter V6 Internal Combustion Engine revs up to 15,000 RPM. It utilizes a pre-chamber ignition system (Turbulent Jet Ignition) to burn an incredibly lean fuel-air mixture efficiently. Advanced metallurgy and 3D printing are used for complex cooling to withstand the immense pressures.
+                  </p>
+                </div>
               </div>
               <p className="text-foreground mt-6">
                 Combined with a 1.6-liter V6 internal combustion engine running at a restricted 15,000 RPM, the entire system operates at thermal efficiencies exceeding 50%—a remarkable engineering milestone compared to road cars, which typically hover around 30%. The energy recovery system (ERS) is governed by strict regulations on deployment per lap, making energy management a crucial strategic element of every race.
-              </p>
-              <p className="text-foreground mt-4">
-                Furthermore, the internal combustion engine (ICE) utilizes a pre-chamber ignition system (often referred to as Turbulent Jet Ignition). This allows for an incredibly lean fuel-air mixture to be burned efficiently, squeezing every drop of performance from the strictly regulated 110kg fuel allowance. Advanced metallurgy and 3D printing techniques are employed to create complex cooling channels inside the piston heads to withstand the immense pressures and temperatures.
               </p>
             </div>
           </section>
@@ -193,9 +215,9 @@ export default function LibraryPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">Dirty Air & Computational Fluid Dynamics (CFD)</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Clean Air vs Dirty Air</h3>
                   <p className="text-text-muted mt-2">
-                    As a car punches through the air, it leaves a turbulent, chaotic wake behind it. A following car entering this &quot;dirty air&quot; loses grip and aerodynamic balance, which is why following closely in high-speed corners is immensely difficult. Teams utilize millions of hours of supercomputer time for Computational Fluid Dynamics (CFD) to model these airflow patterns, perfectly complementing their limited physical wind tunnel testing time to extract milliseconds of performance.
+                    A car driving in "clean air" (with no cars immediately ahead) experiences undisturbed, predictable airflow, allowing the aerodynamic surfaces to generate maximum downforce. Conversely, as a car punches through the air, it leaves a chaotic, turbulent wake behind it. A following car entering this "dirty air" experiences a significant loss of downforce, making it immensely difficult to follow closely in high-speed corners. This creates an aerodynamic imbalance, often leading to increased tire wear as the car slides more. Teams spend millions of hours on Computational Fluid Dynamics (CFD) to model these complex wakes and optimize their cars for both clean air performance and dirty air resilience.
                   </p>
                 </div>
               </div>

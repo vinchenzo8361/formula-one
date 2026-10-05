@@ -79,10 +79,52 @@ export default async function DriverDetailsPage({
 
   const timeline = Array.from(timelineMap.entries())
     .sort(([yearA], [yearB]) => yearA - yearB)
-    .map(([y, teamsSet]) => ({
-      year: y,
-      teams: Array.from(teamsSet).join(", "),
-    }));
+    .map(([y, teamsSet]) => {
+      const yearStandings = allStandings.find(s => s.season === y.toString());
+      const pos = yearStandings?.DriverStandings?.[0]?.position;
+      return {
+        year: y,
+        position: pos ? ` (P${pos})` : '',
+        teams: Array.from(teamsSet).join(", "),
+      };
+    });
+
+  // Group teams by year ranges
+  const teamRanges = new Map<string, number[]>();
+  for (const item of timeline) {
+    const teams = item.teams.split(", ");
+    for (const team of teams) {
+      if (!teamRanges.has(team)) {
+        teamRanges.set(team, []);
+      }
+      teamRanges.get(team)?.push(item.year);
+    }
+  }
+
+  // Format ranges (e.g., [2017, 2018, 2019, 2023, 2024] -> "2017-2019, 2023-2024")
+  const formatYearRanges = (years: number[]) => {
+    if (years.length === 0) return "";
+    years.sort((a, b) => a - b);
+    const ranges = [];
+    let start = years[0];
+    let end = years[0];
+    for (let i = 1; i < years.length; i++) {
+      if (years[i] === end + 1) {
+        end = years[i];
+      } else {
+        ranges.push(start === end ? `${start}` : `${start}-${end}`);
+        start = years[i];
+        end = years[i];
+      }
+    }
+    ranges.push(start === end ? `${start}` : `${start}-${end}`);
+    return ranges.join(", ");
+  };
+
+  const groupedTeams = Array.from(teamRanges.entries()).map(([team, years]) => ({
+    team,
+    ranges: formatYearRanges(years),
+  }));
 
   const staticData = DRIVER_DATA[driverId];
   
@@ -310,8 +352,25 @@ export default async function DriverDetailsPage({
             <div className="flex flex-wrap gap-4">
               {timeline.map((item) => (
                 <div key={item.year} className="bg-background border border-gray-200/20 rounded-xl p-4 min-w-[150px] flex-1">
-                  <div className="text-f1-red font-black text-xl mb-1">{item.year}</div>
+                  <div className="text-f1-red font-black text-xl mb-1">{item.year}<span className="text-sm ml-1 text-text-muted">{item.position}</span></div>
                   <div className="text-foreground font-bold text-sm">{item.teams}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Team Groups Section */}
+        {groupedTeams.length > 0 && (
+          <section className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 mt-8">
+            <h3 className="text-xl font-bold tracking-tight mb-6 flex items-center gap-2">
+              <User className="w-5 h-5 text-f1-red" /> Team History
+            </h3>
+            <div className="flex flex-col gap-3">
+              {groupedTeams.map((group) => (
+                <div key={group.team} className="flex justify-between items-center bg-background border border-gray-200/20 rounded-xl p-4">
+                  <div className="text-foreground font-bold text-lg">{group.team}</div>
+                  <div className="text-text-muted font-medium text-sm">{group.ranges}</div>
                 </div>
               ))}
             </div>
