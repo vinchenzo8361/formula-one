@@ -1,5 +1,25 @@
 import { getRaceResults, getQualifyingResults, formatTeamName } from '@/lib/api';
 import Link from 'next/link';
+import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
+
+function PositionChange({ grid, position }: { grid: string; position: string }) {
+  const g = parseInt(grid, 10);
+  const p = parseInt(position, 10);
+  
+  if (isNaN(g) || isNaN(p) || g === 0) {
+    return <span className="inline-flex items-center text-text-muted ml-2 text-xs" title="Started from Pit Lane / Unclassified"><Minus className="w-3 h-3" /></span>;
+  }
+  
+  const diff = g - p;
+  
+  if (diff > 0) {
+    return <span className="inline-flex items-center text-green-500 ml-2 text-xs font-bold"><ArrowUp className="w-3 h-3 mr-0.5" />{diff}</span>;
+  } else if (diff < 0) {
+    return <span className="inline-flex items-center text-red-500 ml-2 text-xs font-bold"><ArrowDown className="w-3 h-3 mr-0.5" />{Math.abs(diff)}</span>;
+  }
+  
+  return <span className="inline-flex items-center text-text-muted ml-2 text-xs"><Minus className="w-3 h-3" /></span>;
+}
 
 export default async function RaceDetailsPage({ params }: { params: Promise<{ round: string }> }) {
   const season = 'current'; // Use current to get the real latest season data
@@ -60,11 +80,12 @@ export default async function RaceDetailsPage({ params }: { params: Promise<{ ro
                   {raceResults.map((res) => (
                     <tr key={res.number} className="hover:bg-background/50 transition-colors">
                       <td className="py-4 px-6 text-foreground font-medium">{res.position}</td>
-                      <td className="py-4 px-6 text-foreground">
+                      <td className="py-4 px-6 text-foreground flex items-center">
                         <Link href={`/drivers/${res.Driver.driverId}`} className="hover:text-f1-red transition-colors">
                           <span className="hidden sm:inline">{res.Driver.givenName} </span>
                           <span className="font-semibold">{res.Driver.familyName}</span>
                         </Link>
+                        <PositionChange grid={res.grid} position={res.position} />
                       </td>
                       <td className="py-4 px-6 text-text-muted text-sm">
                         {formatTeamName(res.Constructor.name)}

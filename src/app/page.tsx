@@ -1,7 +1,8 @@
-import { Timer, Trophy, TrendingUp } from "lucide-react";
+import { Timer, Trophy, TrendingUp, CalendarDays } from "lucide-react";
 import { getCurrentSchedule, getCurrentDriverStandings, getRaceResults, getCurrentConstructorStandings } from "@/lib/api";
 import Countdown from "@/components/Countdown";
 import Link from "next/link";
+import DriverSpotlight from "@/components/DriverSpotlight";
 
 function formatConstructor(name: string) {
   if (name === "RB" || name === "VCARB") return "Racing Bulls";
@@ -29,10 +30,12 @@ export default async function Home() {
   
   // Find next race dynamically
   const now = new Date();
-  let nextRace = schedule.find(race => {
+  const upcomingRaces = schedule.filter(race => {
     const raceDate = new Date(`${race.date}T${race.time || '00:00:00Z'}`);
     return raceDate > now;
   });
+
+  let nextRace = upcomingRaces[0];
 
   // If season ended, show the last race
   if (!nextRace && schedule.length > 0) {
@@ -43,6 +46,7 @@ export default async function Home() {
 
   // Top 5 drivers instead of Top 3
   const top5Drivers = standings.slice(0, 5);
+  const next3Races = upcomingRaces.slice(0, 3);
 
   return (
     <div className="flex-1 p-8 text-foreground min-h-screen">
@@ -68,7 +72,7 @@ export default async function Home() {
           <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 border border-gray-200/20">
             <div className="flex items-center gap-3 mb-6">
                <Trophy className="w-6 h-6 text-f1-red" />
-               <h2 className="text-xl font-bold tracking-tight">Top 5 Drivers</h2>
+               <h2 className="text-xl font-bold tracking-tight">Top 5 Drivers in the 2026 Season</h2>
             </div>
             <div className="space-y-3">
               {top5Drivers.map((standing) => (
@@ -91,35 +95,33 @@ export default async function Home() {
             </div>
           </section>
 
-          {/* Likely to Win Predictor */}
-          <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 md:col-span-2 border border-gray-200/20">
+          {/* Next 3 Races */}
+          <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 border border-gray-200/20 flex flex-col">
             <div className="flex items-center gap-3 mb-6">
-              <TrendingUp className="w-6 h-6 text-f1-red" />
-              <h2 className="text-xl font-bold tracking-tight">Likely to Win Predictor</h2>
+              <CalendarDays className="w-6 h-6 text-f1-red" />
+              <h2 className="text-xl font-bold tracking-tight">Next 3 Races</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {top5Drivers.map((standing, idx) => {
-                const percentages = [40, 25, 15, 12, 8];
-                const colors = ['text-f1-red border-f1-red/20', 'text-blue-500 border-blue-500/20', 'text-orange-500 border-orange-500/20', 'text-green-500 border-green-500/20', 'text-purple-500 border-purple-500/20'];
-                return (
-                  <div key={standing.Driver.driverId} className={`p-4 rounded-2xl flex items-center gap-4 border shadow-sm transition-transform hover:-translate-y-1 bg-background ${colors[idx] || colors[0]}`}>
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-xl bg-panel shadow-sm border border-gray-200/20 text-foreground`}>
-                      {percentages[idx] || 5}%
-                    </div>
-                    <div>
-                      <Link href={`/drivers/${standing.Driver.driverId}`} className="text-lg font-bold text-foreground hover:text-f1-red transition-colors block">
-                        {standing.Driver.givenName} {standing.Driver.familyName}
-                      </Link>
-                      <div className="text-xs uppercase tracking-wider font-bold opacity-75 text-text-muted">{formatConstructor(standing.Constructors[0]?.name || "N/A")}</div>
-                    </div>
-                  </div>
-                );
-              })}
-              {top5Drivers.length === 0 && (
-                <div className="text-center w-full text-text-muted col-span-2">No predictions available.</div>
-              )}
+            <div className="flex-1 space-y-3">
+              {next3Races.map(race => (
+                <div key={race.round} className="p-4 rounded-2xl bg-background border border-gray-200/20 hover:border-f1-red/50 transition-colors">
+                  <div className="text-sm text-f1-red font-bold mb-1">Round {race.round}</div>
+                  <div className="font-bold text-foreground text-lg">{race.raceName}</div>
+                  <div className="text-sm text-text-muted mt-1">{new Date(`${race.date}T${race.time || '00:00:00Z'}`).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</div>
+                </div>
+              ))}
+              {next3Races.length < 3 && Array.from({ length: 3 - next3Races.length }).map((_, i) => (
+                <div key={`empty-${i}`} className="p-4 rounded-2xl bg-background border border-gray-200/20 flex items-center justify-center opacity-50 border-dashed">
+                  <div className="font-bold text-text-muted">2027 Season</div>
+                </div>
+              ))}
             </div>
+            <Link href="/schedule" className="mt-6 block w-full py-3 text-center bg-f1-red text-white font-bold rounded-xl hover:bg-red-700 transition-colors">
+              View Full Schedule
+            </Link>
           </section>
+
+          {/* Driver Spotlight */}
+          <DriverSpotlight />
           {/* Latest Race Results & Constructor Standings */}
           <div className="col-span-1 md:col-span-3 grid grid-cols-1 md:grid-cols-5 gap-6">
             <section className="bg-panel rounded-3xl p-8 shadow-sm col-span-1 md:col-span-3 border border-gray-200/20">

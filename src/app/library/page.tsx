@@ -9,6 +9,11 @@ export default function LibraryPage() {
   const sectionIds = [
     'how-it-works',
     'race-strategy',
+    'tires',
+    'flags',
+    'safety-car',
+    'penalties',
+    'race-procedure',
     'history',
     'power-unit',
     'aero',
@@ -61,6 +66,11 @@ export default function LibraryPage() {
               {[
                 { id: 'how-it-works', label: 'How F1 Works' },
                 { id: 'race-strategy', label: 'Race Strategy' },
+                { id: 'tires', label: 'Tires & Rules' },
+                { id: 'flags', label: 'Racing Flags' },
+                { id: 'safety-car', label: 'Safety Car & VSC' },
+                { id: 'penalties', label: 'Penalties & Limits' },
+                { id: 'race-procedure', label: 'Race Procedures' },
                 { id: 'history', label: 'History' },
                 { id: 'power-unit', label: 'Power Unit' },
                 { id: 'aero', label: 'Aerodynamics' },
@@ -122,6 +132,98 @@ export default function LibraryPage() {
               
               <h3 className="text-2xl font-bold mt-8 mb-3">The Overcut</h3>
               <p className="text-text-muted">The overcut is the opposite strategy. A driver stays out on older tires while the car ahead pits. This works when the car pitting gets stuck in traffic or takes longer to warm up the hard compound tires, allowing the car staying out to put in fast laps in clean air before pitting later and emerging ahead.</p>
+            </div>
+          </section>
+
+          <section id="tires" className="space-y-8 pt-8">
+            <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+              <Activity className="w-10 h-10 text-f1-red" />
+              <h2 className="text-4xl font-extrabold uppercase tracking-tight">Tires & Rules</h2>
+            </div>
+            <div className="prose prose-lg prose-gray max-w-none text-foreground">
+              <h3 className="text-2xl font-bold mt-8 mb-3">Tire Compounds (C1-C5)</h3>
+              <p className="text-text-muted">Pirelli produces five slick tire compounds for dry conditions, from C1 (hardest) to C5 (softest). For each race, Pirelli selects three compounds to be used, designating them as Hard (White), Medium (Yellow), and Soft (Red).</p>
+              <ul className="list-disc pl-5 text-text-muted space-y-2">
+                <li><strong>Soft (Red):</strong> Provides the most grip and fastest lap times, but degrades the quickest.</li>
+                <li><strong>Medium (Yellow):</strong> A balance between performance and durability.</li>
+                <li><strong>Hard (White):</strong> Offers the least grip but the longest lifespan, ideal for long stints.</li>
+              </ul>
+              
+              <h3 className="text-2xl font-bold mt-8 mb-3">Wet Weather Tires</h3>
+              <ul className="list-disc pl-5 text-text-muted space-y-2">
+                <li><strong>Intermediate (Green):</strong> Used for damp or drying tracks, or light rain. They have shallow grooves to disperse water.</li>
+                <li><strong>Full Wet (Blue):</strong> Used in heavy rain. They feature deep treads designed to displace huge amounts of water (up to 85 liters per second per tire at 300km/h) to prevent aquaplaning.</li>
+              </ul>
+
+              <h3 className="text-2xl font-bold mt-8 mb-3">Tire Rules</h3>
+              <p className="text-text-muted">In a dry race, drivers must use at least two different dry-weather compounds during the Grand Prix. This mandates at least one pit stop. If it rains and a driver uses Intermediates or Wets, this two-compound rule is waived.</p>
+            </div>
+          </section>
+
+          <section id="flags" className="space-y-8 pt-8">
+            <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+              <Wind className="w-10 h-10 text-f1-red" />
+              <h2 className="text-4xl font-extrabold uppercase tracking-tight">Racing Flags</h2>
+            </div>
+            <div className="prose prose-lg prose-gray max-w-none text-foreground">
+              <p className="text-text-muted">Marshals use flags to communicate vital information to drivers on track.</p>
+              <ul className="list-disc pl-5 text-text-muted space-y-4 mt-4">
+                <li><strong>Yellow Flag:</strong> Indicates danger ahead. Single yellow means reduce speed and no overtaking. Double yellow means reduce speed significantly, no overtaking, and be prepared to stop.</li>
+                <li><strong>Green Flag:</strong> The track is clear, normal racing conditions resume.</li>
+                <li><strong>Red Flag:</strong> The session is suspended due to extreme danger, severe weather, or a heavily blocked track. Drivers must return to the pit lane slowly.</li>
+                <li><strong>Blue Flag:</strong> Shown to a lapped driver indicating a faster car is approaching and they must let them pass.</li>
+                <li><strong>Black Flag:</strong> The driver is disqualified and must return to the pits immediately.</li>
+                <li><strong>Black and Orange Flag (Meatball):</strong> The car has a mechanical issue or loose bodywork that poses a danger; the driver must pit for repairs.</li>
+                <li><strong>Black and White Flag:</strong> A warning for unsportsmanlike behavior or track limits violations.</li>
+                <li><strong>Checkered Flag:</strong> The session or race has ended.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="safety-car" className="space-y-8 pt-8">
+            <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+              <ShieldCheck className="w-10 h-10 text-f1-red" />
+              <h2 className="text-4xl font-extrabold uppercase tracking-tight">Safety Car & VSC</h2>
+            </div>
+            <div className="prose prose-lg prose-gray max-w-none text-foreground">
+              <h3 className="text-2xl font-bold mt-8 mb-3">Safety Car (SC)</h3>
+              <p className="text-text-muted">Deployed when there is an immediate but not extreme danger on track (e.g., a crash or debris). The Safety Car gathers the pack behind it, dictating the pace. Overtaking is strictly prohibited. This neutralizes the race and bunches up the field, completely erasing any gaps built up by the leaders.</p>
+              
+              <h3 className="text-2xl font-bold mt-8 mb-3">Virtual Safety Car (VSC)</h3>
+              <p className="text-text-muted">Used for less severe incidents where double yellow flags are not enough, but a full Safety Car is unnecessary. Instead of a physical car grouping the pack, drivers must reduce their speed and stay above a delta time on their steering wheel (usually around 30% slower). The gaps between drivers remain roughly the same.</p>
+            </div>
+          </section>
+
+          <section id="penalties" className="space-y-8 pt-8">
+            <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+              <Settings className="w-10 h-10 text-f1-red" />
+              <h2 className="text-4xl font-extrabold uppercase tracking-tight">Penalties & Track Limits</h2>
+            </div>
+            <div className="prose prose-lg prose-gray max-w-none text-foreground">
+              <h3 className="text-2xl font-bold mt-8 mb-3">Common Penalties</h3>
+              <ul className="list-disc pl-5 text-text-muted space-y-2">
+                <li><strong>5-Second or 10-Second Time Penalty:</strong> The most common penalty. It can be served during a scheduled pit stop (mechanics cannot touch the car until the time elapses), or added to the driver's total race time at the end.</li>
+                <li><strong>Drive-Through Penalty:</strong> The driver must drive through the pit lane at the speed limit without stopping.</li>
+                <li><strong>Stop-and-Go Penalty (e.g., 10s):</strong> The driver must enter the pits, stop in their box for the designated time, and then leave. No tire changes or repairs are allowed.</li>
+                <li><strong>Grid Penalty:</strong> Applied to the starting grid of the next race (e.g., a 5-place drop) for replacing excessive engine components or serious infractions in the previous session.</li>
+              </ul>
+              
+              <h3 className="text-2xl font-bold mt-8 mb-3">Track Limits</h3>
+              <p className="text-text-muted">A driver must keep at least one part of the car (usually a tire) within the white lines defining the edge of the track. If a driver exceeds track limits and gains an advantage, their lap time in qualifying is deleted. In the race, drivers receive warnings (Black/White flag after 3 strikes); further offenses result in time penalties (e.g., 5s on the 4th strike).</p>
+            </div>
+          </section>
+
+          <section id="race-procedure" className="space-y-8 pt-8">
+            <div className="flex items-center gap-4 border-b-4 border-f1-red pb-4">
+              <Navigation className="w-10 h-10 text-f1-red" />
+              <h2 className="text-4xl font-extrabold uppercase tracking-tight">Race Procedures</h2>
+            </div>
+            <div className="prose prose-lg prose-gray max-w-none text-foreground">
+              <h3 className="text-2xl font-bold mt-8 mb-3">The Formation Lap</h3>
+              <p className="text-text-muted">Before the race starts, cars complete one formation lap (parade lap) behind the Safety Car to warm up their tires and brakes, ensure the car is running correctly, and form up on their grid slots. Overtaking is not allowed. Once they align on the grid, the five red lights illuminate sequentially and then extinguish to start the race.</p>
+              
+              <h3 className="text-2xl font-bold mt-8 mb-3">Parc Fermé</h3>
+              <p className="text-text-muted">"Closed Park" rules take effect from the moment a car leaves the pit lane in Qualifying until the start of the race. During Parc Fermé, teams are strictly prohibited from making major setup changes to the cars (like changing suspension geometry, wing levels, or engine parts). Only minor adjustments like front wing angles and tire pressures are allowed. Breaking these rules usually means starting from the pit lane.</p>
             </div>
           </section>
 
