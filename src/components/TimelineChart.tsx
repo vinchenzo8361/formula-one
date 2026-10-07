@@ -62,7 +62,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               y={Y_OFFSET + (i - 0.5) * Y_SPACING}
               width={svgWidth}
               height={Y_SPACING}
-              className="fill-white dark:fill-[#1a1a1a]"
+              className={i % 2 === 0 ? "fill-white dark:fill-[#1a1a1a]" : "fill-white dark:fill-[#222]"}
             />
           ))}
 
@@ -211,6 +211,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
