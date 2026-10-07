@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 const constructorColorsLight: Record<string, string> = {
   red_bull: '#3671C6',
@@ -37,8 +38,11 @@ const constructorColorsDark: Record<string, string> = {
 export default function TimelineChart({ graphData }: { graphData: any }) {
   const [hoveredDriver, setHoveredDriver] = useState<string | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const container = scrollContainerRef.current;
     if (!container) return;
 
@@ -53,14 +57,13 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   }, []);
 
   const { timeline, drivers } = graphData;
-  const maxRank = Math.max(...drivers.flatMap((d: any) => d.history.map((h: any) => h.rank)));
-  const numRows = Math.max(drivers.length, maxRank);
+  const numRows = drivers.length;
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
   const X_SPACING = 78;
   const Y_OFFSET = 30;
-  const Y_SPACING = 22;
+  const Y_SPACING = 32;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numRows * Y_SPACING + 50;
@@ -228,15 +231,12 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     );
   };
 
+  const currentTheme = mounted ? (resolvedTheme === 'light' ? 'light' : 'dark') : 'dark';
+
   return (
     <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
-      {/* EXPLICIT LIGHT MODE SVG */}
-      <svg width={svgWidth} height={svgHeight} className="min-w-full block dark:hidden">
-        {renderSvgContent('light')}
-      </svg>
-      {/* EXPLICIT DARK MODE SVG */}
-      <svg width={svgWidth} height={svgHeight} className="min-w-full hidden dark:block">
-        {renderSvgContent('dark')}
+      <svg width={svgWidth} height={svgHeight} className="min-w-full">
+        {renderSvgContent(currentTheme)}
       </svg>
     </div>
   );
