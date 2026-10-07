@@ -6,14 +6,16 @@ const constructorColors: Record<string, string> = {
   red_bull: '#3671C6',
   ferrari: '#E8002D',
   mclaren: '#FF8000',
-  mercedes: '#27F4D2',
+  mercedes: '#00A19B',
   aston_martin: '#229971',
-  alpine: '#0093CC',
-  williams: '#64C4FF',
-  rb: '#6692FF',
-  sauber: '#52E252',
-  haas: '#B6BABD',
-  kick_sauber: '#52E252'
+  alpine: '#005BB5',
+  williams: '#005AFF',
+  rb: '#1A2CDE',
+  sauber: '#00A000',
+  audi: '#00A000',
+  haas: '#E6002B',
+  cadillac: '#FFB800',
+  kick_sauber: '#00A000'
 };
 
 export default function TimelineChart({ graphData }: { graphData: any }) {
@@ -60,7 +62,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y={Y_OFFSET + (i - 0.5) * Y_SPACING}
             width={svgWidth}
             height={Y_SPACING}
-            className={i % 2 === 0 ? "fill-white dark:fill-[#1a1a1a]" : "fill-gray-50 dark:fill-transparent"}
+            className={i % 2 === 0 ? "fill-white dark:fill-[#1a1a1a]" : "fill-gray-100 dark:fill-[#222]"}
           />
         ))}
 
@@ -72,7 +74,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y1={Y_OFFSET + i * Y_SPACING}
             x2={svgWidth}
             y2={Y_OFFSET + i * Y_SPACING}
-            className="stroke-gray-300 dark:stroke-gray-800"
+            className="stroke-gray-200 dark:stroke-gray-800"
             strokeWidth="1"
           />
         ))}
@@ -96,7 +98,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               <text
                 textAnchor="middle"
                 fontSize="10"
-                className="font-mono uppercase fill-gray-600 dark:fill-gray-400"
+                className="font-mono uppercase fill-gray-700 dark:fill-gray-400"
               >
                 {namePart2 ? (
                   <>
@@ -112,7 +114,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y1={Y_OFFSET}
                 x2={x}
                 y2={svgHeight - 20}
-                className="stroke-gray-300 dark:stroke-gray-800"
+                className="stroke-gray-200 dark:stroke-gray-800"
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
@@ -162,7 +164,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                     cy={y}
                     r={isHovered ? 5.5 : 3.5}
                     fill={color}
-                    stroke="#111"
+                    className="stroke-white dark:stroke-[#111]"
                     strokeWidth="2"
                   />
                 );
@@ -175,7 +177,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 textAnchor="end"
                 fontSize="10"
                 fontWeight="bold"
-                className={isHovered ? "fill-foreground dark:fill-white" : "fill-gray-600 dark:fill-gray-400"}
+                className={isHovered ? "fill-foreground dark:fill-white" : "fill-gray-700 dark:fill-gray-400"}
               >
                 {driver.familyName}
               </text>
@@ -209,6 +211,8 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
+
 
 
 
