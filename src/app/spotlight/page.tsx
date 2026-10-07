@@ -1,33 +1,24 @@
 import React from 'react';
 import { Clock, Zap, Calendar, MapPin, Gauge, Info } from 'lucide-react';
 
-const ON_THIS_DAY_FACTS = [
-  "In 1950, the first ever Formula 1 World Championship race was held at Silverstone.",
-  "Michael Schumacher won his first ever World Championship in 1994.",
-  "Ayrton Senna performed the 'Lap of the Gods' at Donington Park in 1993.",
-  "Max Verstappen became the youngest ever F1 race winner at the 2016 Spanish Grand Prix (18 years, 228 days).",
-  "Sebastian Vettel clinched his fourth consecutive World Championship in 2013.",
-  "Jenson Button won the chaotic and marathon 2011 Canadian Grand Prix.",
-  "Lewis Hamilton secured his record-equaling 7th World Championship in 2020.",
-  "Niki Lauda made an astonishing comeback at Monza in 1976, just six weeks after his fiery crash at the Nürburgring.",
-  "Kimi Räikkönen won the World Championship by a single point in 2007.",
-  "Fernando Alonso ended the Michael Schumacher dominance by winning the 2005 World Championship.",
-  "Brawn GP won their debut race in 2009, going on to win the championship in their only season.",
-  "Juan Manuel Fangio won his legendary fifth World Championship at the Nürburgring in 1957.",
-  "Rubens Barrichello won his first race at the 2000 German Grand Prix after starting 18th.",
-  "Pierre Gasly secured a shock maiden victory for AlphaTauri at Monza in 2020.",
-  "Esteban Ocon won the dramatic 2021 Hungarian Grand Prix for Alpine.",
-  "Daniel Ricciardo won the 2018 Monaco Grand Prix despite suffering an MGU-K failure.",
-  "George Russell scored his maiden F1 victory at the 2022 São Paulo Grand Prix.",
-  "Carlos Sainz won his first race at the 2022 British Grand Prix.",
-  "Lando Norris claimed his maiden F1 victory at the 2024 Miami Grand Prix.",
-  "Charles Leclerc won the 2019 Italian Grand Prix, sending the Tifosi into a frenzy."
-];
+const HISTORICAL_FACTS: Record<string, string> = {
+  "10-07": "In 2012, Kamui Kobayashi scored his first and only F1 podium in front of a home crowd at the Japanese Grand Prix in Suzuka.",
+  "10-08": "In 2000, Michael Schumacher won the Japanese GP, securing Ferrari's first Drivers' Championship in 21 years.",
+  "10-09": "In 2011, Sebastian Vettel secured his second World Championship at Suzuka.",
+  "10-10": "In 1999, the first ever Malaysian Grand Prix was held at the newly built Sepang International Circuit.",
+  "10-11": "In 2020, Lewis Hamilton won the Eifel Grand Prix, officially equaling Michael Schumacher's all-time record of 91 wins.",
+  "10-12": "In 2003, Michael Schumacher clinched his record-breaking sixth World Championship at Suzuka.",
+  "10-13": "In 2013, Sebastian Vettel won the Japanese Grand Prix, continuing his dominant run of nine consecutive wins that season.",
+  "10-14": "In 2012, Sebastian Vettel won the Korean Grand Prix, taking the championship lead from Fernando Alonso.",
+  "10-15": "In 2006, Fernando Alonso essentially secured his second World Championship after Michael Schumacher suffered an engine failure at Suzuka."
+};
 
 export default function SpotlightPage() {
   const today = new Date();
-  const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24);
-  const todaysFact = ON_THIS_DAY_FACTS[dayOfYear % ON_THIS_DAY_FACTS.length];
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const dateKey = `${month}-${day}`;
+  const todaysFact = HISTORICAL_FACTS[dateKey] || "On this day in motorsport history, legendary teams and drivers continued to push the absolute limits of engineering and human endurance.";
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
