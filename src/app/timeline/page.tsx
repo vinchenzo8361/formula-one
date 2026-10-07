@@ -24,20 +24,24 @@ export default async function TimelinePage() {
   // Filter for completed races and fetch their individual results sequentially to avoid rate limiting
   const completedRacesMeta = allRaces.filter((r: any) => new Date(r.date) < new Date());
   
-      const completedRaces = [];
+        const completedRaces = [];
   for (const r of completedRacesMeta) {
     try {
-      let response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/results.json', { next: { revalidate: 3600 } });
+      let response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/driverStandings.json', { next: { revalidate: 3600 } });
       if (!response.ok) {
         await new Promise(resolve => setTimeout(resolve, 1500));
-        response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/results.json', { next: { revalidate: 3600 } });
+        response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/driverStandings.json', { next: { revalidate: 3600 } });
       }
       if (response.ok) {
         const text = await response.text();
         try {
           const res = JSON.parse(text);
-          if (res?.MRData?.RaceTable?.Races?.[0]) {
-            completedRaces.push(res.MRData.RaceTable.Races[0]);
+          if (res?.MRData?.StandingsTable?.StandingsLists?.[0]) {
+            completedRaces.push({
+              round: r.round,
+              raceName: r.raceName,
+              DriverStandings: res.MRData.StandingsTable.StandingsLists[0].DriverStandings
+            });
           }
         } catch (err) {
           console.warn('JSON parse failed for round ' + r.round);
@@ -49,11 +53,6 @@ export default async function TimelinePage() {
       console.warn('Network error for round ' + r.round);
     }
     await new Promise(resolve => setTimeout(resolve, 300));
-  }
-
-  const completedRacesMap = new Map();
-  for (const race of completedRaces) {
-    completedRacesMap.set(parseInt(race.round, 10), race);
   }
 
   const driversMap = new Map();
@@ -71,48 +70,35 @@ export default async function TimelinePage() {
     { round: 0, raceName: 'Qualifying' }
   ];
 
-  for (const race of allRaces) {
-    const roundStr = race.round;
-    const roundNum = parseInt(roundStr, 10);
-    const raceName = race.raceName;
-    raceTimeline.push({ round: roundNum, raceName });
+  for (const race of completedRaces) {
+    const roundNum = parseInt(race.round, 10);
+    raceTimeline.push({ round: roundNum, raceName: race.raceName });
 
-    const completedRace = completedRacesMap.get(roundNum);
-    if (completedRace) {
-      // Update points for this race
-      const results = completedRace.Results;
-      for (const res of results) {
-        const dId = res.Driver.driverId;
-        if (driversMap.has(dId)) {
-          const points = parseFloat(res.points);
-          const driverData = driversMap.get(dId);
-          driverData.cumulativePoints += points;
-        }
-      }
-
-      // After adding points, determine the rank of all base drivers based on cumulativePoints
-      const driversList = Array.from(driversMap.values());
-      driversList.sort((a, b) => {
-        // Sort by cumulative points descending
-        if (b.cumulativePoints !== a.cumulativePoints) {
-          return b.cumulativePoints - a.cumulativePoints;
-        }
-        // Fallback: stable by previous rank
-        const aPrevRank = a.history[a.history.length - 1].rank;
-        const bPrevRank = b.history[b.history.length - 1].rank;
-        return aPrevRank - bPrevRank;
-      });
-
-      // Assign new rank
-      driversList.forEach((d, index) => {
-        const newRank = index + 1;
-        d.history.push({
+    for (const standing of race.DriverStandings) {
+      const dId = standing.Driver.driverId;
+      if (driversMap.has(dId)) {
+        const driverData = driversMap.get(dId);
+        driverData.cumulativePoints = parseFloat(standing.points);
+        driverData.history.push({
           round: roundNum,
-          raceName,
-          rank: newRank,
-          points: d.cumulativePoints
+          raceName: race.raceName,
+          rank: parseInt(standing.position, 10),
+          points: driverData.cumulativePoints
         });
-      });
+      }
+    }
+    
+    // For any base driver who didn't appear in the standings (e.g., replaced or DNS), copy their last rank and points
+    for (const driverData of driversMap.values()) {
+      if (driverData.history.length < raceTimeline.length) {
+        const lastHistory = driverData.history[driverData.history.length - 1];
+        driverData.history.push({
+          round: roundNum,
+          raceName: race.raceName,
+          rank: lastHistory.rank,
+          points: driverData.cumulativePoints
+        });
+      }
     }
   }
 
@@ -131,6 +117,7 @@ export default async function TimelinePage() {
     </div>
   );
 }
+
 
 
 
