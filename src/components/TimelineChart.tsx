@@ -6,16 +6,16 @@ const constructorColors: Record<string, string> = {
   red_bull: '#3671C6',
   ferrari: '#E8002D',
   mclaren: '#FF8000',
-  mercedes: '#27F4D2',
-  aston_martin: '#229971',
-  alpine: '#0093CC',
-  williams: '#64C4FF',
-  rb: '#6692FF',
-  sauber: '#52E252',
-  audi: '#52E252',
-  haas: '#B6BABD',
-  cadillac: '#FFD700',
-  kick_sauber: '#52E252'
+  mercedes: '#00A19B',
+  aston_martin: '#006F62',
+  alpine: '#005BB5',
+  williams: '#005AFF',
+  rb: '#1A2CDE',
+  sauber: '#00A000',
+  audi: '#00A000',
+  haas: '#E6002B',
+  cadillac: '#D4AF37',
+  kick_sauber: '#00A000'
 };
 
 export default function TimelineChart({ graphData }: { graphData: any }) {
@@ -55,16 +55,16 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
         {/* Zebra striping */}
-        {Array.from({ length: numRows }).map((_, i) => (
-          <rect
-            key={`band-${i}`}
-            x={0}
-            y={Y_OFFSET + (i - 0.5) * Y_SPACING}
-            width={svgWidth}
-            height={Y_SPACING}
-            className={i % 2 === 0 ? "fill-[#1a1a1a]" : "fill-[#222]"}
-          />
-        ))}
+          {Array.from({ length: numRows }).map((_, i) => (
+            <rect
+              key={`band-${i}`}
+              x={0}
+              y={Y_OFFSET + (i - 0.5) * Y_SPACING}
+              width={svgWidth}
+              height={Y_SPACING}
+              className="fill-white"
+            />
+          ))}
 
         {/* Background Grid - Horizontal Lines */}
         {Array.from({ length: numRows }).map((_, i) => (
@@ -74,7 +74,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y1={Y_OFFSET + i * Y_SPACING}
             x2={svgWidth}
             y2={Y_OFFSET + i * Y_SPACING}
-            className="stroke-gray-800"
+            className="stroke-gray-200"
             strokeWidth="1"
           />
         ))}
@@ -98,7 +98,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               <text
                 textAnchor="middle"
                 fontSize="10"
-                className="font-mono uppercase fill-gray-400"
+                className="font-mono uppercase fill-gray-800"
               >
                 {namePart2 ? (
                   <>
@@ -114,7 +114,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y1={Y_OFFSET}
                 x2={x}
                 y2={svgHeight - 20}
-                className="stroke-gray-800"
+                className="stroke-gray-200"
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
@@ -164,7 +164,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                     cy={y}
                     r={isHovered ? 5.5 : 3.5}
                     fill={color}
-                    stroke="#111"
+                    className="stroke-white"
                     strokeWidth="2"
                   />
                 );
@@ -177,7 +177,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 textAnchor="end"
                 fontSize="10"
                 fontWeight="bold"
-                className={isHovered ? "fill-white" : "fill-gray-400"}
+                className={isHovered ? "fill-black" : "fill-gray-800"}
               >
                 {driver.familyName}
               </text>
@@ -199,7 +199,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   textAnchor="start"
                   fontSize="10"
                   fontWeight="bold"
-                  className="fill-white"
+                  className="fill-black"
                 >
                   P{driver.history[lastHistoryIndex].rank} ({driver.cumulativePoints} pts)
                 </text>
@@ -211,6 +211,8 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
+
 
 
 
