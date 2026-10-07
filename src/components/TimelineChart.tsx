@@ -36,8 +36,9 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     return () => container.removeEventListener('wheel', handleWheel);
   }, []);
 
-  const { timeline, drivers } = graphData;
-  const numDrivers = drivers.length;
+    const { timeline, drivers } = graphData;
+  const maxRank = Math.max(...drivers.flatMap((d: any) => d.history.map((h: any) => h.rank)));
+  const numRows = Math.max(drivers.length, maxRank);
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
@@ -46,13 +47,13 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const Y_SPACING = 25;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
-  const svgHeight = Y_OFFSET + numDrivers * Y_SPACING + 50;
+  const svgHeight = Y_OFFSET + numRows * Y_SPACING + 50;
 
   return (
     <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
         {/* Zebra striping */}
-        {Array.from({ length: numDrivers }).map((_, i) => (
+        {Array.from({ length: numRows }).map((_, i) => (
           <rect
             key={`band-${i}`}
             x={0}
@@ -64,7 +65,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
         ))}
 
         {/* Background Grid - Horizontal Lines */}
-        {Array.from({ length: numDrivers }).map((_, i) => (
+        {Array.from({ length: numRows }).map((_, i) => (
           <line
             key={`h-grid-${i}`}
             x1={0}
@@ -208,6 +209,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
