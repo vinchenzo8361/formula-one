@@ -44,7 +44,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
-  const X_SPACING = 85;
+  const X_SPACING = 75;
   const Y_OFFSET = 30;
   const Y_SPACING = 22;
 
@@ -211,6 +211,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
