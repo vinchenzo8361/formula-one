@@ -3,6 +3,7 @@ import TimelineChart from '@/components/TimelineChart';
 export default async function TimelinePage() {
   // Fetch qualifying data for the base drivers
   const qualiRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/qualifying.json', { next: { revalidate: 3600 } });
+  if (!qualiRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
   const qualiData = await qualiRes.json();
   const qualifyingResults = qualiData.MRData.RaceTable.Races[0].QualifyingResults;
 
@@ -16,19 +17,38 @@ export default async function TimelinePage() {
 
   // Fetch full schedule
   const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { next: { revalidate: 3600 } });
+  if (!scheduleRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
   const scheduleData = await scheduleRes.json();
   const allRaces = scheduleData.MRData.RaceTable.Races;
 
   // Filter for completed races and fetch their individual results sequentially to avoid rate limiting
   const completedRacesMeta = allRaces.filter((r: any) => new Date(r.date) < new Date());
   
-  const completedRaces = [];
+      const completedRaces = [];
   for (const r of completedRacesMeta) {
-    const res = await fetch(`https://api.jolpi.ca/ergast/f1/current/${r.round}/results.json`, { next: { revalidate: 3600 } }).then(res => res.json());
-    if (res.MRData.RaceTable.Races[0]) {
-      completedRaces.push(res.MRData.RaceTable.Races[0]);
+    try {
+      let response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/results.json', { next: { revalidate: 3600 } });
+      if (!response.ok) {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/results.json', { next: { revalidate: 3600 } });
+      }
+      if (response.ok) {
+        const text = await response.text();
+        try {
+          const res = JSON.parse(text);
+          if (res?.MRData?.RaceTable?.Races?.[0]) {
+            completedRaces.push(res.MRData.RaceTable.Races[0]);
+          }
+        } catch (err) {
+          console.warn('JSON parse failed for round ' + r.round);
+        }
+      } else {
+        console.warn('Failed to fetch round ' + r.round);
+      }
+    } catch (err) {
+      console.warn('Network error for round ' + r.round);
     }
-    await new Promise(resolve => setTimeout(resolve, 200));
+    await new Promise(resolve => setTimeout(resolve, 300));
   }
 
   const completedRacesMap = new Map();
@@ -111,3 +131,6 @@ export default async function TimelinePage() {
     </div>
   );
 }
+
+
+
