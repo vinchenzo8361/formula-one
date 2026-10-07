@@ -73,7 +73,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
         {/* Background striping */}
         {Array.from({ length: numRows }).map((_, i) => (
           <rect
-            key={and- + i}
+            key={"band-" + i}
             x={0}
             y={Y_OFFSET + (i - 0.5) * Y_SPACING}
             width={svgWidth}
@@ -85,7 +85,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
         {/* Background Grid - Horizontal Lines */}
         {Array.from({ length: numRows }).map((_, i) => (
           <line
-            key={h-grid- + i}
+            key={"hgrid-" + i}
             x1={0}
             y1={Y_OFFSET + i * Y_SPACING}
             x2={svgWidth}
@@ -110,7 +110,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
           }
 
           return (
-            <g key={ace- + i}>
+            <g key={"race-" + i}>
               <text
                 textAnchor="middle"
                 fontSize="11"
@@ -154,7 +154,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
 
           return (
             <g 
-              key={driver- + driver.driverId}
+              key={"driver-" + driver.driverId}
               onMouseEnter={() => setHoveredDriver(driver.driverId)}
               onMouseLeave={() => setHoveredDriver(null)}
               style={{
@@ -176,7 +176,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 const y = Y_OFFSET + (h.rank - 1) * Y_SPACING;
                 return (
                   <circle
-                    key={dot- + i}
+                    key={"dot-" + i}
                     cx={x}
                     cy={y}
                     r={isHovered ? 5.5 : 3.5}
