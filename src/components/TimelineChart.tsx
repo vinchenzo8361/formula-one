@@ -44,7 +44,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const X_OFFSET = 150;
   const X_SPACING = 110;
   const Y_OFFSET = 30;
-  const Y_SPACING = 25;
+  const Y_SPACING = 20;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numRows * Y_SPACING + 50;
@@ -173,7 +173,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 x={X_OFFSET - 20}
                 y={Y_OFFSET + (driver.history[0].rank - 1) * Y_SPACING + 4}
                 textAnchor="end"
-                fontSize="10"
+                fontSize="9"
                 fontWeight="bold"
                 className={isHovered ? "fill-foreground dark:fill-white" : "fill-gray-600 dark:fill-gray-400"}
               >
@@ -195,7 +195,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   x={X_OFFSET + lastHistoryIndex * X_SPACING + 15}
                   y={Y_OFFSET + (driver.history[lastHistoryIndex].rank - 1) * Y_SPACING + 4}
                   textAnchor="start"
-                  fontSize="10"
+                  fontSize="9"
                   fontWeight="bold"
                   className="fill-foreground dark:fill-white"
                 >
@@ -209,6 +209,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 

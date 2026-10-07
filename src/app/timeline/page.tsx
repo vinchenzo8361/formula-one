@@ -70,7 +70,7 @@ export default async function TimelinePage() {
     { round: 0, raceName: 'Qualifying' }
   ];
 
-  for (const race of completedRaces) {
+    for (const race of completedRaces) {
     const roundNum = parseInt(race.round, 10);
     raceTimeline.push({ round: roundNum, raceName: race.raceName });
 
@@ -79,27 +79,29 @@ export default async function TimelinePage() {
       if (driversMap.has(dId)) {
         const driverData = driversMap.get(dId);
         driverData.cumulativePoints = parseFloat(standing.points);
-        driverData.history.push({
-          round: roundNum,
-          raceName: race.raceName,
-          rank: parseInt(standing.position, 10),
-          points: driverData.cumulativePoints
-        });
       }
     }
     
-    // For any base driver who didn't appear in the standings (e.g., replaced or DNS), copy their last rank and points
-    for (const driverData of driversMap.values()) {
-      if (driverData.history.length < raceTimeline.length) {
-        const lastHistory = driverData.history[driverData.history.length - 1];
-        driverData.history.push({
-          round: roundNum,
-          raceName: race.raceName,
-          rank: lastHistory.rank,
-          points: driverData.cumulativePoints
-        });
+    // Re-rank ONLY the official tracked drivers to perfectly lock the grid to exactly 22 places
+    const driversList = Array.from(driversMap.values());
+    driversList.sort((a, b) => {
+      if (b.cumulativePoints !== a.cumulativePoints) {
+        return b.cumulativePoints - a.cumulativePoints;
       }
-    }
+      // Tie-breaker: stable sort using previous rank
+      const aPrev = a.history[a.history.length - 1].rank;
+      const bPrev = b.history[b.history.length - 1].rank;
+      return aPrev - bPrev;
+    });
+
+    driversList.forEach((d, index) => {
+      d.history.push({
+        round: roundNum,
+        raceName: race.raceName,
+        rank: index + 1,
+        points: d.cumulativePoints
+      });
+    });
   }
 
   const graphData = {
@@ -117,6 +119,7 @@ export default async function TimelinePage() {
     </div>
   );
 }
+
 
 
 
