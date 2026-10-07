@@ -63,7 +63,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const X_OFFSET = 150;
   const X_SPACING = 78;
   const Y_OFFSET = 30;
-  const Y_SPACING = 32;
+  const Y_SPACING = 17;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numRows * Y_SPACING + 50;
@@ -93,7 +93,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y1={Y_OFFSET + i * Y_SPACING}
             x2={svgWidth}
             y2={Y_OFFSET + i * Y_SPACING}
-            stroke={theme === 'light' ? '#e5e7eb' : '#1f2937'}
+            stroke={theme === 'light' ? '#e5e7eb' : '#6b7280'}
             strokeWidth="1"
           />
         ))}
@@ -117,7 +117,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               <text
                 textAnchor="middle"
                 fontSize="11"
-                fill={theme === 'light' ? '#1f2937' : '#9ca3af'}
+                fill={theme === 'light' ? '#6b7280' : '#9ca3af'}
                 className="font-mono uppercase"
               >
                 {namePart2 ? (
@@ -134,7 +134,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y1={Y_OFFSET}
                 x2={x}
                 y2={svgHeight - 20}
-                stroke={theme === 'light' ? '#e5e7eb' : '#1f2937'}
+                stroke={theme === 'light' ? '#e5e7eb' : '#6b7280'}
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
@@ -197,7 +197,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 textAnchor="end"
                 fontSize="11"
                 fontWeight="bold"
-                fill={isHovered ? (theme === 'light' ? '#000000' : '#ffffff') : (theme === 'light' ? '#1f2937' : '#9ca3af')}
+                fill={isHovered ? (theme === 'light' ? '#374151' : '#ffffff') : (theme === 'light' ? '#6b7280' : '#9ca3af')}
               >
                 {driver.familyName}
               </text>
@@ -219,7 +219,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   textAnchor="start"
                   fontSize="11"
                   fontWeight="bold"
-                  fill={theme === 'light' ? '#000000' : '#ffffff'}
+                  fill={theme === 'light' ? '#6b7280' : '#ffffff'}
                 >
                   P{driver.history[lastHistoryIndex].rank} ({driver.cumulativePoints} pts)
                 </text>
@@ -241,3 +241,5 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
+
