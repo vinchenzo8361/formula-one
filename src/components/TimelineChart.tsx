@@ -60,9 +60,9 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
-  const X_SPACING = 78;
+  const X_SPACING = 81;
   const Y_OFFSET = 30;
-  const Y_SPACING = 27;
+  const Y_SPACING = 26;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numRows * Y_SPACING + 47;
@@ -228,6 +228,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
