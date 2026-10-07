@@ -79,6 +79,8 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   return (
     <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
+        {/* Full SVG Background to prevent container bleed-through */}
+        <rect x={0} y={0} width={svgWidth} height={svgHeight} fill="var(--tl-bg-even)" />
         {/* Background striping */}
         {Array.from({ length: numRows }).map((_, i) => (
           <rect
@@ -226,4 +228,5 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
