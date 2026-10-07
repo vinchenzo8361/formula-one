@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const constructorColors: Record<string, string> = {
   red_bull: '#3671C6',
@@ -18,6 +18,23 @@ const constructorColors: Record<string, string> = {
 
 export default function TimelineChart({ graphData }: { graphData: any }) {
   const [hoveredDriver, setHoveredDriver] = useState<string | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Convert vertical scroll to horizontal scroll
+      if (e.deltaY !== 0 && !e.shiftKey) {
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+      }
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => container.removeEventListener('wheel', handleWheel);
+  }, []);
 
   const { timeline, drivers } = graphData;
   const numDrivers = drivers.length;
@@ -32,7 +49,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const svgHeight = Y_OFFSET + numDrivers * Y_SPACING + 50;
 
   return (
-    <div className="w-full overflow-x-auto overflow-y-hidden">
+    <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
         {/* Zebra striping */}
         {Array.from({ length: numDrivers }).map((_, i) => (
@@ -191,5 +208,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
+
 
 
