@@ -44,7 +44,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
-  const X_SPACING = 120;
+  const X_SPACING = 85;
   const Y_OFFSET = 30;
   const Y_SPACING = 22;
 
@@ -62,7 +62,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y={Y_OFFSET + (i - 0.5) * Y_SPACING}
             width={svgWidth}
             height={Y_SPACING}
-            className={i % 2 === 0 ? "fill-white dark:fill-[#1a1a1a]" : "fill-gray-100 dark:fill-[#222]"}
+            className={i % 2 === 0 ? "fill-white dark:fill-[#1a1a1a]" : "fill-gray-50 dark:fill-[#222]"}
           />
         ))}
 
@@ -211,6 +211,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 

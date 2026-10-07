@@ -92,13 +92,15 @@ import TimelineChart from '@/components/TimelineChart';
     });
   });
 
-  const raceTimeline = [
+    const raceTimeline = [
     { round: 0, raceName: 'Qualifying' }
   ];
+  allRaces.forEach((r: any) => {
+    raceTimeline.push({ round: parseInt(r.round, 10), raceName: r.raceName });
+  });
 
-    for (const race of completedRaces) {
+  for (const race of completedRaces) {
     const roundNum = parseInt(race.round, 10);
-    raceTimeline.push({ round: roundNum, raceName: race.raceName });
 
     for (const standing of race.DriverStandings) {
       const dId = standing.Driver.driverId;
@@ -145,6 +147,7 @@ import TimelineChart from '@/components/TimelineChart';
     </div>
   );
 }
+
 
 
 
