@@ -24,14 +24,14 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      // Convert vertical scroll to horizontal scroll
-      if (e.deltaY !== 0 && !e.shiftKey) {
+        const handleWheel = (e: WheelEvent) => {
+      // Only hijack vertical scroll (mouse wheel)
+      // Trackpads send deltaX for horizontal scrolling natively, so we let that pass through!
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault();
         container.scrollLeft += e.deltaY;
       }
     };
-
     container.addEventListener('wheel', handleWheel, { passive: false });
     return () => container.removeEventListener('wheel', handleWheel);
   }, []);
@@ -208,6 +208,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
