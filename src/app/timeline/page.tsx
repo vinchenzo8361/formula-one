@@ -19,10 +19,18 @@ export default async function TimelinePage() {
   const scheduleData = await scheduleRes.json();
   const allRaces = scheduleData.MRData.RaceTable.Races;
 
-  // Fetch all race results for the current season
-  const resultsRes = await fetch('https://api.jolpi.ca/ergast/f1/current/results.json?limit=1000', { cache: 'no-store' });
-  const resultsData = await resultsRes.json();
-  const completedRaces = resultsData.MRData.RaceTable.Races;
+  // Filter for completed races and fetch their individual results concurrently
+  const completedRacesMeta = allRaces.filter((r: any) => new Date(r.date) < new Date());
+  
+  const completedRacesResponses = await Promise.all(
+    completedRacesMeta.map((r: any) => 
+      fetch(`https://api.jolpi.ca/ergast/f1/current/${r.round}/results.json`, { cache: 'no-store' }).then(res => res.json())
+    )
+  );
+
+  const completedRaces = completedRacesResponses.map(
+    res => res.MRData.RaceTable.Races[0]
+  ).filter(Boolean);
 
   const completedRacesMap = new Map();
   for (const race of completedRaces) {

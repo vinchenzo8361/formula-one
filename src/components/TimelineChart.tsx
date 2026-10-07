@@ -24,9 +24,9 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
-  const X_SPACING = 120;
+  const X_SPACING = 150;
   const Y_OFFSET = 30;
-  const Y_SPACING = 24;
+  const Y_SPACING = 40;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numDrivers * Y_SPACING + 50;
@@ -34,6 +34,19 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   return (
     <div className="w-full h-full overflow-auto">
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
+        {/* Background Grid - Horizontal Lines */}
+        {Array.from({ length: numDrivers }).map((_, i) => (
+          <line
+            key={`h-grid-${i}`}
+            x1={0}
+            y1={Y_OFFSET + i * Y_SPACING}
+            x2={svgWidth}
+            y2={Y_OFFSET + i * Y_SPACING}
+            className="stroke-gray-300 dark:stroke-gray-800"
+            strokeWidth="1"
+          />
+        ))}
+
         {/* Zebra striping */}
         {Array.from({ length: numDrivers }).map((_, i) => {
           if (i % 2 === 1) {
@@ -44,7 +57,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y={Y_OFFSET + (i - 0.5) * Y_SPACING}
                 width={svgWidth}
                 height={Y_SPACING}
-                fill="#1a1a1a"
+                className="fill-gray-100 dark:fill-[#1a1a1a]"
               />
             );
           }
@@ -61,8 +74,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y={Y_OFFSET - 15}
                 textAnchor="middle"
                 fontSize="12"
-                fill="#888"
-                className="font-mono uppercase"
+                className="font-mono uppercase fill-gray-600 dark:fill-gray-400"
               >
                 {race.raceName.replace('Grand Prix', 'GP')}
               </text>
@@ -71,7 +83,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y1={Y_OFFSET}
                 x2={x}
                 y2={svgHeight - 20}
-                stroke="#333"
+                className="stroke-gray-300 dark:stroke-gray-800"
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
@@ -134,7 +146,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 textAnchor="end"
                 fontSize="14"
                 fontWeight="bold"
-                fill={isHovered ? '#fff' : '#ccc'}
+                className={isHovered ? "fill-black dark:fill-white" : "fill-gray-600 dark:fill-gray-400"}
               >
                 {driver.familyName}
               </text>
@@ -156,7 +168,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   textAnchor="start"
                   fontSize="14"
                   fontWeight="bold"
-                  fill="#fff"
+                  className="fill-black dark:fill-white"
                 >
                   P{driver.history[lastHistoryIndex].rank} ({driver.cumulativePoints} pts)
                 </text>
