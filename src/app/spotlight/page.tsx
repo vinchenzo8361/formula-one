@@ -47,9 +47,9 @@ export default function SpotlightPage() {
 
               <div className="bg-background rounded-lg p-4 border border-border">
                 <div className="text-sm text-text-muted uppercase font-semibold mb-1">Current Season Fastest</div>
-                <div className="text-3xl font-black mb-2">1.90s</div>
-                <div className="text-sm font-medium">Red Bull Racing</div>
-                <div className="text-xs text-text-muted">China Grand Prix, 2026</div>
+                <div className="text-3xl font-black mb-2">1.99s</div>
+                <div className="text-sm font-medium">Racing Bulls</div>
+                <div className="text-xs text-text-muted">2026 Season</div>
               </div>
             </div>
           </div>
@@ -148,3 +148,4 @@ export default function SpotlightPage() {
     </div>
   );
 }
+

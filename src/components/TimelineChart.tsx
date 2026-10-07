@@ -26,7 +26,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const X_OFFSET = 150;
   const X_SPACING = 110;
   const Y_OFFSET = 30;
-  const Y_SPACING = 48;
+  const Y_SPACING = 28;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numDrivers * Y_SPACING + 50;
@@ -191,3 +191,4 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
