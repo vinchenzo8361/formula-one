@@ -141,12 +141,13 @@ import TimelineChart from '@/components/TimelineChart';
     <div className="p-6 h-[calc(100vh-80px)] flex flex-col">
       <h1 className="text-3xl font-bold mb-4 text-f1-red uppercase tracking-tighter">Mimi's Timeline</h1>
       <p className="text-text-muted mb-4">Evolution of driver standings starting from the first qualifying session.</p>
-      <div className="w-full flex-grow overflow-hidden bg-panel border-2 border-border rounded-xl shadow-lg relative">
+      <div className="w-full flex-grow overflow-hidden bg-[#111] border-2 border-[#333] rounded-xl shadow-lg relative">
         <TimelineChart graphData={graphData} />
       </div>
     </div>
   );
 }
+
 
 
 
