@@ -46,7 +46,9 @@ export default function Navbar() {
           <svg className="w-4 h-4 text-f1-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Quiz
         </Link>
-        
+        <Link href="/timeline" className="flex items-center gap-2 hover:text-foreground transition-colors">
+          <div className="flex flex-col items-center leading-none text-[10px] sm:text-xs"><span>Mimi's</span><span>Timeline</span></div>
+        </Link>
         
         <ThemeToggle />
       </div>
