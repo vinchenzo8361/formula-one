@@ -252,6 +252,27 @@ export function formatTeamName(name: string): string {
 }
 
 /**
+ * Fetch Race Info for a specific round
+ */
+export async function getRaceInfo(season: string, round: string): Promise<Race | null> {
+  try {
+    const res = await fetch(`${BASE_URL}/${season}/${round}.json`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) throw new Error(`Failed to fetch race info for ${season} round ${round}`);
+    const data = await res.json();
+    const races = data?.MRData?.RaceTable?.Races;
+    if (races && races.length > 0) {
+      return races[0];
+    }
+    return null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+/**
  * Fetch Race Results for a specific round
  */
 export async function getRaceResults(season: string, round: string): Promise<RaceResult[]> {

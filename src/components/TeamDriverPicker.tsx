@@ -119,7 +119,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
           </div>
 
           {isTeamOpen && (
-            <div className="absolute z-20 w-full mt-2 bg-panel border border-gray-200/20 rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[400px]">
+            <div className="absolute z-20 w-full mt-2 bg-panel border border-gray-200/20 rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[600px]">
               <div className="p-3 border-b border-gray-200/20 bg-background/50">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
@@ -171,7 +171,7 @@ export default function TeamDriverPicker({ constructors }: { constructors: Const
 
         <div className="lg:col-span-5 relative">
           <label className="block text-sm font-bold text-text-muted uppercase tracking-widest mb-3">2. Select a Driver</label>
-          <div className="bg-background border border-gray-200/20 rounded-2xl overflow-hidden h-[400px] flex flex-col relative shadow-inner">
+          <div className="bg-background border border-gray-200/20 rounded-2xl overflow-hidden h-[600px] flex flex-col relative shadow-inner">
             {!selectedConstructor ? (
               <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-text-muted">
                 <Flag className="w-12 h-12 mb-4 opacity-20" />

@@ -1,4 +1,4 @@
-import { getRaceResults, getQualifyingResults, formatTeamName } from '@/lib/api';
+import { getRaceResults, getQualifyingResults, formatTeamName, getRaceInfo } from '@/lib/api';
 import Link from 'next/link';
 import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
 
@@ -26,13 +26,15 @@ export default async function RaceDetailsPage({ params }: { params: Promise<{ ro
   const resolvedParams = await params;
   const round = resolvedParams.round;
 
-  const [raceResults, qualifyingResults] = await Promise.all([
+  const [raceResults, qualifyingResults, raceInfo] = await Promise.all([
     getRaceResults(season, round),
     getQualifyingResults(season, round),
+    getRaceInfo(season, round),
   ]);
 
   const hasResults = raceResults.length > 0;
   const hasQualifying = qualifyingResults.length > 0;
+  const raceName = raceInfo?.raceName || `Round ${round}`;
 
   if (!hasResults && !hasQualifying) {
     return (
@@ -40,7 +42,7 @@ export default async function RaceDetailsPage({ params }: { params: Promise<{ ro
         <div className="max-w-md mx-auto bg-panel rounded-2xl shadow-sm p-10 border border-gray-200/20">
           <div className="text-4xl mb-4">🏁</div>
           <h1 className="text-2xl font-semibold text-foreground mb-4">It&apos;s not race day yet.</h1>
-          <p className="text-text-muted mb-8">The results for Round {round} are not available yet. Check back later!</p>
+          <p className="text-text-muted mb-8">The results for {raceName} are not available yet. Check back later!</p>
           <Link href="/schedule" className="inline-block px-6 py-2.5 bg-background hover:bg-panel text-foreground font-medium rounded-full transition-colors">
             &larr; Back to Schedule
           </Link>
@@ -57,7 +59,7 @@ export default async function RaceDetailsPage({ params }: { params: Promise<{ ro
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold text-foreground mb-8">Round {round} Results</h1>
+      <h1 className="text-3xl font-bold text-foreground mb-8">{raceName} Results</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Race Results Section */}

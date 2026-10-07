@@ -130,10 +130,30 @@ export default async function TeamDetailsPage({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          {/* Main Results Content */}
-          <div className="md:col-span-2 space-y-6">
+          {/* Left Side: Overview and Results */}
+          <div className="lg:col-span-8 space-y-6">
+            <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20">
+              <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2 text-foreground">
+                <Shield className="w-5 h-5 text-f1-red" /> Team Overview
+              </h3>
+              <p className="text-foreground leading-relaxed font-medium mb-4">{blurb}</p>
+              {teamInfo.url && teamInfo.url !== "#" && (
+                <a href={teamInfo.url} target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline font-bold text-sm uppercase tracking-widest block mb-4">
+                  View Wikipedia &rarr;
+                </a>
+              )}
+              {staticData?.history && (
+                <div className="p-4 bg-background rounded-2xl border border-gray-200/20">
+                  <div className="flex items-center gap-2 text-foreground font-bold mb-2">
+                    <Clock className="w-4 h-4 text-f1-red" /> Legacy
+                  </div>
+                  <p className="text-sm text-text-muted font-medium italic">{staticData.history}</p>
+                </div>
+              )}
+            </section>
+
             {/* Final Standing Block */}
             <div className="bg-panel rounded-3xl p-6 shadow-sm border border-gray-200/20 flex flex-col sm:flex-row items-center justify-around gap-6">
               <div className="text-center w-full sm:w-auto">
@@ -212,26 +232,31 @@ export default async function TeamDetailsPage({
             </section>
           </div>
 
-          {/* Sidebar Static Data */}
-          <div className="space-y-6">
-            <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20">
-              <h3 className="text-xl font-bold tracking-tight mb-4 flex items-center gap-2 text-foreground">
-                <Shield className="w-5 h-5 text-f1-red" /> Team Overview
+          {/* Right Side: Historical Drivers List */}
+          <div className="lg:col-span-4 space-y-6">
+            <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20 flex flex-col h-full max-h-[1000px]">
+              <h3 className="text-xl font-bold tracking-tight mb-6 flex items-center gap-2 text-foreground">
+                <Users className="w-5 h-5 text-f1-red" /> Historical Drivers
               </h3>
-              <p className="text-foreground leading-relaxed font-medium mb-4">{blurb}</p>
-              {teamInfo.url && teamInfo.url !== "#" && (
-                <a href={teamInfo.url} target="_blank" rel="noopener noreferrer" className="text-f1-red hover:underline font-bold text-sm uppercase tracking-widest block mb-4">
-                  View Wikipedia &rarr;
-                </a>
-              )}
-              {staticData?.history && (
-                <div className="p-4 bg-background rounded-2xl border border-gray-200/20">
-                  <div className="flex items-center gap-2 text-foreground font-bold mb-2">
-                    <Clock className="w-4 h-4 text-f1-red" /> Legacy
+              <div className="overflow-y-auto pr-4 space-y-3 flex-1 custom-scrollbar" style={{ minHeight: '400px' }}>
+                {allDrivers.map((driver: any) => (
+                  <Link 
+                    key={driver.driverId} 
+                    href={`/drivers/${driver.driverId}`} 
+                    className="block bg-background p-4 rounded-xl border border-gray-200/20 hover:border-f1-red transition-all hover:-translate-y-0.5 group"
+                  >
+                    <div className="font-bold text-foreground group-hover:text-f1-red transition-colors">
+                      {driver.givenName} {driver.familyName}
+                    </div>
+                    <div className="text-sm text-text-muted mt-1">{driver.nationality}</div>
+                  </Link>
+                ))}
+                {allDrivers.length === 0 && (
+                  <div className="text-text-muted text-sm font-medium text-center py-8 bg-background rounded-xl">
+                    No historical drivers found.
                   </div>
-                  <p className="text-sm text-text-muted font-medium italic">{staticData.history}</p>
-                </div>
-              )}
+                )}
+              </div>
             </section>
           </div>
         </div>
