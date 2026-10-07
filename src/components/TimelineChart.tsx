@@ -24,16 +24,28 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const numRaces = timeline.length;
 
   const X_OFFSET = 150;
-  const X_SPACING = 150;
+  const X_SPACING = 110;
   const Y_OFFSET = 30;
-  const Y_SPACING = 40;
+  const Y_SPACING = 32;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numDrivers * Y_SPACING + 50;
 
   return (
-    <div className="w-full h-full overflow-auto">
+    <div className="w-full overflow-x-auto overflow-y-hidden">
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
+        {/* Zebra striping */}
+        {Array.from({ length: numDrivers }).map((_, i) => (
+          <rect
+            key={`band-${i}`}
+            x={0}
+            y={Y_OFFSET + (i - 0.5) * Y_SPACING}
+            width={svgWidth}
+            height={Y_SPACING}
+            className={i % 2 === 0 ? "fill-white dark:fill-[#1a1a1a]" : "fill-gray-50 dark:fill-transparent"}
+          />
+        ))}
+
         {/* Background Grid - Horizontal Lines */}
         {Array.from({ length: numDrivers }).map((_, i) => (
           <line
@@ -47,36 +59,35 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
           />
         ))}
 
-        {/* Zebra striping */}
-        {Array.from({ length: numDrivers }).map((_, i) => {
-          if (i % 2 === 1) {
-            return (
-              <rect
-                key={`band-${i}`}
-                x={0}
-                y={Y_OFFSET + (i - 0.5) * Y_SPACING}
-                width={svgWidth}
-                height={Y_SPACING}
-                className="fill-gray-100 dark:fill-[#1a1a1a]"
-              />
-            );
-          }
-          return null;
-        })}
-
         {/* Draw X-axis race names */}
         {timeline.map((race: any, i: number) => {
           const x = X_OFFSET + i * X_SPACING;
+          
+          let namePart1 = race.raceName;
+          let namePart2 = '';
+          if (race.raceName.includes('Grand Prix')) {
+            namePart1 = race.raceName.split('Grand Prix')[0].trim();
+            namePart2 = 'Grand Prix';
+          } else if (race.raceName.includes('GP')) {
+            namePart1 = race.raceName.split('GP')[0].trim();
+            namePart2 = 'GP';
+          }
+
           return (
             <g key={`race-${i}`}>
               <text
-                x={x}
-                y={Y_OFFSET - 15}
                 textAnchor="middle"
                 fontSize="12"
                 className="font-mono uppercase fill-gray-600 dark:fill-gray-400"
               >
-                {race.raceName.replace('Grand Prix', 'GP')}
+                {namePart2 ? (
+                  <>
+                    <tspan x={x} y={Y_OFFSET - 20}>{namePart1}</tspan>
+                    <tspan x={x} y={Y_OFFSET - 8}>{namePart2}</tspan>
+                  </>
+                ) : (
+                  <tspan x={x} y={Y_OFFSET - 15}>{namePart1}</tspan>
+                )}
               </text>
               <line
                 x1={x}

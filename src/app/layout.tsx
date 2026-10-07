@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Formula Next",
+  title: "Apex F1 | Real-time Telemetry & Stats",
   description: "F1 Statistics and Encyclopedia",
 };
 

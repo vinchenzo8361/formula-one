@@ -1,6 +1,55 @@
-import { getRaceResults, getQualifyingResults, formatTeamName, getRaceInfo } from '@/lib/api';
+import { getRaceResults, getQualifyingResults, formatTeamName, getRaceInfo, RaceResult } from '@/lib/api';
 import Link from 'next/link';
 import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
+
+function generateHighlights(results: RaceResult[]): string[] {
+  if (!results || results.length === 0) return [];
+  const highlights: string[] = [];
+
+  const winner = results.find(r => r.position === "1");
+  if (winner) {
+    if (winner.grid === "1") {
+      highlights.push(`${winner.Driver.givenName} ${winner.Driver.familyName} dominated from Pole to secure the win.`);
+    } else {
+      highlights.push(`${winner.Driver.givenName} ${winner.Driver.familyName} took the victory, starting from P${winner.grid}.`);
+    }
+  }
+
+  let maxPlacesGained = 0;
+  let biggestMover = null;
+  for (const res of results) {
+    const start = parseInt(res.grid, 10);
+    const finish = parseInt(res.position, 10);
+    if (!isNaN(start) && !isNaN(finish) && start > 0) {
+      const gained = start - finish;
+      if (gained > maxPlacesGained) {
+        maxPlacesGained = gained;
+        biggestMover = res;
+      }
+    }
+  }
+
+  if (biggestMover && maxPlacesGained > 0) {
+    highlights.push(`${biggestMover.Driver.givenName} ${biggestMover.Driver.familyName} gained ${maxPlacesGained} places to finish P${biggestMover.position}.`);
+  }
+
+  const dnfs = results.filter(r => !r.status.includes("Finished") && !r.status.includes("+"));
+  if (dnfs.length > 0) {
+    highlights.push(`${dnfs.length} driver${dnfs.length > 1 ? 's' : ''} DNF'd due to mechanical failures/crashes.`);
+  }
+
+  const p2 = results.find(r => r.position === "2");
+  const p3 = results.find(r => r.position === "3");
+  if (p2 && p3) {
+     highlights.push(`${p2.Driver.familyName} and ${p3.Driver.familyName} rounded out the podium.`);
+  }
+
+  if (highlights.length < 3) {
+    highlights.push('A thrilling race with intense battles across the grid.');
+  }
+
+  return highlights.slice(0, 10);
+}
 
 function PositionChange({ grid, position }: { grid: string; position: string }) {
   const g = parseInt(grid, 10);
@@ -98,7 +147,11 @@ export default async function RaceDetailsPage({ params }: { params: Promise<{ ro
                 </tbody>
               </table>
             ) : (
-              <div className="p-12 text-center text-text-muted">Race results pending.</div>
+              <div className="p-12 text-center flex flex-col items-center justify-center">
+                <span className="text-4xl mb-4">⏱️</span>
+                <span className="text-lg font-medium text-foreground">Race is happening soon</span>
+                <span className="text-sm text-text-muted mt-2">Check back later for the official results.</span>
+              </div>
             )}
           </div>
         </section>
@@ -145,6 +198,24 @@ export default async function RaceDetailsPage({ params }: { params: Promise<{ ro
           </div>
         </section>
       </div>
+
+      {hasResults && (
+        <section className="mt-8 bg-panel rounded-3xl shadow-sm border border-gray-200/20 overflow-hidden">
+          <div className="px-6 py-5 border-b border-gray-200/20">
+            <h2 className="text-xl font-semibold text-foreground">Race Highlights</h2>
+          </div>
+          <div className="p-6">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {generateHighlights(raceResults).map((highlight, idx) => (
+                <li key={idx} className="flex items-start space-x-3 bg-background/50 p-4 rounded-xl border border-gray-200/10">
+                  <span className="text-f1-red mt-1 text-lg leading-none">&bull;</span>
+                  <span className="text-foreground">{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
