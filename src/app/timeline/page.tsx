@@ -140,7 +140,7 @@ import TimelineChart from '@/components/TimelineChart';
   return (
     <div className="p-6 min-h-[calc(100vh-80px)] flex flex-col">
       
-            <div className="w-[calc(100%-20px)] mx-auto overflow-hidden bg-white dark:bg-[#111] border-2 border-gray-200 dark:border-[#333] rounded-xl shadow-lg relative">
+            <div className="w-[calc(100%-20px)] mx-auto overflow-hidden bg-white dark:bg-[#111] border-0 dark:border-2 dark:border-[#333] rounded-xl shadow-none dark:shadow-lg relative">
         <TimelineChart graphData={graphData} />
       </div>
 
@@ -148,6 +148,7 @@ import TimelineChart from '@/components/TimelineChart';
     </div>
   );
 }
+
 
 
 
