@@ -138,10 +138,10 @@ import TimelineChart from '@/components/TimelineChart';
   };
 
   return (
-    <div className="p-6 h-[calc(100vh-80px)] flex flex-col">
+    <div className="p-6 min-h-[calc(100vh-80px)] flex flex-col">
       <h1 className="text-3xl font-bold mb-4 text-f1-red uppercase tracking-tighter">Mimi's Timeline</h1>
       <p className="text-text-muted mb-4">Evolution of driver standings starting from the first qualifying session.</p>
-            <div className="w-full flex-grow overflow-hidden bg-white border-2 border-gray-200 rounded-xl shadow-lg relative">
+            <div className="w-full overflow-hidden bg-white border-2 border-gray-200 rounded-xl shadow-lg relative">
         <TimelineChart graphData={graphData} />
       </div>
 
@@ -151,6 +151,7 @@ import TimelineChart from '@/components/TimelineChart';
     </div>
   );
 }
+
 
 
 
