@@ -7,15 +7,38 @@ import TimelineChart from '@/components/TimelineChart';
     const baseData = await baseRes.json();
     const race1Results = baseData.MRData.RaceTable.Races[0].Results;
   
-    // Filter out any drivers not in this list, and get their base info
-    const baseDrivers = race1Results.map((res: any) => {
-      const grid = parseInt(res.grid, 10);
-      return {
-        driverId: res.Driver.driverId,
-        familyName: res.Driver.familyName,
-        constructorId: res.Constructor.constructorId,
-        qualifyingRank: grid === 0 ? 22 : grid,
-      };
+        // Establish a strict custom team order for the starting grid column
+    const teamOrder = [
+      'mercedes', 'ferrari', 'mclaren', 'red_bull', 'rb',
+      'alpine', 'haas', 'audi', 'williams', 'aston_martin', 'cadillac'
+    ];
+
+    const teamGroups: Record<string, any[]> = {};
+    teamOrder.forEach(t => teamGroups[t] = []);
+
+    race1Results.forEach((res: any) => {
+      const cId = res.Constructor.constructorId;
+      if (teamGroups[cId]) {
+        teamGroups[cId].push({
+          driverId: res.Driver.driverId,
+          familyName: res.Driver.familyName,
+          constructorId: cId
+        });
+      }
+    });
+
+    const baseDrivers: any[] = [];
+    let initialRank = 1;
+
+    teamOrder.forEach(tId => {
+      const drivers = teamGroups[tId];
+      // Randomly flip a coin to decide which team driver gets the odd vs even spot
+      if (Math.random() > 0.5) drivers.reverse();
+
+      drivers.forEach(d => {
+        d.qualifyingRank = initialRank++;
+        baseDrivers.push(d);
+      });
     });
 
   // Fetch full schedule
@@ -122,6 +145,7 @@ import TimelineChart from '@/components/TimelineChart';
     </div>
   );
 }
+
 
 
 
