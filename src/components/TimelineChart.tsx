@@ -62,7 +62,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               y={Y_OFFSET + (i - 0.5) * Y_SPACING}
               width={svgWidth}
               height={Y_SPACING}
-              className="fill-white"
+              className="fill-white dark:fill-[#1a1a1a]"
             />
           ))}
 
@@ -74,7 +74,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y1={Y_OFFSET + i * Y_SPACING}
             x2={svgWidth}
             y2={Y_OFFSET + i * Y_SPACING}
-            className="stroke-gray-200"
+            className="stroke-gray-200 dark:stroke-gray-800"
             strokeWidth="1"
           />
         ))}
@@ -98,7 +98,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               <text
                 textAnchor="middle"
                 fontSize="10"
-                className="font-mono uppercase fill-gray-800"
+                className="font-mono uppercase fill-gray-800 dark:fill-gray-400"
               >
                 {namePart2 ? (
                   <>
@@ -114,7 +114,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y1={Y_OFFSET}
                 x2={x}
                 y2={svgHeight - 20}
-                className="stroke-gray-200"
+                className="stroke-gray-200 dark:stroke-gray-800"
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
@@ -164,7 +164,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                     cy={y}
                     r={isHovered ? 5.5 : 3.5}
                     fill={color}
-                    className="stroke-white"
+                    className="stroke-white dark:stroke-[#111]"
                     strokeWidth="2"
                   />
                 );
@@ -177,7 +177,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 textAnchor="end"
                 fontSize="10"
                 fontWeight="bold"
-                className={isHovered ? "fill-black" : "fill-gray-800"}
+                className={isHovered ? "fill-black dark:fill-white" : "fill-gray-800 dark:fill-gray-400"}
               >
                 {driver.familyName}
               </text>
@@ -199,7 +199,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   textAnchor="start"
                   fontSize="10"
                   fontWeight="bold"
-                  className="fill-black"
+                  className="fill-black dark:fill-white"
                 >
                   P{driver.history[lastHistoryIndex].rank} ({driver.cumulativePoints} pts)
                 </text>
@@ -211,6 +211,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
