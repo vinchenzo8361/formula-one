@@ -65,7 +65,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const Y_SPACING = 27;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
-  const svgHeight = Y_OFFSET + numRows * Y_SPACING + 50;
+  const svgHeight = Y_OFFSET + numRows * Y_SPACING + 47;
 
   // We rely on CSS variables for flawless theme syncing, avoiding hydration bugs entirely.
   // Check globals.css for --tl-* variables.
@@ -228,5 +228,6 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
