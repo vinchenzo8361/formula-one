@@ -1,19 +1,22 @@
 import TimelineChart from '@/components/TimelineChart';
 
-export default async function TimelinePage() {
-  // Fetch qualifying data for the base drivers
-  const qualiRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/qualifying.json', { next: { revalidate: 3600 } });
-  if (!qualiRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
-  const qualiData = await qualiRes.json();
-  const qualifyingResults = qualiData.MRData.RaceTable.Races[0].QualifyingResults;
-
-  // Filter out any drivers not in this list, and get their base info
-  const baseDrivers = qualifyingResults.map((qr: any) => ({
-    driverId: qr.Driver.driverId,
-    familyName: qr.Driver.familyName,
-    constructorId: qr.Constructor.constructorId,
-    qualifyingRank: parseInt(qr.position, 10),
-  }));
+  export default async function TimelinePage() {
+    // Fetch Race 1 results to establish the official 22 base drivers (bypassing missing qualifying data)
+    const baseRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/results.json', { next: { revalidate: 3600 } });
+    if (!baseRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
+    const baseData = await baseRes.json();
+    const race1Results = baseData.MRData.RaceTable.Races[0].Results;
+  
+    // Filter out any drivers not in this list, and get their base info
+    const baseDrivers = race1Results.map((res: any) => {
+      const grid = parseInt(res.grid, 10);
+      return {
+        driverId: res.Driver.driverId,
+        familyName: res.Driver.familyName,
+        constructorId: res.Constructor.constructorId,
+        qualifyingRank: grid === 0 ? 22 : grid,
+      };
+    });
 
   // Fetch full schedule
   const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { next: { revalidate: 3600 } });
@@ -119,6 +122,7 @@ export default async function TimelinePage() {
     </div>
   );
 }
+
 
 
 
