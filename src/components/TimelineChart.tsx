@@ -38,7 +38,6 @@ const constructorColorsDark: Record<string, string> = {
 export default function TimelineChart({ graphData }: { graphData: any }) {
   const [hoveredDriver, setHoveredDriver] = useState<string | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -68,11 +67,18 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numRows * Y_SPACING + 50;
 
-  const renderSvgContent = (theme: 'light' | 'dark') => {
-    const colors = theme === 'light' ? constructorColorsLight : constructorColorsDark;
-    
-    return (
-      <>
+  // We rely on CSS variables for flawless theme syncing, avoiding hydration bugs entirely.
+  // Check globals.css for --tl-* variables.
+  
+  // Note: We'll fallback to a neutral color scheme for the actual F1 teams if SSR hasn't mounted yet,
+  // but CSS vars handle the background seamlessly.
+  const { resolvedTheme } = useTheme();
+  const isDark = mounted ? resolvedTheme === 'dark' : true;
+  const colors = isDark ? constructorColorsDark : constructorColorsLight;
+
+  return (
+    <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
+      <svg width={svgWidth} height={svgHeight} className="min-w-full">
         {/* Background striping */}
         {Array.from({ length: numRows }).map((_, i) => (
           <rect
@@ -81,22 +87,11 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             y={Y_OFFSET + (i - 0.5) * Y_SPACING}
             width={svgWidth}
             height={Y_SPACING}
-            fill={theme === 'light' ? '#ffffff' : (i % 2 === 0 ? '#1a1a1a' : '#222222')}
+            fill={i % 2 === 0 ? "var(--tl-bg-even)" : "var(--tl-bg-odd)"}
           />
         ))}
 
-        {/* Background Grid - Horizontal Lines */}
-        {Array.from({ length: numRows }).map((_, i) => (
-          <line
-            key={"hgrid-" + i}
-            x1={0}
-            y1={Y_OFFSET + i * Y_SPACING}
-            x2={svgWidth}
-            y2={Y_OFFSET + i * Y_SPACING}
-            stroke={theme === 'light' ? '#e5e7eb' : '#9ca3af'}
-            strokeWidth="1"
-          />
-        ))}
+        {/* Note: Horizontal Grid Lines completely removed per user request */}
 
         {/* Draw X-axis race names */}
         {timeline.map((race: any, i: number) => {
@@ -117,7 +112,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
               <text
                 textAnchor="middle"
                 fontSize="11"
-                fill={theme === 'light' ? '#9ca3af' : '#9ca3af'}
+                fill="var(--tl-text)"
                 className="font-mono uppercase"
               >
                 {namePart2 ? (
@@ -134,7 +129,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 y1={Y_OFFSET}
                 x2={x}
                 y2={svgHeight - 20}
-                stroke={theme === 'light' ? '#e5e7eb' : '#9ca3af'}
+                stroke="var(--tl-grid-v)"
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
@@ -184,7 +179,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                     cy={y}
                     r={isHovered ? 5.5 : 3.5}
                     fill={color}
-                    stroke={theme === 'light' ? '#ffffff' : '#111111'}
+                    stroke="var(--tl-circle)"
                     strokeWidth="2"
                   />
                 );
@@ -197,7 +192,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 textAnchor="end"
                 fontSize="11"
                 fontWeight="bold"
-                fill={isHovered ? (theme === 'light' ? '#9ca3af' : '#ffffff') : (theme === 'light' ? '#9ca3af' : '#9ca3af')}
+                fill={isHovered ? "var(--tl-text-hover)" : "var(--tl-text)"}
               >
                 {driver.familyName}
               </text>
@@ -219,7 +214,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   textAnchor="start"
                   fontSize="11"
                   fontWeight="bold"
-                  fill={theme === 'light' ? '#9ca3af' : '#ffffff'}
+                  fill="var(--tl-text-hover)"
                 >
                   P{driver.history[lastHistoryIndex].rank} ({driver.cumulativePoints} pts)
                 </text>
@@ -227,16 +222,6 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             </g>
           );
         })}
-      </>
-    );
-  };
-
-  const isLight = mounted && resolvedTheme === 'light';
-
-  return (
-    <div className="w-full overflow-x-auto overflow-y-hidden custom-scrollbar" ref={scrollContainerRef}>
-      <svg width={svgWidth} height={svgHeight} className="min-w-full">
-        {renderSvgContent(isLight ? 'light' : 'dark')}
       </svg>
     </div>
   );
