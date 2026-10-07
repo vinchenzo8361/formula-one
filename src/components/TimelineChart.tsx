@@ -97,7 +97,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
             <g key={`race-${i}`}>
               <text
                 textAnchor="middle"
-                fontSize="10"
+                fontSize="11"
                 className="font-mono uppercase fill-gray-800 dark:fill-gray-400"
               >
                 {namePart2 ? (
@@ -175,7 +175,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 x={X_OFFSET - 20}
                 y={Y_OFFSET + (driver.history[0].rank - 1) * Y_SPACING + 4}
                 textAnchor="end"
-                fontSize="10"
+                fontSize="11"
                 fontWeight="bold"
                 className={isHovered ? "fill-black dark:fill-white" : "fill-gray-800 dark:fill-gray-400"}
               >
@@ -197,7 +197,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                   x={X_OFFSET + lastHistoryIndex * X_SPACING + 15}
                   y={Y_OFFSET + (driver.history[lastHistoryIndex].rank - 1) * Y_SPACING + 4}
                   textAnchor="start"
-                  fontSize="10"
+                  fontSize="11"
                   fontWeight="bold"
                   className="fill-black dark:fill-white"
                 >
@@ -211,6 +211,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
     </div>
   );
 }
+
 
 
 
