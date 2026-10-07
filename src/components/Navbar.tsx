@@ -47,6 +47,7 @@ export default function Navbar() {
           Quiz
         </Link>
         <Link href="/timeline" className="flex items-center gap-2 hover:text-foreground transition-colors">
+          <svg className="w-4 h-4 text-f1-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
           <div className="flex flex-col items-center leading-none text-[10px] sm:text-xs"><span>Mimi's</span><span>Timeline</span></div>
         </Link>
         

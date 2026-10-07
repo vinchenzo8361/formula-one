@@ -58,7 +58,7 @@ export default function SpotlightPage() {
                 <div className="text-sm text-text-muted uppercase font-semibold mb-1">Current Season Fastest</div>
                 <div className="text-3xl font-black mb-2">1.90s</div>
                 <div className="text-sm font-medium">Red Bull Racing</div>
-                <div className="text-xs text-text-muted">China Grand Prix, 2024</div>
+                <div className="text-xs text-text-muted">China Grand Prix, 2026</div>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function SpotlightPage() {
                     <Info className="w-5 h-5 text-f1-red" /> The 2022 Return
                   </h3>
                   <p className="text-sm leading-relaxed">
-                    Banned in 1983 due to safety concerns over cornering speeds and sudden losses of downforce when skirts failed, ground effect made a triumphant return to F1 in the 2022 regulation overhaul. Modern ground effect uses 3D-sculpted Venturi tunnels without sealing skirts, aiming to produce "cleaner" wake air and allow cars to follow each other more closely to promote better racing.
+                    Banned in 1983 due to safety concerns over cornering speeds and sudden losses of downforce when skirts failed, ground effect made a triumphant return to F1 in the 2022 regulation overhaul. Modern ground effect uses 3D-sculpted Venturi tunnels without sealing skirts, aiming to produce "cleaner" wake air and allow cars to follow each other more closely to promote better racing. To enforce ride height limits and prevent cars from bottoming out dangerously while using ground effect aerodynamics, a "wooden board" (the Jabroc skid block/plank) was introduced in 1994.
                   </p>
                 </div>
               </div>

@@ -100,6 +100,9 @@ export default function DriverSpotlight() {
           <span>&bull;</span>
           <span>Latest Team: {latestTeam || "Loading..."}</span>
         </div>
+        <p className="text-sm text-text-muted mb-6 text-center px-4">
+          Known for their exceptional race craft, {driver.name} is a renowned Formula 1 driver who secured {driver.wins} wins and {driver.podiums} podiums throughout their career.
+        </p>
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-background p-4 rounded-2xl border border-gray-200/20 transition-transform hover:-translate-y-1">
             <div className="text-xs text-text-muted uppercase tracking-wider font-bold mb-1">Wins</div>

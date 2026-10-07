@@ -2,7 +2,7 @@ import TimelineChart from '@/components/TimelineChart';
 
 export default async function TimelinePage() {
   // Fetch qualifying data for the base drivers
-  const qualiRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/qualifying.json', { cache: 'no-store' });
+  const qualiRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/qualifying.json', { next: { revalidate: 3600 } });
   const qualiData = await qualiRes.json();
   const qualifyingResults = qualiData.MRData.RaceTable.Races[0].QualifyingResults;
 
@@ -15,22 +15,21 @@ export default async function TimelinePage() {
   }));
 
   // Fetch full schedule
-  const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { cache: 'no-store' });
+  const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { next: { revalidate: 3600 } });
   const scheduleData = await scheduleRes.json();
   const allRaces = scheduleData.MRData.RaceTable.Races;
 
-  // Filter for completed races and fetch their individual results concurrently
+  // Filter for completed races and fetch their individual results sequentially to avoid rate limiting
   const completedRacesMeta = allRaces.filter((r: any) => new Date(r.date) < new Date());
   
-  const completedRacesResponses = await Promise.all(
-    completedRacesMeta.map((r: any) => 
-      fetch(`https://api.jolpi.ca/ergast/f1/current/${r.round}/results.json`, { cache: 'no-store' }).then(res => res.json())
-    )
-  );
-
-  const completedRaces = completedRacesResponses.map(
-    res => res.MRData.RaceTable.Races[0]
-  ).filter(Boolean);
+  const completedRaces = [];
+  for (const r of completedRacesMeta) {
+    const res = await fetch(`https://api.jolpi.ca/ergast/f1/current/${r.round}/results.json`, { next: { revalidate: 3600 } }).then(res => res.json());
+    if (res.MRData.RaceTable.Races[0]) {
+      completedRaces.push(res.MRData.RaceTable.Races[0]);
+    }
+    await new Promise(resolve => setTimeout(resolve, 200));
+  }
 
   const completedRacesMap = new Map();
   for (const race of completedRaces) {
