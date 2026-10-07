@@ -14,10 +14,20 @@ export default async function TimelinePage() {
     qualifyingRank: parseInt(qr.position, 10),
   }));
 
+  // Fetch full schedule
+  const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { cache: 'no-store' });
+  const scheduleData = await scheduleRes.json();
+  const allRaces = scheduleData.MRData.RaceTable.Races;
+
   // Fetch all race results for the current season
   const resultsRes = await fetch('https://api.jolpi.ca/ergast/f1/current/results.json?limit=1000', { cache: 'no-store' });
   const resultsData = await resultsRes.json();
-  const races = resultsData.MRData.RaceTable.Races;
+  const completedRaces = resultsData.MRData.RaceTable.Races;
+
+  const completedRacesMap = new Map();
+  for (const race of completedRaces) {
+    completedRacesMap.set(parseInt(race.round, 10), race);
+  }
 
   const driversMap = new Map();
   baseDrivers.forEach((d: any) => {
@@ -34,46 +44,49 @@ export default async function TimelinePage() {
     { round: 0, raceName: 'Qualifying' }
   ];
 
-  for (const race of races) {
+  for (const race of allRaces) {
     const roundStr = race.round;
     const roundNum = parseInt(roundStr, 10);
     const raceName = race.raceName;
     raceTimeline.push({ round: roundNum, raceName });
 
-    // Update points for this race
-    const results = race.Results;
-    for (const res of results) {
-      const dId = res.Driver.driverId;
-      if (driversMap.has(dId)) {
-        const points = parseFloat(res.points);
-        const driverData = driversMap.get(dId);
-        driverData.cumulativePoints += points;
+    const completedRace = completedRacesMap.get(roundNum);
+    if (completedRace) {
+      // Update points for this race
+      const results = completedRace.Results;
+      for (const res of results) {
+        const dId = res.Driver.driverId;
+        if (driversMap.has(dId)) {
+          const points = parseFloat(res.points);
+          const driverData = driversMap.get(dId);
+          driverData.cumulativePoints += points;
+        }
       }
-    }
 
-    // After adding points, determine the rank of all base drivers based on cumulativePoints
-    const driversList = Array.from(driversMap.values());
-    driversList.sort((a, b) => {
-      // Sort by cumulative points descending
-      if (b.cumulativePoints !== a.cumulativePoints) {
-        return b.cumulativePoints - a.cumulativePoints;
-      }
-      // Fallback: stable by previous rank
-      const aPrevRank = a.history[a.history.length - 1].rank;
-      const bPrevRank = b.history[b.history.length - 1].rank;
-      return aPrevRank - bPrevRank;
-    });
-
-    // Assign new rank
-    driversList.forEach((d, index) => {
-      const newRank = index + 1;
-      d.history.push({
-        round: roundNum,
-        raceName,
-        rank: newRank,
-        points: d.cumulativePoints
+      // After adding points, determine the rank of all base drivers based on cumulativePoints
+      const driversList = Array.from(driversMap.values());
+      driversList.sort((a, b) => {
+        // Sort by cumulative points descending
+        if (b.cumulativePoints !== a.cumulativePoints) {
+          return b.cumulativePoints - a.cumulativePoints;
+        }
+        // Fallback: stable by previous rank
+        const aPrevRank = a.history[a.history.length - 1].rank;
+        const bPrevRank = b.history[b.history.length - 1].rank;
+        return aPrevRank - bPrevRank;
       });
-    });
+
+      // Assign new rank
+      driversList.forEach((d, index) => {
+        const newRank = index + 1;
+        d.history.push({
+          round: roundNum,
+          raceName,
+          rank: newRank,
+          points: d.cumulativePoints
+        });
+      });
+    }
   }
 
   const graphData = {

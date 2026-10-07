@@ -25,8 +25,8 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
 
   const X_OFFSET = 150;
   const X_SPACING = 120;
-  const Y_OFFSET = 50;
-  const Y_SPACING = 30;
+  const Y_OFFSET = 30;
+  const Y_SPACING = 24;
 
   const svgWidth = X_OFFSET + (numRaces - 1) * X_SPACING + 100;
   const svgHeight = Y_OFFSET + numDrivers * Y_SPACING + 50;
@@ -34,6 +34,23 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
   return (
     <div className="w-full h-full overflow-auto">
       <svg width={svgWidth} height={svgHeight} className="min-w-full">
+        {/* Zebra striping */}
+        {Array.from({ length: numDrivers }).map((_, i) => {
+          if (i % 2 === 1) {
+            return (
+              <rect
+                key={`band-${i}`}
+                x={0}
+                y={Y_OFFSET + (i - 0.5) * Y_SPACING}
+                width={svgWidth}
+                height={Y_SPACING}
+                fill="#1a1a1a"
+              />
+            );
+          }
+          return null;
+        })}
+
         {/* Draw X-axis race names */}
         {timeline.map((race: any, i: number) => {
           const x = X_OFFSET + i * X_SPACING;
@@ -67,6 +84,7 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
           const color = constructorColors[driver.constructorId] || '#999';
           const isHovered = hoveredDriver === driver.driverId;
           const isFaded = hoveredDriver !== null && !isHovered;
+          const lastHistoryIndex = driver.history.length - 1;
 
           const points = driver.history.map((h: any, i: number) => {
             const x = X_OFFSET + i * X_SPACING;
@@ -121,17 +139,26 @@ export default function TimelineChart({ graphData }: { graphData: any }) {
                 {driver.familyName}
               </text>
 
+              {/* Team Color Box */}
+              <rect
+                x={X_OFFSET - 15}
+                y={Y_OFFSET + (driver.history[0].rank - 1) * Y_SPACING - 6}
+                width={8}
+                height={8}
+                fill={color}
+              />
+
               {/* End Rank text (at the end) */}
               {isHovered && (
                 <text
-                  x={X_OFFSET + (numRaces - 1) * X_SPACING + 15}
-                  y={Y_OFFSET + (driver.history[numRaces - 1].rank - 1) * Y_SPACING + 4}
+                  x={X_OFFSET + lastHistoryIndex * X_SPACING + 15}
+                  y={Y_OFFSET + (driver.history[lastHistoryIndex].rank - 1) * Y_SPACING + 4}
                   textAnchor="start"
                   fontSize="14"
                   fontWeight="bold"
                   fill="#fff"
                 >
-                  P{driver.history[numRaces - 1].rank} ({driver.cumulativePoints} pts)
+                  P{driver.history[lastHistoryIndex].rank} ({driver.cumulativePoints} pts)
                 </text>
               )}
             </g>
