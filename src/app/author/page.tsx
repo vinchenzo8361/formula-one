@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 
 export default function AuthorPage() {
@@ -26,12 +26,12 @@ export default function AuthorPage() {
           <div className="w-16 h-1 bg-f1-red mx-auto rounded-full mb-10" />
 
           <p className="text-lg leading-relaxed text-foreground/80 mb-6 max-w-lg mx-auto">
-            I'm a uni student studying urban planning with a massive love for books, sports, learning new tech, and of course, Formula 1. 
+            I am a uni student studying urban planning with a massive love for books, sports, learning new tech, and of course, Formula 1. 
             I built Apex F1 purely out of curiosity to see what I could create and to get a head start into the world of web development. 
           </p>
           
           <p className="text-lg leading-relaxed text-foreground/80 mb-12 max-w-lg mx-auto italic">
-            I'm personally rooting for Kimi Antonelli to take the crown this year. However, Charles Leclerc claims my absolute top spot�with Carlos Sainz taking a close second (iykyk ??).
+            I am personally rooting for Kimi Antonelli to take the crown this year. However, Charles Leclerc claims my absolute top spot—with Carlos Sainz taking a close second.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6">
