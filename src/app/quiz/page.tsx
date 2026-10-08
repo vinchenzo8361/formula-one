@@ -1,48 +1,48 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Trophy, Timer, ChevronRight, RotateCcw, Home } from "lucide-react";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Trophy, Timer, ChevronRight, RotateCcw, Home, CheckCircle2, XCircle } from 'lucide-react';
 
 const ALL_QUESTIONS = [
   // Easy
   { id: 1, text: "Who won the 2021 F1 World Championship?", options: ["Lewis Hamilton", "Max Verstappen", "Charles Leclerc", "Sebastian Vettel"], answer: "Max Verstappen" },
-  { id: 2, text: "Which team does Lando Norris drive for in 2024?", options: ["McLaren", "Ferrari", "Red Bull", "Mercedes"], answer: "McLaren" },
-  { id: 3, text: "What color is the Ferrari F1 car?", options: ["Blue", "Red", "Silver", "Orange"], answer: "Red" },
-  { id: 4, text: "Who holds the record for most World Championships (tied at 7)?", options: ["Senna & Prost", "Schumacher & Hamilton", "Vettel & Alonso", "Lauda & Piquet"], answer: "Schumacher & Hamilton" },
-  { id: 5, text: "What does DRS stand for?", options: ["Drag Reduction System", "Direct Racing System", "Downforce Reduction Setup", "Driver Racing Strategy"], answer: "Drag Reduction System" },
-  { id: 6, text: "Which tire compound is denoted by a red stripe?", options: ["Hard", "Medium", "Soft", "Intermediate"], answer: "Soft" },
-  { id: 7, text: "Where is the Monaco Grand Prix held?", options: ["Italy", "Monaco", "France", "Spain"], answer: "Monaco" },
-  { id: 8, text: "Who is known as the 'Honey Badger'?", options: ["Daniel Ricciardo", "Max Verstappen", "Valtteri Bottas", "Kevin Magnussen"], answer: "Daniel Ricciardo" },
-  { id: 9, text: "What flag is waved to end a race?", options: ["Red Flag", "Yellow Flag", "Chequered Flag", "Green Flag"], answer: "Chequered Flag" },
-  { id: 10, text: "Which constructor has won the most championships?", options: ["McLaren", "Mercedes", "Red Bull", "Ferrari"], answer: "Ferrari" },
-  { id: 11, text: "What does 'DNF' mean?", options: ["Did Not Finish", "Drive Not Fast", "Done Now Finally", "Downforce Not Found"], answer: "Did Not Finish" },
-  { id: 12, text: "Who won the 2007 F1 Championship?", options: ["Lewis Hamilton", "Kimi Raikkonen", "Fernando Alonso", "Felipe Massa"], answer: "Kimi Raikkonen" },
-  { id: 13, text: "Which driver has the race number 44?", options: ["Lewis Hamilton", "Max Verstappen", "Sergio Perez", "Charles Leclerc"], answer: "Lewis Hamilton" },
-  { id: 14, text: "What is the penalty for speeding in the pit lane?", options: ["Disqualification", "Stop-and-Go", "Grid Penalty", "Points Deduction"], answer: "Stop-and-Go" },
-  { id: 15, text: "Who was Max Verstappen's teammate in 2023?", options: ["Daniel Ricciardo", "Sergio Perez", "Alex Albon", "Pierre Gasly"], answer: "Sergio Perez" },
-  { id: 16, text: "How many drivers normally compete in an F1 race?", options: ["20", "22", "24", "18"], answer: "20" },
-  { id: 17, text: "What city hosts the British Grand Prix?", options: ["London", "Silverstone", "Manchester", "Birmingham"], answer: "Silverstone" },
-  { id: 18, text: "Who is the longest serving team principal at Red Bull?", options: ["Toto Wolff", "Christian Horner", "Mattia Binotto", "Guenther Steiner"], answer: "Christian Horner" },
-  { id: 19, text: "Which driver is Spanish?", options: ["Charles Leclerc", "Carlos Sainz", "Pierre Gasly", "Lando Norris"], answer: "Carlos Sainz" },
-  { id: 20, text: "What company supplies tires to all F1 teams currently?", options: ["Michelin", "Bridgestone", "Pirelli", "Goodyear"], answer: "Pirelli" },
-  { id: 21, text: "What does a yellow flag mean?", options: ["Stop", "Caution / Danger ahead", "Let another car pass", "End of session"], answer: "Caution / Danger ahead" },
-  { id: 22, text: "Who is the youngest F1 driver ever to start a race?", options: ["Lance Stroll", "Lando Norris", "Max Verstappen", "Sebastian Vettel"], answer: "Max Verstappen" },
-  { id: 23, text: "Which animal is on the Ferrari logo?", options: ["Bull", "Horse", "Lion", "Panther"], answer: "Horse" },
-  { id: 24, text: "How many points does a driver get for finishing 1st?", options: ["20", "25", "30", "15"], answer: "25" },
-  { id: 25, text: "What does a blue flag indicate?", options: ["Oil on track", "Race suspended", "Let faster car pass", "Debris on track"], answer: "Let faster car pass" },
+  { id: 2, text: "Which team is known as the 'Silver Arrows'?", options: ["Mercedes", "McLaren", "Aston Martin", "Red Bull"], answer: "Mercedes" },
+  { id: 3, text: "What does DRS stand for?", options: ["Direct Racing System", "Drag Reduction System", "Driver Reaction Speed", "Downforce Reduction System"], answer: "Drag Reduction System" },
+  { id: 4, text: "Which flag is waved to signify the end of a race?", options: ["Red Flag", "Yellow Flag", "Chequered Flag", "Blue Flag"], answer: "Chequered Flag" },
+  { id: 5, text: "Who holds the record for the most World Championships (tied at 7)?", options: ["Senna & Prost", "Schumacher & Hamilton", "Vettel & Fangio", "Alonso & Verstappen"], answer: "Schumacher & Hamilton" },
+  { id: 6, text: "What color are Pirelli's soft compound tires usually marked with?", options: ["White", "Yellow", "Red", "Green"], answer: "Red" },
+  { id: 7, text: "Which driver uses the race number 44?", options: ["Fernando Alonso", "Lando Norris", "Lewis Hamilton", "Sergio Perez"], answer: "Lewis Hamilton" },
+  { id: 8, text: "What is the term for a pit stop that takes less than 2 seconds?", options: ["Hyper stop", "Sub-two stop", "Speed stop", "Flash stop"], answer: "Sub-two stop" },
+  { id: 9, text: "Which track is famous for the 'Eau Rouge' corner?", options: ["Monza", "Silverstone", "Spa-Francorchamps", "Suzuka"], answer: "Spa-Francorchamps" },
+  { id: 10, text: "What team did Sebastian Vettel win his 4 championships with?", options: ["Ferrari", "Mercedes", "Red Bull", "Toro Rosso"], answer: "Red Bull" },
+  { id: 11, text: "Which circuit hosts the British Grand Prix?", options: ["Brands Hatch", "Donington Park", "Silverstone", "Goodwood"], answer: "Silverstone" },
+  { id: 12, text: "Who is the Team Principal of Red Bull Racing (as of 2024)?", options: ["Toto Wolff", "Christian Horner", "Zak Brown", "Fred Vasseur"], answer: "Christian Horner" },
+  { id: 13, text: "What does 'DNF' stand for?", options: ["Did Not Finish", "Do Not Follow", "Drive Normal Fast", "Did Not Fit"], answer: "Did Not Finish" },
+  { id: 14, text: "Which country does Charles Leclerc race under?", options: ["France", "Italy", "Monaco", "Switzerland"], answer: "Monaco" },
+  { id: 15, text: "What is the maximum number of cars allowed on the F1 grid?", options: ["20", "22", "24", "26"], answer: "26" },
+  { id: 16, text: "Which driver is known as the 'Smooth Operator'?", options: ["Charles Leclerc", "Carlos Sainz", "George Russell", "Lando Norris"], answer: "Carlos Sainz" },
+  { id: 17, text: "What part of the car produces the most downforce?", options: ["Front Wing", "Rear Wing", "The Floor", "Sidepods"], answer: "The Floor" },
+  { id: 18, text: "Which driver won the 2007 World Championship by 1 point?", options: ["Lewis Hamilton", "Fernando Alonso", "Kimi Raikkonen", "Felipe Massa"], answer: "Kimi Raikkonen" },
+  { id: 19, text: "What is the street circuit in Azerbaijan called?", options: ["Baku City Circuit", "Marina Bay", "Jeddah Corniche", "Albert Park"], answer: "Baku City Circuit" },
+  { id: 20, text: "Which team uses a Prancing Horse as its logo?", options: ["Porsche", "Red Bull", "Ferrari", "Alfa Romeo"], answer: "Ferrari" },
+  { id: 21, text: "Who is the youngest ever F1 race winner?", options: ["Sebastian Vettel", "Max Verstappen", "Charles Leclerc", "Lando Norris"], answer: "Max Verstappen" },
+  { id: 22, text: "How many points are awarded for 1st place in a standard Grand Prix?", options: ["20", "25", "30", "15"], answer: "25" },
+  { id: 23, text: "Which driver famously yelled 'Bwoah'?", options: ["Valtteri Bottas", "Kimi Raikkonen", "Mika Hakkinen", "Marcus Ericsson"], answer: "Kimi Raikkonen" },
+  { id: 24, text: "What color flag warns a driver they are about to be lapped?", options: ["Yellow", "Black", "Blue", "White"], answer: "Blue" },
+  { id: 25, text: "Which track is known as the 'Temple of Speed'?", options: ["Silverstone", "Monza", "Spa-Francorchamps", "Las Vegas"], answer: "Monza" },
   // Medium
-  { id: 26, text: "In what year did the V6 turbo hybrid era begin?", options: ["2012", "2014", "2016", "2010"], answer: "2014" },
-  { id: 27, text: "Which team did Michael Schumacher win his first two championships with?", options: ["Ferrari", "Benetton", "Jordan", "Mercedes"], answer: "Benetton" },
-  { id: 28, text: "Who holds the record for the most consecutive race wins?", options: ["Sebastian Vettel", "Alberto Ascari", "Max Verstappen", "Lewis Hamilton"], answer: "Max Verstappen" },
-  { id: 29, text: "What is the name of the famous sequence of corners at Suzuka?", options: ["Maggotts and Becketts", "The Esses", "Eau Rouge", "Parabolica"], answer: "The Esses" },
-  { id: 30, text: "Who was the first F1 World Champion in 1950?", options: ["Juan Manuel Fangio", "Giuseppe Farina", "Alberto Ascari", "Stirling Moss"], answer: "Giuseppe Farina" },
-  { id: 31, text: "Which circuit is known as the 'Temple of Speed'?", options: ["Silverstone", "Spa-Francorchamps", "Monza", "Suzuka"], answer: "Monza" },
-  { id: 32, text: "What does 'MGU-K' stand for?", options: ["Motor Generator Unit - Kinetic", "Mechanical Gear Unit - Kinetic", "Motor Gearbox Unit - KERS", "Main Generator Unit - Kinetic"], answer: "Motor Generator Unit - Kinetic" },
-  { id: 33, text: "Who won the controversial 2005 United States Grand Prix?", options: ["Michael Schumacher", "Fernando Alonso", "Kimi Raikkonen", "Rubens Barrichello"], answer: "Michael Schumacher" },
-  { id: 34, text: "How many gears does a modern F1 car have (excluding reverse)?", options: ["6", "7", "8", "9"], answer: "8" },
-  { id: 35, text: "Which F1 driver was known as 'The Professor'?", options: ["Niki Lauda", "Alain Prost", "Ayrton Senna", "Jackie Stewart"], answer: "Alain Prost" },
-  { id: 36, text: "In which city is the Yas Marina Circuit located?", options: ["Dubai", "Jeddah", "Abu Dhabi", "Doha"], answer: "Abu Dhabi" },
+  { id: 26, text: "Who was the first F1 World Champion in 1950?", options: ["Juan Manuel Fangio", "Alberto Ascari", "Giuseppe Farina", "Stirling Moss"], answer: "Giuseppe Farina" },
+  { id: 27, text: "Which F1 circuit has the most corners?", options: ["Suzuka", "Singapore", "Jeddah", "Spa-Francorchamps"], answer: "Jeddah" },
+  { id: 28, text: "What does 'MGU-K' stand for?", options: ["Motor Generator Unit - Kinetic", "Motor Generating Utility - Kinetic", "Manual Gear Unit - Kinetic", "Motor Generator Unit - Kilowatt"], answer: "Motor Generator Unit - Kinetic" },
+  { id: 29, text: "Which driver holds the record for most consecutive race wins (10)?", options: ["Sebastian Vettel", "Lewis Hamilton", "Max Verstappen", "Michael Schumacher"], answer: "Max Verstappen" },
+  { id: 30, text: "In what year did the 'Halo' become mandatory?", options: ["2016", "2017", "2018", "2019"], answer: "2018" },
+  { id: 31, text: "Which track features a corner called 'Parabolica'?", options: ["Imola", "Mugello", "Monza", "Suzuka"], answer: "Monza" },
+  { id: 32, text: "Who is the only driver to win a World Championship with a team bearing their own name?", options: ["Bruce McLaren", "Enzo Ferrari", "Jack Brabham", "Frank Williams"], answer: "Jack Brabham" },
+  { id: 33, text: "What is the term for when a driver pits early to pass a rival ahead of them?", options: ["Overcut", "Undercut", "Slipstream", "Drafting"], answer: "Undercut" },
+  { id: 34, text: "Which engine manufacturer powered Red Bull during their 2010-2013 championship run?", options: ["Mercedes", "Ferrari", "Renault", "Honda"], answer: "Renault" },
+  { id: 35, text: "How long does a driver have to serve a 5-second time penalty during a pit stop?", options: ["Mechanics cannot touch the car for 5s", "They must wait 5s before entering the pits", "They must exit 5s slower", "It is added at the end of the race only"], answer: "Mechanics cannot touch the car for 5s" },
+  { id: 36, text: "Which driver famously collided with Michael Schumacher at Jerez in 1997?", options: ["Damon Hill", "Jacques Villeneuve", "Mika Hakkinen", "David Coulthard"], answer: "Jacques Villeneuve" },
   { id: 37, text: "Who is the only driver to win a World Championship posthumously?", options: ["Gilles Villeneuve", "Jim Clark", "Jochen Rindt", "Ayrton Senna"], answer: "Jochen Rindt" },
   { id: 38, text: "What was the first year of the night race in Singapore?", options: ["2007", "2008", "2009", "2010"], answer: "2008" },
   { id: 39, text: "Which team introduced the 'F-Duct' in 2010?", options: ["Red Bull", "Ferrari", "McLaren", "Brawn GP"], answer: "McLaren" },
@@ -51,7 +51,7 @@ const ALL_QUESTIONS = [
   { id: 41, text: "Which driver has the most Grand Prix starts without a win?", options: ["Nico Hulkenberg", "Nick Heidfeld", "Martin Brundle", "Romain Grosjean"], answer: "Nico Hulkenberg" },
   { id: 42, text: "What is the minimum weight of an F1 car (without fuel) in 2024?", options: ["750 kg", "798 kg", "720 kg", "820 kg"], answer: "798 kg" },
   { id: 43, text: "Who was the last driver to win a race for Team Lotus (in 1987)?", options: ["Ayrton Senna", "Nelson Piquet", "Nigel Mansell", "Elio de Angelis"], answer: "Ayrton Senna" },
-  { id: 44, text: "Which circuit hosted the only Moroccan Grand Prix in F1 history?", options: ["Ain-Diab", "Pedralbes", "Boavista", "MontjuÃ¯c"], answer: "Ain-Diab" },
+  { id: 44, text: "Which circuit hosted the only Moroccan Grand Prix in F1 history?", options: ["Ain-Diab", "Pedralbes", "Boavista", "Montjuïc"], answer: "Ain-Diab" },
   { id: 45, text: "How many points did Brawn GP score in their one and only season (2009)?", options: ["172", "150", "161", "185"], answer: "172" },
   { id: 46, text: "Who scored the first ever World Championship points for Williams?", options: ["Alan Jones", "Clay Regazzoni", "Jacques Laffite", "Carlos Reutemann"], answer: "Jacques Laffite" },
   { id: 47, text: "What engine was in the back of the 1995 Championship-winning Benetton B195?", options: ["Ford V8", "Renault V10", "Ferrari V12", "Honda V10"], answer: "Renault V10" },
@@ -69,6 +69,9 @@ export default function QuizPage() {
   const [isFinished, setIsFinished] = useState(false);
   const [startTime, setStartTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
+  
+  const [userAnswers, setUserAnswers] = useState<string[]>([]);
+  const [showReview, setShowReview] = useState(false);
 
   useEffect(() => {
     startQuiz();
@@ -92,9 +95,12 @@ export default function QuizPage() {
     setIsFinished(false);
     setStartTime(Date.now());
     setElapsedTime(0);
+    setUserAnswers([]);
+    setShowReview(false);
   };
 
   const handleAnswer = (option: string) => {
+    setUserAnswers(prev => [...prev, option]);
     if (option === questions[currentIdx].answer) {
       setScore(s => s + 1);
     }
@@ -109,7 +115,7 @@ export default function QuizPage() {
     const totalSeconds = Math.floor(ms / 1000);
     const m = Math.floor(totalSeconds / 60);
     const s = totalSeconds % 60;
-    return `${m}:${s.toString().padStart(2, '0')}`;
+    return m + ':' + s.toString().padStart(2, '0');
   };
 
   if (questions.length === 0) return null;
@@ -152,12 +158,44 @@ export default function QuizPage() {
               ))}
             </div>
           </section>
+        ) : showReview ? (
+          <section className="bg-panel rounded-3xl p-8 shadow-sm border border-gray-200/20 space-y-6">
+             <div className="flex justify-between items-center mb-6">
+               <h2 className="text-2xl font-bold">Review Answers</h2>
+               <button onClick={() => setShowReview(false)} className="text-f1-red hover:underline font-semibold">
+                 Back to Results
+               </button>
+             </div>
+             
+             <div className="space-y-6 max-h-[60vh] overflow-y-auto custom-scrollbar pr-4">
+               {questions.map((q: any, i: number) => {
+                 const isCorrect = userAnswers[i] === q.answer;
+                 return (
+                   <div key={i} className="p-4 rounded-xl border border-gray-200/20 bg-background">
+                     <p className="font-semibold mb-3">Q{i+1}: {q.text}</p>
+                     <div className="space-y-2">
+                       <div className={"flex items-center gap-2 p-2 rounded-lg " + (isCorrect ? "bg-green-500/10 text-green-700 dark:text-green-400" : "bg-red-500/10 text-red-700 dark:text-red-400")}>
+                         {isCorrect ? <CheckCircle2 className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}
+                         <span className="font-medium">You chose: {userAnswers[i]}</span>
+                       </div>
+                       {!isCorrect && (
+                         <div className="flex items-center gap-2 p-2 rounded-lg bg-green-500/10 text-green-700 dark:text-green-400">
+                           <CheckCircle2 className="w-5 h-5" />
+                           <span className="font-medium">Correct answer: {q.answer}</span>
+                         </div>
+                       )}
+                     </div>
+                   </div>
+                 );
+               })}
+             </div>
+          </section>
         ) : (
           <section className="bg-panel rounded-3xl p-12 shadow-sm border border-gray-200/20 text-center flex flex-col items-center">
             <Trophy className="w-20 h-20 text-f1-red mb-6" />
             <h2 className="text-5xl font-extrabold mb-4 uppercase italic tracking-tighter text-foreground">Quiz Complete!</h2>
             
-            <div className="flex gap-8 my-8">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 my-8">
               <div className="bg-background p-6 rounded-2xl border border-gray-200/20 min-w-[150px]">
                 <div className="text-sm uppercase tracking-widest font-bold text-text-muted mb-2">Final Score</div>
                 <div className="text-4xl font-black text-f1-red">{score} / {TOTAL_QUESTIONS}</div>
@@ -168,12 +206,16 @@ export default function QuizPage() {
               </div>
             </div>
 
-            <div className="flex gap-4 mt-4">
-              <button onClick={startQuiz} className="flex items-center gap-2 bg-background hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground px-8 py-4 rounded-xl font-bold transition-colors border border-gray-200/20">
+            <div className="flex flex-wrap justify-center gap-4 mt-4">
+              <button onClick={() => setShowReview(true)} className="flex items-center justify-center gap-2 bg-background hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground px-8 py-4 rounded-xl font-bold transition-colors border border-gray-200/20 w-full md:w-auto">
+                <CheckCircle2 className="w-5 h-5" />
+                Review Answers
+              </button>
+              <button onClick={startQuiz} className="flex items-center justify-center gap-2 bg-background hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground px-8 py-4 rounded-xl font-bold transition-colors border border-gray-200/20 w-full md:w-auto">
                 <RotateCcw className="w-5 h-5" />
                 Try Again
               </button>
-              <Link href="/" className="flex items-center gap-2 bg-f1-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold transition-colors">
+              <Link href="/" className="flex items-center justify-center gap-2 bg-f1-red hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold transition-colors w-full md:w-auto">
                 <Home className="w-5 h-5" />
                 Back to Home
               </Link>
