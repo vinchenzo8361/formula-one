@@ -1,48 +1,49 @@
 import TimelineChart from '@/components/TimelineChart';
+import hardcodedStandings from '@/data/timelineStandings2026.json';
 
-  export default async function TimelinePage() {
-    // Fetch Race 1 results to establish the official 22 base drivers (bypassing missing qualifying data)
-    const baseRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/results.json', { next: { revalidate: 3600 } });
-    if (!baseRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
-    const baseData = await baseRes.json();
-    const race1Results = baseData.MRData.RaceTable.Races[0].Results;
-  
-        // Establish a strict custom team order for the starting grid column
-    const teamOrder = [
-      'mercedes', 'ferrari', 'mclaren', 'red_bull', 'rb',
-      'alpine', 'haas', 'audi', 'williams', 'aston_martin', 'cadillac'
-    ];
+export default async function TimelinePage() {
+  // Fetch Race 1 results to establish the official 22 base drivers (bypassing missing qualifying data)
+  const baseRes = await fetch('https://api.jolpi.ca/ergast/f1/current/1/results.json', { next: { revalidate: 86400 } });
+  if (!baseRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
+  const baseData = await baseRes.json();
+  const race1Results = baseData.MRData.RaceTable.Races[0].Results;
 
-    const teamGroups: Record<string, any[]> = {};
-    teamOrder.forEach(t => teamGroups[t] = []);
+  // Establish a strict custom team order for the starting grid column
+  const teamOrder = [
+    'mercedes', 'ferrari', 'mclaren', 'red_bull', 'rb',
+    'alpine', 'haas', 'audi', 'williams', 'aston_martin', 'cadillac'
+  ];
 
-    race1Results.forEach((res: any) => {
-      const cId = res.Constructor.constructorId;
-      if (teamGroups[cId]) {
-        teamGroups[cId].push({
-          driverId: res.Driver.driverId,
-          familyName: res.Driver.familyName,
-          constructorId: cId
-        });
-      }
-    });
+  const teamGroups: Record<string, any[]> = {};
+  teamOrder.forEach(t => teamGroups[t] = []);
 
-    const baseDrivers: any[] = [];
-    let initialRank = 1;
-
-    teamOrder.forEach(tId => {
-      const drivers = teamGroups[tId];
-      // Randomly flip a coin to decide which team driver gets the odd vs even spot
-      if (Math.random() > 0.5) drivers.reverse();
-
-      drivers.forEach(d => {
-        d.qualifyingRank = initialRank++;
-        baseDrivers.push(d);
+  race1Results.forEach((res: any) => {
+    const cId = res.Constructor.constructorId;
+    if (teamGroups[cId]) {
+      teamGroups[cId].push({
+        driverId: res.Driver.driverId,
+        familyName: res.Driver.familyName,
+        constructorId: cId
       });
+    }
+  });
+
+  const baseDrivers: any[] = [];
+  let initialRank = 1;
+
+  teamOrder.forEach(tId => {
+    const drivers = teamGroups[tId];
+    // Randomly flip a coin to decide which team driver gets the odd vs even spot
+    if (Math.random() > 0.5) drivers.reverse();
+
+    drivers.forEach(d => {
+      d.qualifyingRank = initialRank++;
+      baseDrivers.push(d);
     });
+  });
 
   // Fetch full schedule
-  const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { next: { revalidate: 3600 } });
+  const scheduleRes = await fetch('https://api.jolpi.ca/ergast/f1/current.json', { next: { revalidate: 86400 } });
   if (!scheduleRes.ok) return <div className='container p-8'>API Error. Please try again later.</div>;
   const scheduleData = await scheduleRes.json();
   const allRaces = scheduleData.MRData.RaceTable.Races;
@@ -50,13 +51,20 @@ import TimelineChart from '@/components/TimelineChart';
   // Filter for completed races and fetch their individual results sequentially to avoid rate limiting
   const completedRacesMeta = allRaces.filter((r: any) => new Date(r.date) < new Date());
   
-        const completedRaces = [];
+  // Use our perfectly hardcoded standings as a fallback/cache up to Bahrain to prevent API hiccups
+  const completedRaces: any[] = [...hardcodedStandings];
+
   for (const r of completedRacesMeta) {
+    // If we already hardcoded this round, skip the network request
+    if (completedRaces.find(cr => cr.round === r.round)) {
+      continue;
+    }
+
     try {
-      let response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/driverStandings.json', { next: { revalidate: 3600 } });
+      let response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/driverStandings.json', { next: { revalidate: 86400 } });
       if (!response.ok) {
         await new Promise(resolve => setTimeout(resolve, 1500));
-        response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/driverStandings.json', { next: { revalidate: 3600 } });
+        response = await fetch('https://api.jolpi.ca/ergast/f1/current/' + r.round + '/driverStandings.json', { next: { revalidate: 86400 } });
       }
       if (response.ok) {
         const text = await response.text();
@@ -92,7 +100,7 @@ import TimelineChart from '@/components/TimelineChart';
     });
   });
 
-    const raceTimeline = [
+  const raceTimeline = [
     { round: 0, raceName: 'Qualifying' }
   ];
   allRaces.forEach((r: any) => {
@@ -139,30 +147,9 @@ import TimelineChart from '@/components/TimelineChart';
 
   return (
     <div className="p-6 min-h-[calc(100vh-80px)] flex flex-col">
-      
-            <div className="w-[calc(100%-20px)] mx-auto overflow-hidden border-2 rounded-xl relative" style={{ backgroundColor: "var(--tl-bg-even)", borderColor: "var(--tl-grid-v)" }}>
+      <div className="w-[calc(100%-20px)] mx-auto overflow-hidden border-2 rounded-xl relative" style={{ backgroundColor: "var(--tl-bg-even)", borderColor: "var(--tl-grid-v)" }}>
         <TimelineChart graphData={graphData} />
       </div>
-
-      
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
