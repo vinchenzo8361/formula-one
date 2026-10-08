@@ -51,7 +51,7 @@ const ALL_QUESTIONS = [
   { id: 41, text: "Which driver has the most Grand Prix starts without a win?", options: ["Nico Hulkenberg", "Nick Heidfeld", "Martin Brundle", "Romain Grosjean"], answer: "Nico Hulkenberg" },
   { id: 42, text: "What is the minimum weight of an F1 car (without fuel) in 2024?", options: ["750 kg", "798 kg", "720 kg", "820 kg"], answer: "798 kg" },
   { id: 43, text: "Who was the last driver to win a race for Team Lotus (in 1987)?", options: ["Ayrton Senna", "Nelson Piquet", "Nigel Mansell", "Elio de Angelis"], answer: "Ayrton Senna" },
-  { id: 44, text: "Which circuit hosted the only Moroccan Grand Prix in F1 history?", options: ["Ain-Diab", "Pedralbes", "Boavista", "Montjuïc"], answer: "Ain-Diab" },
+  { id: 44, text: "Which circuit hosted the only Moroccan Grand Prix in F1 history?", options: ["Ain-Diab", "Pedralbes", "Boavista", "Montjuï¿½c"], answer: "Ain-Diab" },
   { id: 45, text: "How many points did Brawn GP score in their one and only season (2009)?", options: ["172", "150", "161", "185"], answer: "172" },
   { id: 46, text: "Who scored the first ever World Championship points for Williams?", options: ["Alan Jones", "Clay Regazzoni", "Jacques Laffite", "Carlos Reutemann"], answer: "Jacques Laffite" },
   { id: 47, text: "What engine was in the back of the 1995 Championship-winning Benetton B195?", options: ["Ford V8", "Renault V10", "Ferrari V12", "Honda V10"], answer: "Renault V10" },
