@@ -31,7 +31,7 @@ export default function AuthorPage() {
           </p>
           
           <p className="text-lg leading-relaxed text-foreground/80 mb-12 max-w-lg mx-auto italic">
-            I am personally rooting for Kimi Antonelli to take the crown this year. However, Charles Leclerc claims my absolute top spot—with Carlos Sainz taking a close second.
+            I am personally rooting for Kimi Antonelli to take the crown this year. However, Charles Leclerc claims my absolute top spot—with Carlos Sainz taking a close second just so I can ragebait someone (they know who they are).
           </p>
 
           <div className="flex flex-wrap justify-center gap-6">
