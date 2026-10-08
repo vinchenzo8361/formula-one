@@ -1,4 +1,3 @@
-export const dynamic = 'force-dynamic';
 import TimelineChart from '@/components/TimelineChart';
 
   export default async function TimelinePage() {
@@ -149,6 +148,7 @@ import TimelineChart from '@/components/TimelineChart';
     </div>
   );
 }
+
 
 
 
