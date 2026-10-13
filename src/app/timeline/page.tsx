@@ -1,3 +1,4 @@
+export const revalidate = 86400;
 import TimelineChart from '@/components/TimelineChart';
 import hardcodedStandings from '@/data/timelineStandings2026.json';
 

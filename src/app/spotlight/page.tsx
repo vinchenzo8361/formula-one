@@ -1,24 +1,40 @@
-import React from 'react';
-import { Clock, Zap, Calendar, MapPin, Gauge, Info } from 'lucide-react';
+﻿'use client';
 
-const HISTORICAL_FACTS: Record<string, string> = {
-  "10-07": "In 2012, Kamui Kobayashi scored his first and only F1 podium in front of a home crowd at the Japanese Grand Prix in Suzuka.",
-  "10-08": "In 2000, Michael Schumacher won the Japanese GP, securing Ferrari's first Drivers' Championship in 21 years.",
-  "10-09": "In 2011, Sebastian Vettel secured his second World Championship at Suzuka.",
-  "10-10": "In 1999, the first ever Malaysian Grand Prix was held at the newly built Sepang International Circuit.",
-  "10-11": "In 2020, Lewis Hamilton won the Eifel Grand Prix, officially equaling Michael Schumacher's all-time record of 91 wins.",
-  "10-12": "In 2003, Michael Schumacher clinched his record-breaking sixth World Championship at Suzuka.",
-  "10-13": "In 2013, Sebastian Vettel won the Japanese Grand Prix, continuing his dominant run of nine consecutive wins that season.",
-  "10-14": "In 2012, Sebastian Vettel won the Korean Grand Prix, taking the championship lead from Fernando Alonso.",
-  "10-15": "In 2006, Fernando Alonso essentially secured his second World Championship after Michael Schumacher suffered an engine failure at Suzuka."
-};
+import React, { useState, useEffect } from 'react';
+import { Clock, Zap, Calendar, MapPin, Gauge, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import allDailyFacts from '@/data/f1DailyFacts.json';
 
 export default function SpotlightPage() {
-  const today = new Date();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  const dateKey = `${month}-${day}`;
-  const todaysFact = HISTORICAL_FACTS[dateKey] || "On this day in motorsport history, legendary teams and drivers continued to push the absolute limits of engineering and human endurance.";
+  const [currentDateStr, setCurrentDateStr] = useState('');
+  const [factIndex, setFactIndex] = useState(0);
+  const [facts, setFacts] = useState<string[]>([]);
+
+  useEffect(() => {
+    const today = new Date();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const dateKey = month + "-" + day;
+    
+    setCurrentDateStr(today.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }));
+    
+    const dayFacts = (allDailyFacts as Record<string, string[]>)[dateKey] || [
+      "On this day in motorsport history, legendary teams and drivers continued to push the absolute limits of engineering and human endurance."
+    ];
+    setFacts(dayFacts);
+    setFactIndex(0);
+  }, []);
+
+  const nextFact = () => {
+    if (facts.length > 0) {
+      setFactIndex((prev) => (prev + 1) % facts.length);
+    }
+  };
+
+  const prevFact = () => {
+    if (facts.length > 0) {
+      setFactIndex((prev) => (prev - 1 + facts.length) % facts.length);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
@@ -55,22 +71,56 @@ export default function SpotlightPage() {
           </div>
 
           {/* On This Day */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-gradient-to-br from-f1-red/20 to-panel border-2 border-f1-red rounded-xl p-6 relative overflow-hidden">
-            <div className="absolute -right-10 -bottom-10 opacity-10">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 bg-gradient-to-br from-f1-red/20 to-panel border-2 border-f1-red rounded-xl p-6 relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
               <Calendar className="w-64 h-64" />
             </div>
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <Calendar className="w-8 h-8 text-f1-red" />
-                <h2 className="text-2xl font-bold uppercase text-f1-red">On This Day</h2>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-8 h-8 text-f1-red" />
+                  <h2 className="text-2xl font-bold uppercase text-f1-red">On This Day</h2>
+                </div>
+                {facts.length > 1 && (
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={prevFact}
+                      className="p-1.5 rounded-lg bg-background/80 hover:bg-background border border-border transition-colors"
+                      title="Previous fact"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <span className="text-xs font-mono font-bold text-text-muted">
+                      {factIndex + 1} / {facts.length}
+                    </span>
+                    <button 
+                      onClick={nextFact}
+                      className="p-1.5 rounded-lg bg-background/80 hover:bg-background border border-border transition-colors"
+                      title="Next fact"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="text-lg font-medium text-text-muted mb-2">
-                {today.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
+                {currentDateStr || 'Today'}
               </div>
-              <p className="text-xl md:text-3xl font-bold leading-tight mt-4">
-                {todaysFact}
+              <p className="text-xl md:text-3xl font-bold leading-tight mt-4 min-h-[4.5rem]">
+                {facts[factIndex] || 'Loading historical facts...'}
               </p>
             </div>
+            {facts.length > 1 && (
+              <div className="relative z-10 pt-4 flex gap-1.5">
+                {facts.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setFactIndex(idx)}
+                    className={"h-1.5 rounded-full transition-all " + (idx === factIndex ? "w-8 bg-f1-red" : "w-2 bg-border")}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Technical Spotlight */}
@@ -148,4 +198,3 @@ export default function SpotlightPage() {
     </div>
   );
 }
-
